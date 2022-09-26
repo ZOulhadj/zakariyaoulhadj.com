@@ -30,10 +30,8 @@ export default function Navbar() {
         <div className="mb-4 border-bottom">
             <header
                 className="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
-                <Link to="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <svg className="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlinkHref="#bootstrap"></use>
-                    </svg>
+                <Link to="#" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                    <i className="bi bi-gem" style={{fontSize: 2+'em'}}></i>
                 </Link>
 
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">

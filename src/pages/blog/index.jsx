@@ -7,7 +7,7 @@ export default function Index({ data }) {
         <Base>
             <h1 className={`fw-bold`}>My blog posts</h1>
 
-            { data.allMdx.nodes.map(node => (
+            { data.allMarkdownRemark.nodes.map(node => (
                 <div className={`border-bottom mb-2 p-2`}>
                     <div className="d-flex justify-content-between align-items-start">
                         <Link to={`/blog/${node.frontmatter.slug}`} className="mb-0 text-decoration-none">

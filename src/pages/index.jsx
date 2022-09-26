@@ -1,4 +1,6 @@
-import * as React from "react"
+import React from "react";
+
+import Base from "../components/base";
 
 const pageStyles = {
   color: "#232129",
@@ -123,7 +125,7 @@ const links = [
   },
 ]
 
-const IndexPage = () => {
+/*const IndexPage = () => {
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
@@ -171,6 +173,15 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default IndexPage*/
+
+
+export default function Index() {
+  return (
+      <Base>
+
+      </Base>
+  );
+}
 
 export const Head = () => <title>Home Page</title>
