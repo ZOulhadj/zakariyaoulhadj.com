@@ -17,7 +17,10 @@ module.exports = {
     options: {
       trackingIds: ["G-8B9M5SYE68"]
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+  },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
@@ -41,7 +44,7 @@ module.exports = {
   }, {
     resolve: 'gatsby-transformer-remark',
     options: {
-      plugins: ['gatsby-remark-autolink-headers']
+      plugins: ['gatsby-remark-autolink-headers', 'gatsby-remark-images']
     }
   }, {
       resolve: 'gatsby-omni-font-loader',
