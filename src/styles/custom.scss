@@ -1,0 +1,22 @@
+
+// Global Bootstrap options
+$enable-shadows: true;
+$enable-rounded: true;
+
+
+// Global Bootstrap colors
+//$primary: #8AD8F2;
+//$secondary: #406470;
+
+//$success:
+//$info:
+//$warning:
+//$danger:
+//$light:
+//$dark:
+
+@import "~bootstrap";
+
+body {
+  font-family: 'Figtree', sans-serif;
+}
