@@ -1,0 +1,46 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+    <style>
+      .title {
+          text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <h3 class="title">Welcome to my personal website!</h3>
+      <img width={1020} height={510} src="/about.jpg" alt="" />
+      <p>
+        I am a First Class Honours graduate from the University of Roehampton,
+        where I obtained a Bachelor's degree (BSc) in Computer Science. Some
+        of my key interests include Computer Graphics, Real-Time Simulations,
+        Low-Level Software Architecture, and the development of time-critical
+        applications that require efficiency and precision. Proficient in
+        various programming languages but most notably in modern C++ (with
+        over 5 years of experience), Python and full-stack web
+        development. I'm an individual who is keen to learn and explore new
+        ideas and technologies.
+
+        My latest project consisted of developing a Low-Level 3D Graphics
+        application taking advantage of the Vulkan rendering API to
+        communicate with the GPU to render real-time geometry.
+      </p>
+      <p>
+        My hobbies include cycling, travelling, hiking, playing the guitar, chess and more.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>
