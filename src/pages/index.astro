@@ -10,17 +10,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-
-    <style>
-      .title {
-      text-align: center;
-      }
-    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />
-
-
+    
     <div class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div class="absolute inset-0 -z-10 overflow-hidden">
         <svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
@@ -39,14 +32,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div class="lg:pr-4">
             <div class="lg:max-w-lg">
-              <p class="text-base font-semibold leading-7 text-indigo-600">Welcome to my website</p>
-              <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Zakariya Oulhadj</h1>
+              <p class="text-base font-semibold leading-7 text-indigo-600">
+                Welcome to my website
+              </p>
+              <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Zakariya Oulhadj
+              </h1>
               <p class="mt-6 text-xl leading-8 text-gray-700">
-                First Class Honours graduate from the University of Roehampton,
-                where I obtained a Bachelor's degree (BSc) in Computer
-                Science. My key area of interests are Computer Graphics,
-                Low-level software architecture, performance including
-                algorithmic optimisation and real-time simulations.
+                A First Class Honours Computer Science graduate (BSc) from the University of
+                Roehampton. My key areas of interest are Computer Graphics, Low-level software
+                architecture, and performance including algorithmic optimisation and real-time
+                simulations.
               </p>
             </div>
           </div>
@@ -65,7 +61,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 consisted of developing a Low-Level 3D Graphics application
                 taking advantage of the Vulkan rendering API to communicate with
                 the GPU to render real-time geometry.
-
               </p>
               <ul role="list" class="mt-8 space-y-8 text-gray-600">
                 <li class="flex gap-x-3">
