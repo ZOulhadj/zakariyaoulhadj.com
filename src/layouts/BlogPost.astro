@@ -7,79 +7,56 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <html lang="en">
+    <head>
+      <BaseHead title={title} description={description} />
+    </head>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+    <body>
+      <Header />
+      <main>
+        <article class="px-4 py-24 mx-auto max-w-7xl" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
+          <div class="w-full mx-auto mb-12 text-left md:w-3/4 lg:w-1/2">
+            <img src={heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Kutty" />
+            <p class="mt-6 mb-2 text-xs font-semibold tracking-wider uppercase text-primary">
+              Technology
+            </p>
+            <h1 class="mb-3 text-3xl font-bold leading-tight text-gray-900 md:text-4xl" itemprop="headline" title={title}>
+              {title}
+            </h1>
+            <div class="flex mb-6 space-x-2 text-sm">
+              {
+              tags.map((tag) => (
+              <a class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2" href="#">
+                {tag.charAt(0).toUpperCase() + tag.slice(1) }
+              </a>              
+              ))
+              }
+            </div>
+            <a class="flex items-center text-gray-700" href="/">
+              <div class="rounded-full w-10 h-10 avatar">
+                <img src="/me.jpg" alt="Photo of Zakariya Oulhadj" />
+              </div>
+              <div class="ml-2">
+                <p class="text-sm font-semibold text-gray-800">
+                  Zakariya Oulhadj
+                </p>
+                <p class="text-sm text-gray-500">
+                  <FormattedDate date={pubDate} />
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="w-full mx-auto prose md:w-3/4 lg:w-1/2">
+            <slot />
+          </div>
+        </article>
+
+      </main>
+      <Footer />
+    </body>
+  </html>
