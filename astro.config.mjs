@@ -8,5 +8,6 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://zakariyaoulhadj.com',
+        // base: '/zakariyaoulhadj.com',
 	integrations: [mdx(), sitemap(), tailwind()],
 });
