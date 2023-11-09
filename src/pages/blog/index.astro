@@ -88,48 +88,50 @@ const posts = (await getCollection('blog')).sort(
   <body>
     <Header />
 
-    <!--
-        This example requires some changes to your config:
-        
-        ```
-        // tailwind.config.js
-        module.exports = {
-        // ...
-        plugins: [
-        // ...
-        require('@tailwindcss/aspect-ratio'),
-        ],
-        }
-        ```
-      -->
-    <div class="bg-gray-100">
+    <div class="">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-          <h2 class="text-2xl font-bold text-gray-900">Blog Posts</h2>
+          <h2 class="text-2xl font-bold text-gray-900">
+            Blog Posts
+          </h2>
           <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
             {
             posts.map((post) => (
-            <a href={`/blog/posts/${post.slug}/`} class="hover:underline decoration-2">
-              <div class="group relative">
-                <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                  <img src={post.data.heroImage} alt={post.data.description} class="h-full w-full object-cover object-center">
+
+            <div class="">
+              <a href={`/blog/posts/${post.slug}/`} class="hover:underline decoration-2 group">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden rounded-lg bg-white">
+                  <img src={post.data.heroImage} alt={post.data.description} class="h-full w-full object-cover object-center group-hover:opacity-90">
                 </div>
-                <h3 class="mt-6 text-sm text-gray-500 underline-0">
+
+
+                <p class="mt-4 text-base font-semibold text-gray-900">
+                  {post.data.title}
+                </p>
+              </a>
+                                
+                <h3 class="text-sm text-gray-500 underline-0 mb-2">
                   <FormattedDate date={post.data.pubDate} />
                 </h3>
 
-
-                <p class="text-base font-semibold text-gray-900">
-                  {post.data.title}
-                </p>
-
+                
+                <div class="flex mb-6 space-x-2 text-sm">
+                  {
+                  post.data.tags.map((tag) => (
+                  <a class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2" href={`/blog/tags/${tag}/`}>
+                    {tag.charAt(0).toUpperCase() + tag.slice(1) }
+                  </a>              
+                  ))
+                  }
+                </div>
               </div>
-            </a>
+
             ))
             }
           </div>
         </div>
       </div>
+      
       <Footer />
   </body>
 </html>

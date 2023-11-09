@@ -30,7 +30,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
             <div class="flex mb-6 space-x-2 text-sm">
               {
               tags.map((tag) => (
-              <a class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2" href="#">
+              <a class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2" href={`/blog/tags/${tag}/`}>
                 {tag.charAt(0).toUpperCase() + tag.slice(1) }
               </a>              
               ))
