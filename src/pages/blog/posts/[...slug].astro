@@ -1,20 +1,58 @@
 ---
+import BaseLayout from "../../../layouts/Base.astro";
+
 import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../../layouts/BlogPost.astro';
+import PostTags from '../../../components/PostTags.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+        const posts = await getCollection('blog');
+        return posts.map((post) => ({
+                params: { slug: post.slug },
+                props: post,
+        }));
 }
-type Props = CollectionEntry<'blog'>;
 
+type Props = CollectionEntry<'blog'>;
 const post = Astro.props;
 const { Content } = await post.render();
+
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+
+  <BaseLayout>
+    <main>
+      <article class="px-4 py-24 mx-auto max-w-7xl" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="w-full mx-auto mb-12 text-left md:w-3/4 lg:w-1/2">
+          <img src={post.data.heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Blog post cover image" />
+          <p class="mt-6 mb-2 text-xs font-semibold tracking-wider uppercase text-primary">
+            Technology
+          </p>
+          <h1 class="mb-3 text-3xl font-bold leading-tight text-gray-900 md:text-4xl" itemprop="headline" title={post.data.title}>
+            {post.data.title}
+          </h1>
+
+          <PostTags tags={post.data.tags} />
+
+          <a class="flex items-center text-gray-700" href="/">
+            <div class="rounded-full w-10 h-10 avatar">
+              <img src="/me.jpg" alt="Photo of Zakariya Oulhadj" />
+            </div>
+            <div class="ml-2">
+              <p class="text-sm font-semibold text-gray-800">
+                Zakariya Oulhadj
+              </p>
+              <p class="text-sm text-gray-500">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="w-full mx-auto prose md:w-3/4 lg:w-1/2">
+          <Content />
+        </div>
+      </article>
+
+    </main>
+  </BaseLayout>

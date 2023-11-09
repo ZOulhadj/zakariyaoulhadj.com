@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zakariyaoulhadj.com/sitemap-index.xml

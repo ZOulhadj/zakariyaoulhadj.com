@@ -7,3 +7,6 @@ heroImage: 'https://martinfowler.com/articles/kinesis-advantage2/card.jpg'
 tags: ["hardware", "life"]
 ---
 
+
+This is some example text.
+

@@ -1,8 +1,6 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
-import BaseHead from '../../../components/BaseHead.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
+import BaseLayout from "../../../layouts/Base.astro";
+
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -12,39 +10,32 @@ export async function getStaticPaths() {
     {params: {tag: "emacs"}, props: {posts: all_posts}},
     {params: {tag: "hardware"}, props: {posts: all_posts}},
     {params: {tag: "life"}, props: {posts: all_posts}},
+    {params: {tag: "education"}, props: {posts: all_posts}},
   ]
 }
 
-type Props = CollectionEntry<'blog'>;
+//type Props = CollectionEntry<'blog'>;
 
-const { tag } = Astro.params;
-const { posts } = Astro.props;
+//const { tag } = Astro.params;
+//const posts  = Astro.props;
   
-const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
+//const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
 ---
 
 
-  <html lang="en">
-    <head>
-      <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-      <Header />
-      <main>
-        <h1>Posts with the tag
-          <span class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2">
-            {tag.charAt(0).toUpperCase() + tag.slice(1)}
-          </span>
-        </h1>
-        
-        <ul>
-          {
-          filteredPosts.map((post) => (
-          <li><a href={`/blog/posts/${post.slug}/`}>{post.data.title}</a></li>
-          ))
-          }
-        </ul>
-      </main>
-      <Footer />
-    </body>
-  </html>
+  <BaseLayout>
+    
+    <!-- <h1>Posts with the tag -->
+    <!--   <span class="text-gray-900 bg-gray-100 badge rounded-full hover:bg-gray-200 px-2"> -->
+    <!--     {tag.charAt(0).toUpperCase() + tag.slice(1)} -->
+    <!--   </span> -->
+    <!-- </h1> -->
+    
+    <!-- <ul> -->
+    <!--   { -->
+    <!--   filteredPosts.map((post) => ( -->
+    <!--   <li><a href={`/blog/posts/${post.slug}/`}>{post.data.title}</a></li> -->
+    <!--   )) -->
+    <!--   } -->
+    <!-- </ul>     -->
+  </BaseLayout>

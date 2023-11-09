@@ -1,23 +1,12 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
-import { Image } from 'astro:assets';
+import BaseLayout from "../layouts/Base.astro";
 
 //const imageFiles = await Astro.glob('../../public/gallery/*');
+
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main class="bg-gray-100">
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout>
+  <main class="bg-gray-100">
+  </main>
+</BaseLayout>
+

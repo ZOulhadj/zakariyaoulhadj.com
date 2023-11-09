@@ -7,3 +7,6 @@ heroImage: '/blog/why-i-use-emacs.png'
 tags: ["programming", "emacs"]
 ---
 
+Emacs example text
+
+
