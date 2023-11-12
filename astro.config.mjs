@@ -11,3 +11,5 @@ export default defineConfig({
         // base: '/zakariyaoulhadj.com',
 	integrations: [mdx(), sitemap(), tailwind()],
 });
+
+
