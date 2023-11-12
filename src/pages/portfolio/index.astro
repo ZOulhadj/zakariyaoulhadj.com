@@ -1,7 +1,13 @@
 ---
 import BaseLayout from "../../layouts/Base.astro";
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+
+
+import Card from "../../components/portfolio/Card.astro";
+
+const featured_posts = await getCollection('portfolio', ({ data }) => {
+return data.featured === true;
+});
 
 const posts = (await getCollection('portfolio')).sort(
 (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -10,36 +16,31 @@ const posts = (await getCollection('portfolio')).sort(
 
 <BaseLayout>
   <div class="bg-gray-100">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">My portfolio</h2>
-      <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {
-        posts.map((post) => (
-
-        <div class="group relative">
-          <div class="w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-            <img src={post.data.heroImage} alt={post.data.description} class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-          </div>
-          <div class="mt-4 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700 font-bold">
-                <a href={`/portfolio/${post.slug}/`}>
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  {post.data.title}
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
-            </div>
-            <p class="text-sm font-medium text-gray-900">Software</p>
-          </div>
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div class="mb-5">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+          Featured Work
+        </h2>
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {
+              featured_posts.map((post) => (
+                  <Card post={post} />
+              ))
+          }
         </div>
-        
-        ))
-        }
       </div>
-
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+          All Work
+        </h2>
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {
+          posts.map((post) => (
+          <Card post={post}/>
+          ))
+          }
+        </div>
+      </div>
     </div>
   </div>  
 </BaseLayout>

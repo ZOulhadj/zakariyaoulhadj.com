@@ -1,6 +1,7 @@
 ---
 title: 'VMVE'
 description: 'Final year project'
+category: software
 pubDate: 'Jun 01 2023'
 heroImage: '/portfolio/vmve.png'
 github: 'https://github.com/ZOulhadj/vmve'

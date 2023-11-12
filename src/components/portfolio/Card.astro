@@ -1,0 +1,35 @@
+---
+import FormattedDate from '../FormattedDate.astro';
+
+const { post } = Astro.props;
+---
+<!-- <a href="#" class="group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"> -->
+<!--   <div class="flex items-center space-x-3"> -->
+<!--     <svg class="h-6 w-6 stroke-sky-500 group-hover:stroke-white" fill="none" viewBox="0 0 24 24"><\!-- ... -\-></svg> -->
+<!--     <h3 class="text-slate-900 group-hover:text-white text-sm font-semibold">New project</h3> -->
+<!--   </div> -->
+<!--   <p class="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</p> -->
+<!-- </a> -->
+
+<div class="group relative bg-white rounded-lg hover:shadow-md">
+  <div class="w-full overflow-hidden rounded-t-md bg-gray-200 group-hover:mix-blend-multiply">
+    <img src={post.data.heroImage} alt={post.data.description} class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+  </div>
+  <div class="p-2">
+    <h3 class="text-sm text-gray-700 font-bold">
+      <a href={`/portfolio/${post.slug}/`}>
+        <span aria-hidden="true" class="absolute inset-0"></span>
+        {post.data.title}
+      </a>
+    </h3>
+    <p class="mt-1 text-sm text-gray-500">
+      <FormattedDate date={post.data.pubDate} />
+    </p>
+    <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+      {post.data.category.charAt(0).toUpperCase() + post.data.category.slice(1) }
+    </span>
+    <!-- <p class="text-gray-900 bg-gray-100 badge rounded-full px-2"> -->
+    <!--    -->
+    <!-- </p> -->
+  </div>
+</div>
