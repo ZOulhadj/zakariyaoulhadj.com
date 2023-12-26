@@ -1,7 +1,7 @@
 ---
 title: 'Vulkan Starter'
 description: 'A basic Vulkan triangle example'
-featured: true
+featured: false
 category: software
 pubDate: 'Aug 20 2021'
 updatedDate: 'Aug 20 2021'
