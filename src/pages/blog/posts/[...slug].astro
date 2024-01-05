@@ -24,7 +24,7 @@ const { Content } = await post.render();
     <main>
       <article class="px-4 py-24 mx-auto max-w-7xl" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
         <div class="w-full mx-auto mb-12 text-left md:w-3/4 lg:w-1/2">
-          <img src={post.data.heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Blog post cover image" />
+          <img src={post.data.heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Blog content preview" />
           <p class="mt-6 mb-2 text-xs font-semibold tracking-wider uppercase text-primary">
             Technology
           </p>
@@ -34,9 +34,9 @@ const { Content } = await post.render();
 
           <PostTags tags={post.data.tags} />
 
-          <a class="flex items-center text-gray-700" href="/">
-            <div class="rounded-full w-10 h-10 avatar">
-              <img src="/me.jpg" alt="Photo of Zakariya Oulhadj" />
+          <a class="flex items-center text-gray-700 pt-5" href="/">
+            <div class="w-10 h-10 avatar">
+              <img src="/me.jpg" class="rounded-full" alt="Zakariya Oulhadj" />
             </div>
             <div class="ml-2">
               <p class="text-sm font-semibold text-gray-800">
@@ -49,7 +49,11 @@ const { Content } = await post.render();
           </a>
         </div>
 
-        <div class="w-full mx-auto prose md:w-3/4 lg:w-1/2">
+        <div class="w-full mx-auto md:w-3/4 lg:w-1/2
+                    prose
+                    prose-h1:font-bold prose-h1:text-xl
+                    prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
+                    prose-headings:underline">
           <Content />
         </div>
       </article>
