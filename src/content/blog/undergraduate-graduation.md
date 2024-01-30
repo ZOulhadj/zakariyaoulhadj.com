@@ -5,5 +5,6 @@ author: "Zakariya Oulhadj"
 pubDate: 'Jan 02 2024'
 heroImage: '/blog/undergraduate_graduation.png'
 tags: ["life", "education"]
+draft: true
 ---
 

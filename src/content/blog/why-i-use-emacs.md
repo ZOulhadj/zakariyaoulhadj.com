@@ -5,6 +5,7 @@ author: "Zakariya Oulhadj"
 pubDate: 'Dec 14 2023'
 heroImage: '/blog/why-i-use-emacs.png'
 tags: ["programming", "emacs"]
+draft: true
 ---
 
 Emacs example text

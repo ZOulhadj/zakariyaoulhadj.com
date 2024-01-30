@@ -5,6 +5,7 @@ author: "Zakariya Oulhadj"
 pubDate: 'Jan 29 2024'
 heroImage: ''
 tags: ["linux"]
+draft: false
 ---
 
 I have known about Linux for several years and have attempted multiple times to 
