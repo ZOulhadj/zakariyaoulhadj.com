@@ -3,14 +3,15 @@ title: 'Why I use Emacs'
 description: 'A short blog post about the advantages of using Emacs over more popular editors.'
 author: "Zakariya Oulhadj"
 pubDate: 'Dec 14 2023'
-heroImage: '/blog/why-i-use-emacs.png'
+heroImage: '@assets/images/blog/why-i-use-emacs.png'
 tags: ["programming", "emacs"]
-draft: true
+draft: false
 ---
 
 Emacs example text
 
 
+![some image](@assets/images/blog/why-i-use-emacs.png)
 # This is a heading
 
 ## This is a second heading
@@ -25,4 +26,4 @@ Morbi eleifend venenatis augue, non venenatis enim efficitur in. Sed libero libe
 
 **Class** aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin viverra velit ullamcorper purus dictum efficitur. Mauris varius vel metus et bibendum. Suspendisse lacus velit, lacinia id faucibus sit amet, placerat sed nibh. Sed maximus, elit ut maximus dictum, arcu tortor fringilla elit, ut convallis arcu magna at mi. Duis in iaculis dolor, sit amet fermentum lectus. Donec gravida tincidunt magna ac maximus. Proin est est, tempor volutpat ullamcorper ut, elementum a arcu. Ut aliquet pellentesque eros, id pellentesque libero fermentum nec. Sed ut mi at elit dignissim accumsan. Vestibulum at magna consequat, volutpat neque ullamcorper, accumsan ex. Suspendisse et metus augue. Curabitur viverra nulla in lorem pellentesque convallis. Nulla eget malesuada sapien. Vestibulum scelerisque sapien sem.
 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras risus odio, sollicitudin eu quam et, vestibulum feugiat arcu. Nam in blandit eros. Proin sed sem velit. Proin enim est, eleifend eget nisl sed, facilisis tincidunt leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin arcu ipsum, tempus eget nunc at, fringilla scelerisque mi. Donec eu ante gravida, imperdiet eros quis, porttitor purus. Nullam eget sem lectus. Nullam tempor nisl eu sodales condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum consectetur congue velit, sit amet tincidunt orci finibus efficitur. Mauris viverra ipsum orci, vitae sollicitudin mi dignissim auctor. Ut gravida massa et pellentesque porta. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras risus odio, sollicitudin eu quam et, vestibulum feugiat arcu. Nam in blandit eros. Proin sed sem velit. Proin enim est, eleifend eget nisl sed, facilisis tincidunt leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin arcu ipsum, tempus eget nunc at, fringilla scelerisque mi. Donec eu ante gravida, imperdiet eros quis, porttitor purus. Nullam eget sem lectus. Nullam tempor nisl eu sodales condimentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum consectetur congue velit, sit amet tincidunt orci finibus efficitur. Mauris viverra ipsum orci, vitae sollicitudin mi dignissim auctor. Ut gravida massa et pellentesque porta.

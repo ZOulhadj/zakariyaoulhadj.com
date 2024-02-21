@@ -2,8 +2,9 @@
 import BaseLayout from "../../layouts/Base.astro";
 import { getCollection } from 'astro:content';
 
-
 import Card from "../../components/portfolio/Card.astro";
+
+import wallpaperImage from "@assets/images/wallpaper.jpg";
 
 const featured_posts = await getCollection('portfolio', ({ data }) => {
 return data.featured === true;
@@ -15,7 +16,7 @@ const posts = (await getCollection('portfolio')).sort(
 ---
 
 <BaseLayout>
-  <div class="bg-[url('/wallpaper.jpg')] backdrop-blur-xl bg-cover">
+  <div class="bg-[url()] backdrop-blur-xl bg-cover">
     <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <h1 class="text-6xl font-bold text-white text-center py-10">
         Portfolio
@@ -70,5 +71,5 @@ const posts = (await getCollection('portfolio')).sort(
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </BaseLayout>

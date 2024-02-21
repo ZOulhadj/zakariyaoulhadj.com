@@ -5,11 +5,11 @@ featured: true
 category: software
 pubDate: 'Sep 10 2023'
 updatedDate: 'Nov 22 2023'
-heroImage: '/portfolio/rendering_engine.png'
+heroImage: '@assets/images/portfolio/rendering_engine.png'
 ---
 
 # About
-This is my long-term project that I work on. A general purpose 
+This is my long-term project that I work on. A general purpose
 rendering/simulation engine that I can use to develop various
 different applications. Examples include games, simulations,
 visualisations etc.

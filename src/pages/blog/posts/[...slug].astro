@@ -5,12 +5,15 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import PostTags from '../../../components/PostTags.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
+import { Image } from 'astro:assets';
+import authorImage from '@assets/images/me.jpg';
+
 export async function getStaticPaths() {
-        const posts = await getCollection('blog');
-        return posts.map((post) => ({
-                params: { slug: post.slug },
-                props: post,
-        }));
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
 }
 
 type Props = CollectionEntry<'blog'>;
@@ -20,41 +23,41 @@ const { Content } = await post.render();
 ---
 
 
-  <BaseLayout>
+<BaseLayout>
     <main>
-      <article class="px-4 py-24 mx-auto max-w-7xl" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="w-full mx-auto mb-12 text-left md:w-3/4 lg:w-1/2">
-          <!-- <img src={post.data.heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Blog content preview" /> -->
-          
-          <h1 class="mb-3 text-3xl text-center underline decoration-4 font-bold leading-tight text-gray-900 md:text-4xl" itemprop="headline" title={post.data.title}>
-            {post.data.title}
-          </h1>
+        <article class="px-4 py-24 mx-auto max-w-7xl" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
+            <div class="w-full mx-auto mb-12 text-left md:w-3/4 lg:w-1/2">
+                <img src={post.data.heroImage} class="object-cover w-full h-64 bg-center rounded-lg" alt="Blog content preview" />
 
-          <PostTags tags={post.data.tags} />
+                <h1 class="mb-3 text-3xl text-center underline decoration-4 font-bold leading-tight text-gray-900 md:text-4xl" itemprop="headline" title={post.data.title}>
+                    {post.data.title}
+                </h1>
 
-          <a class="flex items-center text-gray-700 pt-5" href="/">
-            <div class="w-10 h-10 avatar">
-              <img src="/me.jpg" class="rounded-full" alt="Zakariya Oulhadj" />
+                <PostTags tags={post.data.tags} />
+
+                <a class="flex items-center text-gray-700 pt-5" href="/">
+                    <div class="w-10 h-10 avatar">
+                        <Image src={authorImage} class="rounded-full" alt="Author"/>
+                    </div>
+                    <div class="ml-2">
+                        <p class="text-sm font-semibold text-gray-800">
+                            Zakariya Oulhadj
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <FormattedDate date={post.data.pubDate} />
+                        </p>
+                    </div>
+                </a>
             </div>
-            <div class="ml-2">
-              <p class="text-sm font-semibold text-gray-800">
-                Zakariya Oulhadj
-              </p>
-              <p class="text-sm text-gray-500">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
-            </div>
-          </a>
-        </div>
 
-        <div class="w-full mx-auto md:w-3/4 lg:w-1/2
+            <div class="w-full mx-auto md:w-3/4 lg:w-1/2
                     prose
                     prose-h1:font-bold prose-h1:text-xl
                     prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
                     prose-headings:underline">
-          <Content />
-        </div>
-      </article>
+                <Content />
+            </div>
+        </article>
 
     </main>
-  </BaseLayout>
+</BaseLayout>

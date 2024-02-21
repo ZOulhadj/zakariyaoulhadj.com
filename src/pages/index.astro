@@ -12,10 +12,10 @@ const latest_post = posts[0];
 <BaseSimple>
   <div class="flex flex-col h-screen">
     { latest_post &&
-    <div class="text-center px-5 py-2 bg-[#3a3a3a] text-white w-screen" style="font-family: 'Silkscreen', sans-serif;">
-      Lastest blog post: <a href={`/blog/posts/${latest_post.slug}/`} class="hover:text-amber-100 hover:underline">{latest_post.data.title}</a>
-    </div>    
-    }
+      <div class="text-center px-5 py-2 bg-[#3a3a3a] text-white w-screen" style="font-family: 'Silkscreen', sans-serif;">
+        Lastest blog post: <a href={`/blog/posts/${latest_post.slug}/`} class="hover:text-amber-100 hover:underline">{latest_post.data.title}</a>
+      </div>
+}
 
     <div class="text-center px-5 bg-[#F2EFE4] text-stone-700 w-screen border-y border-[#D4CBB6]">
       <div class="flex justify-center items-center gap-2">

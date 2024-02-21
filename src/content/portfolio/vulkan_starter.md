@@ -5,7 +5,7 @@ featured: false
 category: software
 pubDate: 'Aug 20 2021'
 updatedDate: 'Aug 20 2021'
-heroImage: '/portfolio/vulkan_starter.png'
+heroImage: '@assets/images/portfolio/vulkan_starter.png'
 github: 'https://github.com/ZOulhadj/vulkan_starter/'
 ---
 
