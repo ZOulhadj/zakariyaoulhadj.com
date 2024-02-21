@@ -1,15 +1,12 @@
 import { defineConfig } from 'astro/config';
+
 import mdx from '@astrojs/mdx';
-
 import tailwind from '@astrojs/tailwind';
-
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://zakariyaoulhadj.com',
+        site: 'https://zakariyaoulhadj.com',
         // base: '/zakariyaoulhadj.com',
-	integrations: [mdx(), sitemap(), tailwind()],
+        integrations: [mdx(), sitemap(), tailwind()],
 });
-
-
