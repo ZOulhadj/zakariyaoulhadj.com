@@ -7,7 +7,7 @@ const portfolio = defineCollection({
         description: z.string(),
         featured: z.boolean().default(false),
         category: z.string(),
-            // Transform string to Date object
+        // Transform string to Date object
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         heroImage: image(),
@@ -26,11 +26,9 @@ const blog = defineCollection({
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         heroImage: image(),
-        tags: z.array(z.string()),
+        tags: z.array(z.enum(["programming", "emacs", "linux", "hardware", "life", "education"])),
         draft: z.boolean()
     }),
 });
-
-
 
 export const collections = { portfolio, blog };

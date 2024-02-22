@@ -5,7 +5,7 @@ export default {
     ],
     theme: {
         extend: {
-            
+
         },
         aspectRatio: {
             auto: 'auto',
@@ -29,6 +29,7 @@ export default {
             16: '16',
         },
     },
+    darkMode: 'class',
     corePlugins: {
         aspectRatio: false,
     },
@@ -38,4 +39,3 @@ export default {
         require('@tailwindcss/forms')
     ],
 }
-
