@@ -1,23 +1,22 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
-const portfolio = defineCollection({
-    // Type-check frontmatter using a schema
+const portfolioCollection = defineCollection({
+    type: "content",
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         featured: z.boolean().default(false),
-        category: z.string(),
         // Transform string to Date object
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         heroImage: image(),
         website: z.string().optional(),
         github: z.string().optional()
-    }),
+    })
 });
 
-const blog = defineCollection({
-    // Type-check frontmatter using a schema
+const blogCollection = defineCollection({
+    type: "content",
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
@@ -26,9 +25,11 @@ const blog = defineCollection({
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         heroImage: image(),
-        tags: z.array(z.enum(["programming", "emacs", "linux", "hardware", "life", "education"])),
         draft: z.boolean()
-    }),
+    })
 });
 
-export const collections = { portfolio, blog };
+export const collections = {
+    "portfolio": portfolioCollection,
+    "blog": blogCollection,
+};

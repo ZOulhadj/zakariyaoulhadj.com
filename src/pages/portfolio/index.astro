@@ -6,6 +6,7 @@ import BaseLayout from "@layouts/Base.astro";
 import Card from "@components/portfolio/Card.astro";
 
 import wallpaperImage from "@assets/images/wallpaper.jpg";
+import cv from "@assets/files/CV.pdf";
 
 const featured_posts = await getCollection('portfolio', ({ data }) => {
 return data.featured === true;
@@ -36,7 +37,7 @@ const posts = (await getCollection('portfolio')).sort(
         <a href="https://www.linkedin.com/in/zoulhadj/" type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" target="_blank">
           LinkedIn
         </a>
-        <a href="/portfolio/CV.pdf" type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" target="_blank">
+        <a href={cv} type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" target="_blank">
           CV
         </a>
       </div>

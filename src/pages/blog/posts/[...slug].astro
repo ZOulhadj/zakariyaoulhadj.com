@@ -33,21 +33,9 @@ const { Content } = await post.render();
                     {post.data.title}
                 </h1>
 
-                <PostTags tags={post.data.tags} />
-
-                <a class="flex items-center text-gray-700 pt-5" href="/">
-                    <div class="w-10 h-10 avatar">
-                        <Image src={authorImage} class="rounded-full" alt="Author"/>
-                    </div>
-                    <div class="ml-2">
-                        <p class="text-sm font-semibold text-gray-800">
-                            Zakariya Oulhadj
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            <FormattedDate date={post.data.pubDate} />
-                        </p>
-                    </div>
-                </a>
+                <span class="text-sm text-gray-500">
+                    Posted: <FormattedDate date={post.data.pubDate} />
+                </span>
             </div>
 
             <div class="w-full mx-auto md:w-3/4 lg:w-1/2

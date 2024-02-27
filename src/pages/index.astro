@@ -1,44 +1,129 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 import BaseSimple from "@layouts/BaseSimple.astro";
+import Navbar from "@components/Navbar.astro";
+import Link from "@components/Link.astro";
+
+import aboutImage from "@assets/images/me.jpg";
 
 // Get all posts from latest to oldest
-const all_posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const all_posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const posts = all_posts.filter((post) => { return !post.data.draft; });
-const latest_post = posts[0];
+
+const all_portfolio = (await getCollection("portfolio")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const portfolio = all_portfolio.filter((post) => { return !post.data.draft; });
+
+
+//const latest_post = posts[0];
 ---
-
 <BaseSimple>
-  <div class="flex flex-col h-screen">
-    { latest_post &&
-      <div class="text-center px-5 py-2 bg-[#3a3a3a] text-white w-screen" style="font-family: 'Silkscreen', sans-serif;">
-        Lastest blog post: <a href={`/blog/posts/${latest_post.slug}/`} class="hover:text-amber-100 hover:underline">{latest_post.data.title}</a>
-      </div>
-}
+    <div class="bg-sky-600">
+        <div class="container mx-auto py-10">
+            <h1 class="text-white text-6xl font-bold">Zakariya Oulhadj</h1>
+            <span class="text-4xl font-bold text-slate-100">zakariyaoulhadj.com</span>
+        </div>
+    </div>
+    <!-- <div class="container mx-auto my-4 flex gap-2"> -->
+    <!--     <Link href="/">Home</Link> -->
+    <!--     > -->
+    <!--     <Link href="/about">About</Link> -->
+    <!-- </div> -->
+    <div class="container mx-auto py-10">
+        <div class="">
+            <Image src={aboutImage} class="rounded border-2 border-gray-100" width={200} alt="About" />
+            <h1 class="text-4xl font-bold mt-4 mb-2">About me</h1>
+            <p>
+I am a First Class Honours graduate
+from <Link href="https://roehampton.ac.uk" target="_blank">The University of Roehampton</Link>,
+where I obtained a degree in Computer Science (BSc). Some of my key
+interests include Computer Graphics, Real-Time Simulations, Low-Level Software
+Architecture, and the development of time-critical applications that require
+efficiency and precision. Proficient in various programming languages but most
+notably in modern C++ (with over 5 years of experience), Python and full-stack
+web development. I'm an individual who is keen to learn and explore new ideas
+and technologies.
+            </p>
+            <Link href="/cv">View my CV</Link>
+            <div>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Social links</h1>
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="flex flex-col border-4 border-sky-600 p-4">
+                        <Link href="https://www.linkedin.com/in/zoulhadj" target="_blank" class="text-xl">
+                            LinkedIn
+                        </Link>
+                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="https://github.com/ZOulhadj" target="_blank" class="text-xl">
+                            GitHub
+                        </Link>
+                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="https://instagram.com/zoulhadj" target="_blank" class="text-xl">
+                            Instagram
+                        </Link>
+                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="https://stackexchange.com/users/8077582/zoulhadj" target="_blank" class="text-xl">
+                            StackExchange
+                        </Link>
+                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="https://youtube.com/@ZOulhadj" target="_blank" class="text-xl">
+                            YouTube
+                        </Link>
+                        <span class="text-slate-500 text-sm">@zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="https://leetcode.com/ZOulhadj/" target="_blank" class="text-xl">
+                            LeetCode
+                        </Link>
+                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                    </div>
+                    <div class="border-4 border-sky-600 p-4 flex flex-col">
+                        <Link href="mailto:contact@zakariyaoulhadj.com" target="_blank" class="text-xl">
+                            Email
+                        </Link>
+                        <span class="text-slate-500 text-sm"></span>
+                    </div>
 
-    <div class="text-center px-5 bg-[#F2EFE4] text-stone-700 w-screen border-y border-[#D4CBB6]">
-      <div class="flex justify-center items-center gap-2">
-        <a href="/about" class="px-3 py-2 hover:underline">
-          About
-        </a>
-        <a href="/portfolio" class="px-3 py-2 hover:underline">
-          Portfolio
-        </a>
-        <a href="/blog" class="px-3 py-2 hover:underline">
-          Blog
-        </a>
-        <a href="/gallery" class="px-3 py-2 hover:underline">
-          Gallery
-        </a>
-      </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="flex items-center"> -->
+        <!--     <div class="flex-1 border-t-2 border-gray-200"></div> -->
+        <!--     <span class="px-3 text-gray-500 bg-white">Section</span> -->
+        <!--     <div class="flex-1 border-t-2 border-gray-200"></div> -->
+        <!-- </div> -->
+        <div class="flex">
+            <div>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Portfolio</h1>
+                <div class="flex flex-col gap-y-2">
+                    {portfolio.map((post) => (
+                      <Link href={`/portfolio/${post.slug}/`}>
+                        {post.data.title}
+                      </Link>
+                    ))}
+                </div>
+            </div>
+
+            <div>
+                <h1 class="text-4xl font-bold mt-4 mb-2">Blog</h1>
+                <div class="flex flex-col gap-y-2">
+                    {posts.map((post) => (
+                      <Link href={`/blog/posts/${post.slug}/`}>
+                        {post.data.title}
+                      </Link>
+                    ))}
+                </div>
+            </div>
+
+
+        </div>
     </div>
-    <div class="flex-grow flex justify-center items-center bg-gradient-to-b from-[#EDE6D5] to-[#F5F5ED]">
-      <div class="">
-        <h1 class="text-center text-[#3f3b3b] text-7xl" style="font-family: 'Paytone One';">
-          Zakariya Oulhadj
-        </h1>
-      </div>
-    </div>
-  </div>
 </BaseSimple>
