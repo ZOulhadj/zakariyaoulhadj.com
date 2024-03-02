@@ -7,6 +7,8 @@ export default {
         extend: {
 
         },
+        // colors: {
+        // }
     },
     darkMode: 'class',
     corePlugins: {

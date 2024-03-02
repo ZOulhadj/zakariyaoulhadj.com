@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 
 import BaseSimple from "@layouts/BaseSimple.astro";
 import Link from "@components/Link.astro";
+import Button from "@components/Button.astro";
 import portfolioCV from "@assets/files/CV.pdf";
 ---
 
@@ -25,7 +26,7 @@ import portfolioCV from "@assets/files/CV.pdf";
         <div>
             <h1 class="text-4xl font-bold mt-4 mb-2">Experience</h1>
             <ul class="flex flex-col gap-y-5">
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <div class="">
                         <p class="font-bold">Student Representative</p>
                         <Link href="https://roehampton.ac.uk" target="_blank" class="text-sm">The University of Roehampton</Link>
@@ -40,7 +41,7 @@ import portfolioCV from "@assets/files/CV.pdf";
                         the students experience throughout the year.
                     </p>
                 </li>
-                <li>
+                <li class="border-l-4 pl-4">
                     <div class="">
                         <p class="font-bold">Computer Science Teaching Assistant</p>
                         <Link href="https://roehampton.ac.uk" target="_blank" class="text-sm">The University of Roehampton</Link>
@@ -51,7 +52,7 @@ import portfolioCV from "@assets/files/CV.pdf";
                         University of Roehampton.
                     </p>
                 </li>
-                <li>
+                <li class="border-l-4 pl-4">
                     <div>
                         <p class="font-bold">Deliveroo Rider</p>
                         <p class="text-sm text-gray-600">Sep 2020 - Apr 2021</p>
@@ -61,7 +62,7 @@ import portfolioCV from "@assets/files/CV.pdf";
                         at the University of Roehampton.
                     </p>
                 </li>
-                <li>
+                <li class="border-l-4 pl-4">
                     <div>
                         <p class="font-bold">Sales Assistant</p>
                         <Link href="https://pearson1860.com/" target="_blank" class="text-sm">Pearson Cycle Specialists Ltd</Link>
@@ -72,7 +73,7 @@ import portfolioCV from "@assets/files/CV.pdf";
                         during my work experience at Kingston College.
                     </p>
                 </li>
-                <li>
+                <li class="border-l-4 pl-4">
                     <div>
                         <p class="font-bold">Freelance Web Developer</p>
                         <Link href="#" class="text-sm">Wealth Agenda</Link>
@@ -83,7 +84,7 @@ import portfolioCV from "@assets/files/CV.pdf";
                         maintaining and managing websites for existing clients.
                     </p>
                 </li>
-                <li>
+                <li class="border-l-4 pl-4">
                     <div>
                         <p class="font-bold">Sales Assistant</p>
                         <Link href="#" class="text-sm">BohemiaCoal s. r. o.</Link>
@@ -105,35 +106,74 @@ import portfolioCV from "@assets/files/CV.pdf";
         <div>
             <h1 class="text-4xl font-bold mt-4 mb-2">Education</h1>
             <ul class="flex flex-col gap-y-5">
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <Link href="https://roehampton.ac.uk" target="_blank">University of Roehampton</Link>
                     <p class="text-sm font-bold">First Class with Honours</p>
                     <p class="text-sm">Sep 2020 - Jun 2023</p>
                 </li>
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <Link href="https://stcg.ac.uk/kingston-college" target="_blank">Kingston College</Link>
                     <p class="text-sm font-bold">A*A*A* (Distinction)</p>
                     <p class="text-sm">2018 - 2020</p>
                 </li>
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <Link href="https://west-thames.ac.uk/" target="_blank">West Thames College</Link>
                     <p class="text-sm font-bold">MM (Merit)</p>
                     <p class="text-sm">2017 - 2018</p>
                 </li>
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <Link href="https://sites.google.com/aetinet.org/richmond-park-academy/home" target="_blank">Richmond Park Academy</Link>
                     <p class="text-sm font-bold">GCSE's</p>
                     <p class="text-sm">2012 - 2017</p>
                 </li>
-                <li class="">
+                <li class="border-l-4 pl-4">
                     <Link href="https://thealton-q1e.org.uk/home/" target="_blank">The Alton Primary School</Link>
                     <p class="text-sm font-bold">SAT's</p>
                     <p class="text-sm">2005 - 2012</p>
                 </li>
             </ul>
+        </div>
 
+        <div>
+            <h1 class="text-4xl font-bold mt-4 mb-2">Features Projects</h1>
+            <div class="flex gap-5">
+                <div>
+                    <h1 class="font-bold">Software</h1>
+                    <h1>VMVE (Vulkan Model Viewer and Exporter)</h1>
+                </div>
+                <div>
+                    <h1 class="font-bold">Hardware</h1>
+                    <h1>Arduino Temprature Sensor</h1>
+                </div>
+            </div>
+            <Button href="/portfolio">Portfolio</Button>
+        </div>
+        <div>
+            <h1 class="text-4xl font-bold mt-4 mb-2">Skills</h1>
+            <ul class="flex flex-col gap-y-5">
+                <li>
+                    <div>
+                        <h1 class="font-bold">Programming Languages</h1>
+                        <h1>C++</h1>
+                        <h1>C</h1>
+                        <h1>C#</h1>
+                        <h1>Rust</h1>
+                        <h1>Python</h1>
+                        <h1>HTML/CSS/JS</h1>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="font-bold">Frameworks</h1>
+                        <h1>OpenGL/DirectX/Vulkan</h1>
+                        <h1>Astro</h1>
+                        <h1>Docker</h1>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
+
     <div class="container mx-auto">
         <Link href={portfolioCV} target="_blank">PDF version</Link>
     </div>

@@ -22,7 +22,9 @@ const all_portfolio = (await getCollection("portfolio")).sort((a, b) => b.data.p
     <div class="bg-sky-600">
         <div class="container mx-auto py-10">
             <h1 class="text-white text-6xl font-bold">Zakariya Oulhadj</h1>
-            <span class="text-4xl font-bold text-slate-100">zakariyaoulhadj.com</span>
+            <span class="text-3xl font-bold text-slate-100">
+                Software Engineer
+            </span>
         </div>
     </div>
     <!-- <div class="container mx-auto my-4 flex gap-2"> -->
@@ -36,15 +38,14 @@ const all_portfolio = (await getCollection("portfolio")).sort((a, b) => b.data.p
             <Image src={aboutImage} class="rounded border-2 border-gray-100" width={200} alt="About" />
             <h1 class="text-4xl font-bold mt-4 mb-2">About me</h1>
             <p>
-                I am a First Class Honours graduate
-from <Link href="https://roehampton.ac.uk" target="_blank">The University of Roehampton</Link>,
-where I obtained a degree in Computer Science (BSc). Some of my key
-interests include Computer Graphics, Real-Time Simulations, Low-Level Software
-Architecture, and the development of time-critical applications that require
-efficiency and precision. Proficient in various programming languages but most
-notably in modern C++ (with over 5 years of experience), Python and full-stack
-web development. I'm an individual who is keen to learn and explore new ideas
-and technologies.
+                I am a First Class with Honours (BSc) Computer Science graduate
+                from <Link href="https://roehampton.ac.uk" target="_blank">The University of
+                Roehampton</Link>. Some of my key interests include Computer Graphics, Real-Time
+                Simulations, Low-Level Software Architecture, and the development of
+                time-critical applications that require efficiency and precision. Proficient in
+                various programming languages but most notably in modern C++ (with over 5 years
+                of experience), Python and full-stack web development. I'm an individual who is
+                keen to learn and explore new ideas and technologies.
             </p>
             <Button href="/cv">View CV</Button>
             <div>
@@ -52,45 +53,45 @@ and technologies.
                 <div class="grid grid-cols-4 gap-2">
                     <div class="flex flex-col border-4 border-sky-600 p-4">
                         <Link href="https://www.linkedin.com/in/zoulhadj" target="_blank" class="text-xl">
-                            LinkedIn
-                        </Link>
-                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                        LinkedIn
+    </Link>
+    <span class="text-slate-500 text-sm">/zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="https://github.com/ZOulhadj" target="_blank" class="text-xl">
-                            GitHub
-                        </Link>
-                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                        GitHub
+    </Link>
+    <span class="text-slate-500 text-sm">/zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="https://instagram.com/zoulhadj" target="_blank" class="text-xl">
-                            Instagram
-                        </Link>
-                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                        Instagram
+    </Link>
+    <span class="text-slate-500 text-sm">/zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="https://stackexchange.com/users/8077582/zoulhadj" target="_blank" class="text-xl">
-                            StackExchange
-                        </Link>
-                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                        StackExchange
+    </Link>
+    <span class="text-slate-500 text-sm">/zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="https://youtube.com/@ZOulhadj" target="_blank" class="text-xl">
-                            YouTube
-                        </Link>
-                        <span class="text-slate-500 text-sm">@zoulhadj</span>
+                        YouTube
+    </Link>
+    <span class="text-slate-500 text-sm">@zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="https://leetcode.com/ZOulhadj/" target="_blank" class="text-xl">
-                            LeetCode
-                        </Link>
-                        <span class="text-slate-500 text-sm">/zoulhadj</span>
+                        LeetCode
+    </Link>
+    <span class="text-slate-500 text-sm">/zoulhadj</span>
                     </div>
                     <div class="border-4 border-sky-600 p-4 flex flex-col">
                         <Link href="mailto:contact@zakariyaoulhadj.com" target="_blank" class="text-xl">
-                            Email
-                        </Link>
-                        <span class="text-slate-500 text-sm"></span>
+                        Email
+    </Link>
+    <span class="text-slate-500 text-sm"></span>
                     </div>
 
                 </div>
@@ -106,10 +107,10 @@ and technologies.
                 <h1 class="text-4xl font-bold mt-4 mb-2">Portfolio</h1>
                 <div class="flex flex-col gap-y-2">
                     {all_portfolio.map((post) => (
-                      <Link href={`/portfolio/${post.slug}/`}>
-                        {post.data.title}
-                      </Link>
-                    ))}
+                    <Link href={`/portfolio/${post.slug}/`}>
+                    {post.data.title}
+    </Link>
+    ))}
                 </div>
             </div>
 
@@ -117,10 +118,10 @@ and technologies.
                 <h1 class="text-4xl font-bold mt-4 mb-2">Blog</h1>
                 <div class="flex flex-col gap-y-2">
                     {posts.map((post) => (
-                      <Link href={`/blog/posts/${post.slug}/`}>
-                        {post.data.title}
-                      </Link>
-                    ))}
+                    <Link href={`/blog/posts/${post.slug}/`}>
+                    {post.data.title}
+    </Link>
+    ))}
                 </div>
             </div>
 
