@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import BaseSimple from "@layouts/BaseSimple.astro";
 import Navbar from "@components/Navbar.astro";
 import Link from "@components/Link.astro";
+import Button from "@components/Button.astro";
 
 import aboutImage from "@assets/images/me.jpg";
 
@@ -29,6 +30,7 @@ const all_portfolio = (await getCollection("portfolio")).sort((a, b) => b.data.p
     <!--     > -->
     <!--     <Link href="/about">About</Link> -->
     <!-- </div> -->
+
     <div class="container mx-auto py-10">
         <div class="">
             <Image src={aboutImage} class="rounded border-2 border-gray-100" width={200} alt="About" />
@@ -44,7 +46,7 @@ notably in modern C++ (with over 5 years of experience), Python and full-stack
 web development. I'm an individual who is keen to learn and explore new ideas
 and technologies.
             </p>
-            <Link href="/cv">View my CV</Link>
+            <Button href="/cv">View CV</Button>
             <div>
                 <h1 class="text-4xl font-bold mt-4 mb-2">Social links</h1>
                 <div class="grid grid-cols-4 gap-2">
