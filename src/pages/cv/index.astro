@@ -8,8 +8,133 @@ import portfolioCV from "@assets/files/CV.pdf";
 ---
 
 <BaseSimple>
+    <div class="bg-gray-700 mb-5">
+        <div class="container mx-auto py-10">
+            <h1 class="text-white text-6xl font-bold">CV </h1>
+            <span class="text-4xl font-bold text-slate-100">Curriculum vitae</span>
+        </div>
+    </div>
+
+    <div class="container mx-auto m-5">
+        <div>
+            <Link href="/">Home</Link> > CV
+        </div>
+    </div>
+
     <div class="container mx-auto">
-        <h1 class="text-4xl font-bold">CV (Curriculum vitae)</h1>
-        <Link href={portfolioCV}>View the PDF version</Link>
+        <div>
+            <h1 class="text-2xl font-bold">Experience</h1>
+            <ul class="flex flex-col gap-y-5">
+                <li class="">
+                    <div class="">
+                        <p class="font-bold">Student Representative</p>
+                        <Link href="https://roehampton.ac.uk" target="_blank" class="text-sm">The University of Roehampton</Link>
+                        <p class="text-sm text-gray-600">Oct 2022 - Jun 2023</p>
+                    </div>
+                    <p class="">
+                        During my time as a student representative, my
+                        responsibility was to communicate with members of staff
+                        in the Computer Science department to address student
+                        concerns and enquires. The aim was to ensure that
+                        lecturers were fully aware of any issues and to enhance
+                        the students experience throughout the year.
+                    </p>
+                </li>
+                <li>
+                    <div class="">
+                        <p class="font-bold">Computer Science Teaching Assistant</p>
+                        <Link href="https://roehampton.ac.uk" target="_blank" class="text-sm">The University of Roehampton</Link>
+                        <p class="text-sm text-gray-600">Oct 2022 - Dec 2022</p>
+                    </div>
+                    <p>
+                        Working part-time as a Teaching Assistant at The
+                        University of Roehampton.
+                    </p>
+                </li>
+                <li>
+                    <div>
+                        <p class="font-bold">Deliveroo Rider</p>
+                        <p class="text-sm text-gray-600">Sep 2020 - Apr 2021</p>
+                    </div>
+                    <p>
+                        Working as a Deliveroo Rider alongside being a student
+                        at the University of Roehampton.
+                    </p>
+                </li>
+                <li>
+                    <div>
+                        <p class="font-bold">Sales Assistant</p>
+                        <Link href="https://pearson1860.com/" target="_blank" class="text-sm">Pearson Cycle Specialists Ltd</Link>
+                        <p class="text-sm text-gray-600">Apr 2019 - Jul 2019</p>
+                    </div>
+                    <p>
+                        Worked as a part-time Sales Assistant at Pearson Cycles
+                        during my work experience at Kingston College.
+                    </p>
+                </li>
+                <li>
+                    <div>
+                        <p class="font-bold">Freelance Web Developer</p>
+                        <Link href="#" class="text-sm">Wealth Agenda</Link>
+                        <p class="text-sm text-gray-600">2015 - 2017</p>
+                    </div>
+                    <p>
+                        As a freelance website developer, I was responsible for
+                        maintaining and managing websites for existing clients.
+                    </p>
+                </li>
+                <li>
+                    <div>
+                        <p class="font-bold">Sales Assistant</p>
+                        <Link href="#" class="text-sm">BohemiaCoal s. r. o.</Link>
+                        <p class="text-sm text-gray-600">Jun 2011 - Aug 2011</p>
+                    </div>
+                    <p>
+                        I accompanied my Grandad to his place of work over the summer.
+                    </p>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="flex items-center my-4">
+            <div class="flex-1 border-t-2 border-gray-200"></div>
+            <span class="px-3 text-gray-500 bg-white"></span>
+            <div class="flex-1 border-t-2 border-gray-200"></div>
+        </div>
+        <div>
+            <h1 class="text-2xl font-bold">Education</h1>
+            <ul class="flex flex-col gap-y-5">
+                <li class="">
+                    <Link href="https://roehampton.ac.uk" target="_blank">University of Roehampton</Link>
+                    <p class="text-sm font-bold">First Class with Honours</p>
+                    <p class="text-sm">Sep 2020 - Jun 2023</p>
+                </li>
+                <li class="">
+                    <Link href="https://stcg.ac.uk/kingston-college" target="_blank">Kingston College</Link>
+                    <p class="text-sm font-bold">A*A*A* (Distinction)</p>
+                    <p class="text-sm">2018 - 2020</p>
+                </li>
+                <li class="">
+                    <Link href="https://west-thames.ac.uk/" target="_blank">West Thames College</Link>
+                    <p class="text-sm font-bold">MM (Merit)</p>
+                    <p class="text-sm">2017 - 2018</p>
+                </li>
+                <li class="">
+                    <Link href="https://sites.google.com/aetinet.org/richmond-park-academy/home" target="_blank">Richmond Park Academy</Link>
+                    <p class="text-sm font-bold">GCSE's</p>
+                    <p class="text-sm">2012 - 2017</p>
+                </li>
+                <li class="">
+                    <Link href="https://thealton-q1e.org.uk/home/" target="_blank">The Alton Primary School</Link>
+                    <p class="text-sm font-bold">SAT's</p>
+                    <p class="text-sm">2005 - 2012</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="container mx-auto">
+        <Link href={portfolioCV} target="_blank">PDF version</Link>
     </div>
 </BaseSimple>
