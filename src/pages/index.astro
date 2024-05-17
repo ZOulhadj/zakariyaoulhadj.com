@@ -9,6 +9,19 @@ import Button from "@components/Button.astro";
 
 import aboutImage from "@assets/images/me.jpg";
 
+const about = {
+name: "BSc. Zakariya Oulhadj",
+title: "Graduate Software Engineer",
+location: "London, United Kingdom",
+socials: {
+    LinkedIn: "https://google.com"
+},
+caption: "\"Hardware is only as good as the software that drives it\""
+};
+
+
+
+
 // Get all posts from latest to oldest
 const all_posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -21,7 +34,6 @@ const dateOptions: object = {
 };
 
 const posts = all_posts.filter((post) => {
-    post.data.pubDate = post.data.pubDate.toLocaleString("en-GB", dateOptions);
     return !post.data.draft;
 });
 
@@ -44,24 +56,19 @@ const all_portfolio = (await getCollection("portfolio")).sort(
       alt="Profile picture"
       />
         <figcaption class="text-center italic text-xs w-[200px] text-gray-600">
-          "Hardware is only as good as the software that drives it"
+          {about.caption}
         </figcaption>
       </div>
       <div>
         <h1 class="font-bold text-xl">
-          BSc. Zakariya Oulhadj
+          {about.name}
         </h1>
         <h1 class="bold">
-          Graduate Software Engineer
+          {about.title}
         </h1>
         <h1 class="">
-          London, UK
+          {about.location}
         </h1>
-        <div>
-          <a href="mailto:contact@zakariyaoulhadj.com" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
-            contact@zakariyaoulhadj.com
-          </a>
-        </div>
       </div>
     </div>
     
@@ -78,56 +85,30 @@ const all_portfolio = (await getCollection("portfolio")).sort(
     <!--   individual who is keen to learn and explore new ideas and -->
     <!--   technologies. -->
     <!-- </p> -->
-    <div class="">
-      <h1 class="font-bold text-2xl">
-        Socials
-      </h1>
-      <ul class="mb-5">
-        <li><Link
-          href="https://www.linkedin.com/in/zoulhadj"
-          target="_blank"
-1          >
-        LinkedIn</Link></li>
-        <li><Link
-          href="https://github.com/ZOulhadj"
-          target="_blank"
-          >GitHub</Link></li>
-        <li><Link
-          href="https://instagram.com/zoulhadj"
-          target="_blank"
-          >Instagram</Link></li>
-      </ul>
-    </div>
                                                           
-    <div class="">
-      <h1 class="font-bold text-2xl">
-        Recent posts
-      </h1>
-      <ul class="mb-5">
-      {
-      posts.map((post) => (
+    <!-- <div class=""> -->
+    <!--   <h1 class="font-bold text-2xl"> -->
+    <!--     Recent posts -->
+    <!--   </h1> -->
+    <!--   <ul class="mb-5"> -->
+    <!--   { -->
+    <!--   posts.map((post) => ( -->
 
-        <li class="flex items-center gap-2">
-          <div class="text-sm text-gray-500">
-            {post.data.pubDate}
-          </div>
-          <span class="text-gray-500">
-            &mdash;
-          </span>
-          <a href={`/blog/posts/${post.slug}/`} class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
-                {post.data.title}
-          </a>
-        </li>      
-      ))
-       }
-      </ul>
-      <p>
-        View all my blog posts
-        <a href="/blog" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
-          here
-        </a>
-      </p>
-    </div>
+    <!--     <li class="flex items-center gap-2"> -->
+    <!--       <div class="text-sm text-gray-500"> -->
+    <!--         {post.data.pubDate} -->
+    <!--       </div> -->
+    <!--       <span class="text-gray-500"> -->
+    <!--         &mdash; -->
+    <!--       </span> -->
+    <!--       <a href={`/blog/posts/${post.slug}/`} class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500"> -->
+    <!--             {post.data.title} -->
+    <!--       </a> -->
+    <!--     </li>       -->
+    <!--   )) -->
+    <!--    } -->
+    <!--   </ul> -->
+    <!-- </div> -->
   </div>
 </main>
 </BaseSimple>
