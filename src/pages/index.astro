@@ -13,7 +13,15 @@ import aboutImage from "@assets/images/me.jpg";
 const all_posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+
 const posts = all_posts.filter((post) => {
+    post.data.pubDate = post.data.pubDate.toLocaleString("en-GB", dateOptions);
     return !post.data.draft;
 });
 
@@ -21,120 +29,106 @@ const all_portfolio = (await getCollection("portfolio")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-//const latest_post = posts[0];
 ---
 
 <BaseSimple>
-    <div class="bg-sky-600">
-        <div class="container mx-auto py-10">
-            <h1 class="text-white text-6xl font-bold">Zakariya Oulhadj</h1>
-            <span class="text-3xl font-bold text-slate-100">
-                Software Engineer
-            </span>
-        </div>
-    </div>
-    <!-- <div class="container mx-auto my-4 flex gap-2"> -->
-    <!--     <Link href="/">Home</Link> -->
-    <!--     > -->
-    <!--     <Link href="/about">About</Link> -->
-    <!-- </div> -->
 
-    <div class="container mx-auto py-10">
-        <div class="">
-            <Image
-                src={aboutImage}
-                class="rounded border-2 border-gray-100"
-                width={200}
-                alt="About"
-            />
-            <h1 class="text-4xl font-bold mt-4 mb-2">About me</h1>
-            <p>
-                I am a First Class with Honours (BSc) Computer Science graduate
-                from <Link href="https://roehampton.ac.uk" target="_blank"
-                    >The University of Roehampton</Link
-                >. Some of my key interests include Computer Graphics, Real-Time
-                Simulations, Low-Level Software Architecture, and the
-                development of time-critical applications that require
-                efficiency and precision. Proficient in various programming
-                languages but most notably in modern C++ (with over 5 years of
-                experience), Python and full-stack web development. I'm an
-                individual who is keen to learn and explore new ideas and
-                technologies.
-            </p>
-            <Button href="/cv">View CV</Button>
-            <div>
-                <h1 class="text-4xl font-bold mt-4 mb-2">Social links</h1>
-                <div class="grid grid-cols-4 gap-2">
-                    <Link
-                        href="https://www.linkedin.com/in/zoulhadj"
-                        target="_blank"
-                    >
-                        LinkedIn
-                    </Link>
-                    <Link
-                        href="https://github.com/ZOulhadj"
-                        target="_blank"
-                    >
-                        GitHub
-                    </Link>
-                    <Link
-                        href="https://instagram.com/zoulhadj"
-                        target="_blank"
-                    >
-                        Instagram
-                    </Link>
-                    <Link
-                        href="https://stackexchange.com/users/8077582/zoulhadj"
-                        target="_blank"
-                    >
-                        StackExchange
-                    </Link>
-                    <Link
-                        href="https://youtube.com/@ZOulhadj"
-                        target="_blank"
-                    >
-                        YouTube
-                    </Link>
-                    <Link
-                        href="https://leetcode.com/ZOulhadj/"
-                        target="_blank"
-                    >
-                        LeetCode
-                    </Link>
-                </div>
-            </div>
+<main>
+  <div class="mx-auto max-w-7xl py-6">
+    <div class="flex gap-4 mb-10">
+      <div class="">
+      <Image
+      src={aboutImage}
+      class="border border-gray-400 mb-2"
+      width={200}
+      alt="Profile picture"
+      />
+        <figcaption class="text-center italic text-xs w-[200px] text-gray-600">
+          "Hardware is only as good as the software that drives it"
+        </figcaption>
+      </div>
+      <div>
+        <h1 class="font-bold text-xl">
+          BSc. Zakariya Oulhadj
+        </h1>
+        <h1 class="bold">
+          Graduate Software Engineer
+        </h1>
+        <h1 class="">
+          London, UK
+        </h1>
+        <div>
+          <a href="mailto:contact@zakariyaoulhadj.com" class="hover:underline text-blue-500 active:text-orange-500 visited:text-purple-500">
+            contact@zakariyaoulhadj.com
+          </a>
         </div>
-        <!-- <div class="flex items-center"> -->
-        <!--     <div class="flex-1 border-t-2 border-gray-200"></div> -->
-        <!--     <span class="px-3 text-gray-500 bg-white">Section</span> -->
-        <!--     <div class="flex-1 border-t-2 border-gray-200"></div> -->
-        <!-- </div> -->
-        <div class="flex">
-            <div>
-                <h1 class="text-4xl font-bold mt-4 mb-2">Portfolio</h1>
-                <div class="flex flex-col gap-y-2">
-                    {
-                        all_portfolio.map((post) => (
-                            <Link href={`/portfolio/${post.slug}/`}>
-                                {post.data.title}
-                            </Link>
-                        ))
-                    }
-                </div>
-            </div>
-
-            <div>
-                <h1 class="text-4xl font-bold mt-4 mb-2">Blog</h1>
-                <div class="flex flex-col gap-y-2">
-                    {
-                        posts.map((post) => (
-                            <Link href={`/blog/posts/${post.slug}/`}>
-                                {post.data.title}
-                            </Link>
-                        ))
-                    }
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    
+    <!-- <p> -->
+    <!--   I am a First Class with Honours (BSc) Computer Science graduate -->
+    <!--   from <Link href="https://roehampton.ac.uk" target="_blank" -->
+    <!--              >The University of Roehampton</Link -->
+    <!--                                             >. Some of my key interests include Computer Graphics, Real-Time -->
+    <!--   Simulations, Low-Level Software Architecture, and the -->
+    <!--   development of time-critical applications that require -->
+    <!--   efficiency and precision. Proficient in various programming -->
+    <!--   languages but most notably in modern C++ (with over 5 years of -->
+    <!--   experience), Python and full-stack web development. I'm an -->
+    <!--   individual who is keen to learn and explore new ideas and -->
+    <!--   technologies. -->
+    <!-- </p> -->
+    <div class="">
+      <h1 class="font-bold text-2xl">
+        Socials
+      </h1>
+      <ul class="mb-5">
+        <li><Link
+          href="https://www.linkedin.com/in/zoulhadj"
+          target="_blank"
+1          >
+        LinkedIn</Link></li>
+        <li><Link
+          href="https://github.com/ZOulhadj"
+          target="_blank"
+          >GitHub</Link></li>
+        <li><Link
+          href="https://instagram.com/zoulhadj"
+          target="_blank"
+          >Instagram</Link></li>
+      </ul>
+    </div>
+                                                          
+    <div class="">
+      <h1 class="font-bold text-2xl">
+        Recent posts
+      </h1>
+      <ul class="mb-5">
+      {
+      posts.map((post) => (
+
+        <li class="flex items-center gap-2">
+          <div class="text-sm text-gray-500">
+            {post.data.pubDate}
+          </div>
+          <span class="text-gray-500">
+            &mdash;
+          </span>
+          <a href={`/blog/posts/${post.slug}/`} class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+                {post.data.title}
+          </a>
+        </li>      
+      ))
+       }
+      </ul>
+      <p>
+        View all my blog posts
+        <a href="/blog" class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500">
+          here
+        </a>
+      </p>
+    </div>
+  </div>
+</main>
 </BaseSimple>
+
