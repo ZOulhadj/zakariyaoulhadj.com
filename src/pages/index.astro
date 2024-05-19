@@ -19,47 +19,49 @@ socials: {
 caption: "\"Hardware is only as good as the software that drives it\""
 };
 
-
-
-
 // Get all posts from latest to oldest
 const all_posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const dateOptions: object = {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-};
-
 const posts = all_posts.filter((post) => {
     return !post.data.draft;
 });
-
-const all_portfolio = (await getCollection("portfolio")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
 
 ---
 
 <BaseSimple>
 
-<main>
-  <div class="mx-auto max-w-7xl py-6">
-    <div class="flex gap-4 mb-10">
+<main class="">
+  <div class="mx-auto max-w-7xl">
+
+    <div class="flex gap-2 items-center justify-center pt-5 pb-10 text-white dark:text-gray-400">
+      <Link href="#">Emacs</Link>
+      |
+      <Link href="#">Linux</Link>
+      |
+      <Link href="#">Programming</Link>
+      |
+      <Link href="#">Travels</Link>
+
+      <div class="ml-auto">
+        <Link href="/">Back home</Link>
+      </div>
+    </div>
+
+    <div class="flex gap-4">
       <div class="">
-      <Image
-      src={aboutImage}
-      class="border border-gray-400 mb-2"
-      width={200}
-      alt="Profile picture"
-      />
-        <figcaption class="text-center italic text-xs w-[200px] text-gray-600">
+        <Image
+          src={aboutImage}
+          class="border border-gray-400 mb-2"
+          width={200}
+          alt="Profile picture"
+          />
+        <figcaption class="text-center italic text-xs w-[200px] text-gray-600 dark:text-gray-200">
           {about.caption}
         </figcaption>
       </div>
-      <div>
+      <div class="text-black dark:text-white">
         <h1 class="font-bold text-xl">
           {about.name}
         </h1>
@@ -69,9 +71,13 @@ const all_portfolio = (await getCollection("portfolio")).sort(
         <h1 class="">
           {about.location}
         </h1>
+        <div class="flex gap-4">
+          <Link href="https://linkedin.com/in/zoulhadj" target="_blank">LinkedIn</Link>
+          <Link href="https://github.com/zoulhadj" target="_blank">GitHub</Link>
+        </div>
       </div>
     </div>
-    
+
     <!-- <p> -->
     <!--   I am a First Class with Honours (BSc) Computer Science graduate -->
     <!--   from <Link href="https://roehampton.ac.uk" target="_blank" -->
@@ -85,31 +91,29 @@ const all_portfolio = (await getCollection("portfolio")).sort(
     <!--   individual who is keen to learn and explore new ideas and -->
     <!--   technologies. -->
     <!-- </p> -->
-                                                          
-    <!-- <div class=""> -->
-    <!--   <h1 class="font-bold text-2xl"> -->
-    <!--     Recent posts -->
-    <!--   </h1> -->
-    <!--   <ul class="mb-5"> -->
-    <!--   { -->
-    <!--   posts.map((post) => ( -->
 
-    <!--     <li class="flex items-center gap-2"> -->
-    <!--       <div class="text-sm text-gray-500"> -->
-    <!--         {post.data.pubDate} -->
-    <!--       </div> -->
-    <!--       <span class="text-gray-500"> -->
-    <!--         &mdash; -->
-    <!--       </span> -->
-    <!--       <a href={`/blog/posts/${post.slug}/`} class="text-blue-500 hover:underline active:text-orange-500 visited:text-purple-500"> -->
-    <!--             {post.data.title} -->
-    <!--       </a> -->
-    <!--     </li>       -->
-    <!--   )) -->
-    <!--    } -->
-    <!--   </ul> -->
-    <!-- </div> -->
+    <div class="my-10">
+      <h1 class="font-bold text-2xl text-black dark:text-white">
+        Recent posts
+      </h1>
+      <ul class="mb-5">
+      {
+      posts.map((post) => (
+        <li class="flex items-center gap-2">
+          <div class="text-sm text-gray-500">
+            {post.data.pubDate.toLocaleDateString("en-GB", {year: "numeric", month: "2-digit", day: "2-digit", })}
+          </div>
+          <span class="text-gray-500">
+            &mdash;
+          </span>
+          <Link href={`/posts/${post.slug}`}>
+              {post.data.title}
+          </Link>
+        </li>
+      ))
+       }
+      </ul>
+    </div>
   </div>
 </main>
 </BaseSimple>
-
