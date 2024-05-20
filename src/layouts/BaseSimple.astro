@@ -1,6 +1,8 @@
 ---
-import BaseHead from '@components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import BaseHead from '@components/BaseHead.astro';
+import Navbar from "@components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -9,6 +11,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
     <body class="bg-white dark:bg-neutral-800">
-        <slot />
+        <div class="mx-auto max-w-7xl">
+            <Navbar />
+            <slot />
+        </div>
     </body>
 </html>

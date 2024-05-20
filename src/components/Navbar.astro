@@ -2,19 +2,13 @@
 import Link from "@components/Link.astro";
 ---
 
-<div class="text-center px-5 bg-[#F2EFE4] text-stone-700 w-screen border-y border-[#D4CBB6]">
-    <div class="flex justify-center items-center gap-2">
-        <Link href="/about">
-            About
-        </Link>
-        <Link href="/portfolio">
-            Portfolio
-        </Link>
-        <Link href="/blog">
-            Blog
-        </Link>
-        <Link href="/gallery">
-            Gallery
-        </Link>
+<div class="flex gap-2 items-center justify-center py-3 mb-5 text-white dark:text-gray-400 ">
+    <div class="">
+        <Link href="/hire" class="px-2">Hire me</Link>
+        |
+        <Link href="/cv" class="px-2">CV</Link>
+    </div>
+    <div class="ml-auto">
+        <Link href="/">Back home</Link>
     </div>
 </div>
