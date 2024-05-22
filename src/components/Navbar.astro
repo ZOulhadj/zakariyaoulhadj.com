@@ -1,14 +1,20 @@
 ---
 import Link from "@components/Link.astro";
+
+const { pathname } = Astro.url;
+const isHomePage = pathname === '/';
 ---
 
-<div class="flex gap-2 items-center justify-center py-3 mb-5 text-white dark:text-gray-400 ">
+<div class="flex gap-2 items-center py-3 mb-5 text-white dark:text-gray-400 ">
     <div class="">
         <Link href="/hire" class="px-2">Hire me</Link>
         |
         <Link href="/cv" class="px-2">CV</Link>
     </div>
+    {!isHomePage &&
     <div class="ml-auto">
         <Link href="/">Back home</Link>
     </div>
+    }
+
 </div>
