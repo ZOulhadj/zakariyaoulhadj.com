@@ -7,16 +7,23 @@ export default {
         extend: {
 
         },
-        // colors: {
-        // }
     },
+    // colors: {
+    // },
+    // typography: (theme) => ({
+    //     DEFAULT: {
+    //         css: {
+    //             color: theme('colors.gray.800'),
+
+    //             // ...
+    //         },
+    //     },
+    // }),
     darkMode: 'class',
     corePlugins: {
         aspectRatio: false,
     },
     plugins: [
-        require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/typography'),
-        require('@tailwindcss/forms')
     ],
 }
