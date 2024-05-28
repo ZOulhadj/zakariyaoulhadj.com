@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 import BaseSimple from "@layouts/BaseSimple.astro";
-import Navbar from "@components/Navbar.astro";
 import Link from "@components/Link.astro";
 import Button from "@components/Button.astro";
 
@@ -89,9 +88,11 @@ const posts = all_posts.filter((post) => {
                 <span class="text-gray-500">
                     &mdash;
                 </span>
-                <Link href={`/posts/${post.slug}`}>
+                <Link href={`/post/`}>Post</Link>
+                <!-- <Link href={`/posts/${post.slug}`}>
                 {post.data.title}
                 </Link>
+                -->
                 </li>
                 ))
                 }
