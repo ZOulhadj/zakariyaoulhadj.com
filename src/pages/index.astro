@@ -32,15 +32,18 @@ const posts = all_posts.filter((post) => {
 <BaseSimple>
     <div class="flex gap-4">
         <div class="">
-            <Image
-                src={aboutImage}
-                class="border border-gray-400 mb-2"
-                width={200}
-                alt="Profile picture"
-            />
-            <figcaption class="text-center italic text-xs w-[200px] text-gray-600 dark:text-gray-200">
-                {about.caption}
-            </figcaption>
+            <figure>
+                <Image
+                    src={aboutImage}
+                    class="border border-gray-400 mb-2"
+                    width={200}
+                    alt="My avatar"
+                    loading="eager"
+                />
+                <figcaption class="text-center italic text-xs w-[200px] text-gray-600 dark:text-gray-200">
+                    {about.caption}
+                </figcaption>
+            </figure>
         </div>
         <div class="text-black dark:text-white">
             <h1 class="font-bold text-xl">
