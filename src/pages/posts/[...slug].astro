@@ -19,9 +19,12 @@ const { Content } = await entry.render();
 
 <BaseSimple>
     <div class="dark:text-white text-black w-4/6 mb-10">
-        <h1 class="bold text-4xl mb-4" style="font-family: 'Alegreya', serif;">
+        <h1 class="bold text-4xl mb-1" style="font-family: 'Alegreya', serif;">
             {entry.data.title}
         </h1>
+        <h4 class="mb-5">
+            {entry.data.description}
+        </h4>
         <div class="text-sm">
             <h4 class="mb-2">
                 Published by <Link href="/">{entry.data.author}</Link> on {entry.data.pubDate.toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric", })}
