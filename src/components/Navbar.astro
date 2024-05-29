@@ -1,6 +1,8 @@
 ---
 import Link from "@components/Link.astro";
 
+import cv_pdf from "@assets/files/CV.pdf";
+
 const { pathname } = Astro.url;
 const isHomePage = pathname === '/';
 ---
@@ -9,7 +11,7 @@ const isHomePage = pathname === '/';
     <div class="">
         <Link href="/hire" class="px-2">Hire me</Link>
         |
-        <Link href="/cv" class="px-2">CV</Link>
+        <Link href={cv_pdf} class="px-2" target="_blank">CV</Link>
     </div>
     {!isHomePage &&
     <div class="ml-auto">
