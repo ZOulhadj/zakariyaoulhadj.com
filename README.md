@@ -1,3 +1,6 @@
-# Source code for zakariyaoulhadj.com
+# Personal website
+![Overview](./.github/assets/README.png)
 
-Empty README for the time being.
+## Tools
+- Astro.js
+- Tailwind CSS
