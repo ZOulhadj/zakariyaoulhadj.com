@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 
 import BaseSimple from "@layouts/BaseSimple.astro";
 import Link from "@components/Link.astro";
-import Button from "@components/Button.astro";
 
 import aboutImage from "@assets/images/me.jpg";
 
@@ -12,10 +11,12 @@ const about = {
     name: "BSc. Zakariya Oulhadj",
     title: "Graduate Software Engineer",
     location: "London, United Kingdom",
-    socials: {
-        LinkedIn: "https://google.com"
-    },
-    caption: "\"Hardware is only as good as the software that drives it\""
+    socials: [
+        { name: "LinkedIn", url: "https://linkedin.com/in/zoulhadj" },
+        { name: "GitHub", url: "https://github.com/zoulhadj" },
+        { name: "OCRID", url: "https://orcid.org/0009-0003-9722-6283" }
+    ],
+    caption: "Hardware is only as good as the software that drives it"
 };
 
 // Get all posts from latest to oldest
@@ -41,7 +42,7 @@ const posts = all_posts.filter((post) => {
                     loading="eager"
                 />
                 <figcaption class="text-center italic text-xs w-[200px] text-gray-600 dark:text-gray-200">
-                    {about.caption}
+                    "{about.caption}"
                 </figcaption>
             </figure>
         </div>
@@ -56,9 +57,13 @@ const posts = all_posts.filter((post) => {
                 {about.location}
             </h1>
             <div class="flex gap-4">
-                <Link href="https://linkedin.com/in/zoulhadj" target="_blank">LinkedIn</Link>
-                <Link href="https://github.com/zoulhadj" target="_blank">GitHub</Link>
-                <Link href="https://orcid.org/0009-0003-9722-6283" target="_blank">ORCID</Link>
+                {
+                  about.socials.map((item) => (
+                    <Link href={item.url} target="_blank">
+                        {item.name}
+                    </Link>
+                  ))
+                }
             </div>
         </div>
     </div>

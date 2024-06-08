@@ -5,15 +5,38 @@ import cv_pdf from "@assets/files/CV.pdf";
 
 const { pathname } = Astro.url;
 const isHomePage = pathname === '/';
+
+
+const pages = [
+    {
+        name: "Hire me",
+        url: "/hire",
+        external: false
+    },
+    {
+        name: "CV",
+        url: cv_pdf,
+        external: true
+    },
+    {
+        name: "Portfolio",
+        url: "/portfolio",
+        external: false
+    }
+]
+
+
 ---
 
 <div class="flex gap-2 items-center py-3 mb-5">
-    <div class="text-dark dark:text-gray-400">
-        <Link href="/hire" class="px-2">Hire me</Link>
-        |
-        <Link href={cv_pdf} class="px-2" target="_blank">CV</Link>
-        |
-        <Link href="/portfolio" class="px-2">Portfolio</Link>
+    <div class="">
+        {
+            pages.map((page) => (
+            <Link href={page.url} class="px-2">
+                {page.name}
+            </Link>
+            ))
+        }
     </div>
     {!isHomePage &&
     <div class="ml-auto">
