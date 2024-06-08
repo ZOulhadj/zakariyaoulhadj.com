@@ -1,0 +1,54 @@
+---
+import BaseSimple from "@layouts/BaseSimple.astro";
+import Link from "@components/Link.astro";
+
+
+const portfolio = [
+    {
+        name: "VMVE",
+        url: "https://github.com/ZOulhadj/vmve",
+        description: "Vulkan Model Viewer and Importer. A project developed as part of my final year project at University.",
+    },
+    {
+        name: "zakariyaoulhadj.com",
+        url: "https://github.com/ZOulhadj/zakariyaoulhadj.com",
+        description: "My personal website built using Astro.js",
+    },
+    {
+        name: "Label Web Scraper",
+        //url: "https://github.com/ZOulhadj/label-web-scraper",
+        description: "A simple Python script to dynamically extract record labels from a website.",
+    },
+
+];
+
+
+---
+
+<BaseSimple>
+    <div>
+        <h1 class="text-black dark:text-white bold text-4xl mb-10">
+            Portfolio
+        </h1>
+
+        <ul class="flex flex-col gap-2 list-disc text-black dark:text-white">
+            {
+            portfolio.map((item) => (
+            <li>
+                { item.url ?
+                <a href={item.url} class="text-xl text-blue-600 dark:text-blue-400 hover:underline" target="_blank">
+                    {item.name}
+                </a>
+                :
+                <h1 class="text-xl" target="_blank">
+                    {item.name}
+                </h1>
+                }
+                <p class="">
+                    {item.description}
+                </p>
+            </li>
+            ))}
+        </ul>
+    </div>
+</BaseSimple>
