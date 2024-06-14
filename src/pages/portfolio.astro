@@ -4,27 +4,30 @@ import { Image } from "astro:assets";
 import BaseSimple from "@layouts/BaseSimple.astro";
 
 import gameImage from "@assets/images/portfolio/game.png";
+import game2Image from "@assets/images/portfolio/game_2.png";
+import game3Image from "@assets/images/portfolio/game_3.png";
 import vmveImage from "@assets/images/portfolio/vmve.png";
 import websiteImage from "@assets/images/portfolio/website.png";
 import arduinoImage from "@assets/images/portfolio/arduino_temp_sensor.jpg";
+import theSurvivorImage from "@assets/images/portfolio/the_survivor.png";
 
 const portfolio = [
     {
         name: "Game",
         description: "My latest project in which I'm developing a game using my own internal rendering engine.",
-        image: gameImage
+        images: [gameImage, game2Image, game3Image]
     },
     {
         name: "VMVE",
         url: "https://github.com/ZOulhadj/vmve",
         description: "Vulkan Model Viewer and Importer. A project developed as part of my final year project at University.",
-        image: vmveImage
+        images: [vmveImage]
     },
     {
         name: "zakariyaoulhadj.com",
         url: "https://github.com/ZOulhadj/zakariyaoulhadj.com",
         description: "My personal website built using Astro.js",
-        image: websiteImage
+        images: [websiteImage]
     },
     {
         name: "Label Web Scraper",
@@ -33,7 +36,12 @@ const portfolio = [
     {
         name: "Arduino Temperature Sensor",
         description: "A temperature sensor using a custom built circuit and an Arduino Uno.",
-        image: arduinoImage
+        images: [arduinoImage]
+    },
+    {
+        name: "TheSurvivor",
+        description: "A 2D space themed game developed using C# and Window Forms.",
+        images: [theSurvivorImage]
     },
 ];
 
@@ -62,14 +70,18 @@ const portfolio = [
                 <p class="">
                     {item.description}
                 </p>
-                { item.image &&
-                <Image
-                    src={item.image}
-                    class="border border-gray-400 mb-2"
-                    width={400}
-                    alt="Project overview"
-                    loading="eager"
-                />
+                <div class="flex gap-2">
+                    { item.images && item.images.map((image) => (
+                    <Image
+                        src={image}
+                        class="border border-gray-400 mb-2"
+                        width={400}
+                        alt="Project overview"
+                        loading="eager"
+                    />
+
+                    ))
+                </div>
 
                 }
 
