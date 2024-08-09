@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 
+import Link from "@components/Link.astro";
+
 import BaseSimple from "@layouts/BaseSimple.astro";
 
 import gameImage from "@assets/images/portfolio/game.png";
@@ -59,9 +61,9 @@ const portfolio = [
             portfolio.map((item) => (
             <li>
                 { item.url ?
-                <a href={item.url} class="text-xl text-blue-600 dark:text-blue-400 hover:underline" target="_blank">
-                    {item.name}
-                </a>
+                <Link href={item.url} class="text-xl">
+                {item.name}
+                </Link>
                 :
                 <h1 class="text-xl">
                     {item.name}

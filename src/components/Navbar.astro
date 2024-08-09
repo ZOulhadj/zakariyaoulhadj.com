@@ -34,11 +34,11 @@ const pages = [
 
 ---
 
-<div class="flex gap-2 items-center py-3 mb-5">
-    <div class="flex">
+<div class="flex py-3 mb-5">
+    <div class="flex flex-row gap-5">
         {
             pages.map((page) => (
-            <Link href={page.url} class="flex justify-center items-center px-2">
+            <Link href={page.url}>
                 {page.name}
             </Link>
             ))

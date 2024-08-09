@@ -35,7 +35,7 @@ const isUrlExternal = (url: string, host: string): boolean => {
 const isExternal = isUrlExternal(href!.toString(), "zakariyaoulhadj.com");
 ---
 
-<a href={href} class:list={["text-blue-600 dark:text-blue-400 hover:underline", className, { active: isActive }]} {...props}>
+<a href={href} class:list={["text-blue-600 dark:text-blue-400 hover:underline", className, { active: isActive }]} {...props} target={isExternal ? "_blank" : "_self"}>
    <slot/>
-   {isExternal && <i class="pl-1 text-xs fa-solid fa-up-right-from-square"></i> }
+   {isExternal && <i class="pl-1 fa-solid fa-up-right-from-square"></i> }
 </a>

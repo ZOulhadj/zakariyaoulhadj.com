@@ -59,7 +59,7 @@ const posts = all_posts.filter((post) => {
             <div class="flex gap-4">
                 {
                   about.socials.map((item) => (
-                    <Link href={item.url} class="flex justify-center items-center " target="_blank">
+                    <Link href={item.url}>
                         {item.name}
                     </Link>
                   ))
