@@ -6,9 +6,36 @@ type Props = HTMLAttributes<'a'>;
 const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+
+
+const getHostFromUrl = (url: string) => {
+    return new URL(url).hostname.replace("www.", "");
+};
+
+const isAbsoluteUrl = (url: string) => {
+    const formatedUrl = url.toLowerCase();
+    return formatedUrl.startsWith("http") || formatedUrl.startsWith("https");
+};
+
+const isUrlExternal = (url: string, host: string): boolean => {
+    if (isAbsoluteUrl(url)) {
+        const providedHost = getHostFromUrl(url);
+
+        return providedHost !== host;
+    } else {
+        return false;
+    }
+};
+
+
+const isExternal = isUrlExternal(href!.toString(), "zakariyaoulhadj.com");
 ---
 
 <a href={href} class:list={["text-blue-600 dark:text-blue-400 hover:underline", className, { active: isActive }]} {...props}>
    <slot/>
+   {isExternal && <i class="pl-1 text-xs fa-solid fa-up-right-from-square"></i> }
 </a>

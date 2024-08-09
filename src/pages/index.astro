@@ -8,8 +8,8 @@ import Link from "@components/Link.astro";
 import aboutImage from "@assets/images/me.jpg";
 
 const about = {
-    name: "BSc. Zakariya Oulhadj",
-    title: "🎓 High Performance Computing (MSc.) @ The University of Edinburgh",
+    name: "Zakariya Oulhadj",
+    title: "🎓 MSc. High Performance Computing @ The University of Edinburgh",
     location: "📍 London, United Kingdom",
     socials: [
         { name: "LinkedIn", url: "https://linkedin.com/in/zoulhadj" },
@@ -47,7 +47,7 @@ const posts = all_posts.filter((post) => {
             </figure>
         </div>
         <div class="text-black dark:text-white">
-            <h1 class="font-bold text-xl">
+            <h1 class="font-bold text-2xl">
                 {about.name}
             </h1>
             <h1 class="bold">
@@ -59,7 +59,7 @@ const posts = all_posts.filter((post) => {
             <div class="flex gap-4">
                 {
                   about.socials.map((item) => (
-                    <Link href={item.url} target="_blank">
+                    <Link href={item.url} class="flex justify-center items-center " target="_blank">
                         {item.name}
                     </Link>
                   ))
