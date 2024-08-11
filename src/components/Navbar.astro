@@ -1,7 +1,7 @@
 ---
 import Link from "@components/Link.astro";
 
-import cv_pdf from "@assets/files/CV.pdf";
+import pgp_key from "@assets/files/pgp_key.txt";
 
 const { pathname } = Astro.url;
 const isHomePage = pathname === '/';
@@ -9,26 +9,17 @@ const isHomePage = pathname === '/';
 
 const pages = [
     {
-        name: "Portfolio",
-        url: "/portfolio",
-        external: false
-    },
-    {
-        name: "CV",
-        url: cv_pdf,
-        external: true
-    },
-    {
-        name: "My dotfiles",
-        url: "https://github.com/zoulhadj/dotfiles",
-        external: true
-    },
-    {
         name: "Hire me",
         url: "/hire",
-        external: false
     },
-
+    {
+        name: "Portfolio",
+        url: "/portfolio",
+    },
+    {
+        name: "PGP Key",
+        url: pgp_key,
+    },
 ]
 
 

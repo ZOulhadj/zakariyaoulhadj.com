@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseSimple from "@layouts/BaseSimple.astro";
+import Link from "@components/Link.astro";
+
+const blog_collection = await getCollection("blog");
+
+const posts = blog_collection
+    .filter((post) => { return !post.data.draft;})
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+
+
+---
+
+<BaseSimple>
+    <div class="text-dark dark:text-white">
+        <h1 class="text-4xl font-bold mb-5">
+            Blog
+        </h1>
+
+
+        <ol class="flex flex-col mb-5">
+            {
+            posts.map((post) => (
+            <li class="flex gap-2">
+                <div class="flex justify-between w-24 text-sm text-gray-500">
+                    <span>
+                        {post.data.pubDate.toLocaleDateString("en-GB", {year: "numeric", month: "2-digit", day: "2-digit", })}
+                    </span>
+                    <span>
+                        &mdash;
+                    </span>
+                </div>
+                <Link href={`/blog/${post.slug}`}>
+                    {post.data.title}
+                </Link>
+             </li>
+             ))
+             }
+        </ol>
+    </div>
+</BaseSimple>

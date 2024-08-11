@@ -7,6 +7,8 @@ import Link from "@components/Link.astro";
 
 import aboutImage from "@assets/images/me.jpg";
 
+import cv_pdf from "@assets/files/CV.pdf";
+
 const about = {
     name: "Zakariya Oulhadj",
     title: "🎓 MSc. High Performance Computing @ The University of Edinburgh",
@@ -19,14 +21,18 @@ const about = {
     caption: "Hardware is only as good as the software that drives it"
 };
 
-// Get all posts from latest to oldest
-const all_posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Get most recent posts from latest to oldest
+const max_items = 5;
 
-const posts = all_posts.filter((post) => {
-    return !post.data.draft;
-});
+const blog_collection = await getCollection("blog");
+
+const all_public_posts = blog_collection
+    .filter((post) => { return !post.data.draft;})
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const posts = all_public_posts.slice(0, max_items);
+
+const should_read_more = all_public_posts.length > max_items;
 
 ---
 
@@ -72,7 +78,7 @@ const posts = all_posts.filter((post) => {
         <h1 class="font-bold text-2xl text-black dark:text-white">
             Recent posts
         </h1>
-        <ul class="flex flex-col mb-5">
+        <ol class="flex flex-col mb-5">
             {
             posts.map((post) => (
             <li class="flex gap-2">
@@ -84,12 +90,18 @@ const posts = all_posts.filter((post) => {
                         &mdash;
                     </span>
                 </div>
-                <Link href={`/posts/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`}>
                     {post.data.title}
                 </Link>
              </li>
              ))
              }
-        </ul>
+        </ol>
+
+        { should_read_more && 
+            <Link href={`/blog`}>
+                Read more
+            </Link>
+        }
     </div>
 </BaseSimple>
