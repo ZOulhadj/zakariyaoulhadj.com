@@ -23,6 +23,7 @@ const blogCollection = defineCollection({
         author: z.string(),
         // Transform string to Date object
         pubDate: z.coerce.date(),
+        tags: z.array(z.string()),
         updatedDate: z.coerce.date().optional(),
         heroImage: image().optional(),
         draft: z.boolean()

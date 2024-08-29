@@ -10,7 +10,9 @@ const posts = blog_collection
     .filter((post) => { return !post.data.draft;})
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+// @TODO: Get total blog post count for each tag
 
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 
 ---
 
@@ -20,6 +22,13 @@ const posts = blog_collection
             Blog
         </h1>
 
+        <div class="flex gap-2 mb-5">
+            { tags.map((tag) => (
+                <Link href={`/blog/tags/${tag}`} class="capitalize">
+                    {tag}
+                </Link>
+            ))}
+        </div>
 
         <ol class="flex flex-col mb-5">
             {

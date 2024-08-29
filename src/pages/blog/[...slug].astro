@@ -1,8 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-
 import Link from "@components/Link.astro";
-
 import BaseSimple from "@layouts/BaseSimple.astro";
 
 export async function getStaticPaths() {
@@ -33,13 +31,18 @@ const { Content } = await entry.render();
                 Published by <Link href="/">{entry.data.author}</Link> on {entry.data.pubDate.toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric", })}
             </h4>
             <div class="flex gap-2">
-                <Link href="#">Software</Link>&bull;
-                <Link href="#">Performance</Link>&bull;
-                <Link href="#">Research</Link>
+                { entry.data.tags.map((tag) => (
+                    <Link href={`/blog/tags/${tag}`} class="capitalize">
+                        {tag}
+                    </Link>
+                ))}
             </div>
         </div>
     </div>
-    <article class="prose dark:prose-invert lg:prose-lg dark:text-white text-black">
-        <Content />
-    </article>
+    <div class="flex">
+        <article class="prose dark:prose-invert max-w-none text-black dark:text-white">
+            <Content />
+        </article>
+    </div>
+    
 </BaseSimple>
