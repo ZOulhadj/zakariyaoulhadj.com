@@ -23,7 +23,7 @@ author = "Zakariya Oulhadj"
 [params.sidebar]
         compact = false
         subtitle = "Happiness is only real when shared"
-        emoji = ""
+        emoji = "🌲"
 
 [params.footer]
         since = 2020
