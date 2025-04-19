@@ -19,7 +19,7 @@ subsection of the grid. Communication between processes is performed using
 halo-swapping via non-blocking point-to-point communication (MPI_Isend and
 MPI_Irecv).
 
-[[/img/posts/mpp-cellular-automaton.png]]
+[[/img/posts/mpp-cellular-automaton.jpg]]
 
 * Member of TeamEPCC for the ISC25 :school:
 :PROPERTIES:
