@@ -5,7 +5,7 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: member-of-teamepcc-for-the-isc25
 :EXPORT_AUTHOR: Zakariya Oulhadj
-:EXPORT_HUGO_PUBLISHDATE: <2025-10-29 Wed>
+:EXPORT_HUGO_PUBLISHDATE: <2024-10-29 Wed>
 :END:
 
 Recently I've been accepted into TeamEPCC which will be competing in the
@@ -17,10 +17,7 @@ forward to working with the team!
 :EXPORT_FILE_NAME: studying_hpc
 :EXPORT_AUTHOR: Zakariya Oulhadj
 :EXPORT_HUGO_PUBLISHDATE: <2024-06-02 Sun>
-:EXPORT_HUGO_IMAGE: [[/img/posts/edinburgh_university.jpg]]
 :END:
-
-
 
 I have recently been offered a place at University of Edinburgh to study High
 Performance Computing (HPC) for my postgraduate degree. This is an amazing
@@ -36,6 +33,8 @@ professors and experts from EPCC and the University would give me the invaluable
 knowledge and skills to make an impact in my future career as a software
 engineer. Specialising in performance optimisation would also prepare me to
 potentially pursue further research for a PHD in HPC.
+
+[[/img/posts/edinburgh_university.jpg]]
 
 * Using Linux in 2024 (Part 2) :linux:
 :PROPERTIES:

@@ -1,0 +1,12 @@
+#+hugo_base_dir: ../
+#+hugo_section: gallery
+
+* Gallery
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+
+Welcome to my site! 🎉
+
+
+My name is Zakariya Oulhadj 🌲.

@@ -20,3 +20,5 @@ professors and experts from EPCC and the University would give me the invaluable
 knowledge and skills to make an impact in my future career as a software
 engineer. Specialising in performance optimisation would also prepare me to
 potentially pursue further research for a PHD in HPC.
+
+{{< figure src="/img/posts/edinburgh_university.jpg" >}}

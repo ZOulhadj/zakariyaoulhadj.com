@@ -1,7 +1,7 @@
 +++
 title = "Member of TeamEPCC for the ISC25"
 author = ["Zakariya Oulhadj"]
-publishDate = 2025-10-29T00:00:00+00:00
+publishDate = 2024-10-29T00:00:00+00:00
 tags = ["school"]
 draft = false
 +++
