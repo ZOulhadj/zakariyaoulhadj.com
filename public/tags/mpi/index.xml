@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mpi on Zakariya Oulhadj</title>
+        <link>http://localhost:1313/tags/mpi/</link>
+        <description>Recent content in Mpi on Zakariya Oulhadj</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-gb</language>
+        <lastBuildDate>Wed, 27 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/mpi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Parallel Cellular Automaton Simulation</title>
+        <link>http://localhost:1313/posts/parallel-cellular-automaton-simulation/</link>
+        <pubDate>Wed, 27 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/posts/parallel-cellular-automaton-simulation/</guid>
+        <description>&lt;p&gt;As part of the Message-Passing Programming (&lt;a class=&#34;link&#34; href=&#34;http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11002.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;EPCC11002&lt;/a&gt;) course, I developed a
+parallel implementation of a 2D-decomposed cellular automaton with periodic
+boundary conditions on the \(i^{th} \) dimension. The boundary conditions for \(
+\frac{2}{3} \)​ of the \( j^{th} \) dimension are set to alive cells. A
+termination condition is imposed for the simulation in which the program
+terminates if the number of living cells is below 3/4 or greater than 4/3 of the
+initial living cells. The implementation uses MPI and a cartesian virtual
+topology to decompose the grid into two dimensions where each process receives a
+subsection of the grid. Communication between processes is performed using
+halo-swapping via non-blocking point-to-point communication (MPI_Isend and
+MPI_Irecv).&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/posts/mpp-cellular-automaton.png&#34;&gt;
+&lt;/figure&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>
