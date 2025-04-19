@@ -1,0 +1,8 @@
+#+hugo_base_dir: ../
+#+hugo_section: projects
+
+* Vulkan Model Viewer and Exporter (VMVE)
+:PROPERTIES:
+:EXPORT_FILE_NAME: vmve
+:EXPORT_HUGO_PUBLISHDATE: <2024-04-21 Sun>
+:END:

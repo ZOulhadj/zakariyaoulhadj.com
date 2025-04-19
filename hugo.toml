@@ -1,0 +1,83 @@
+baseURL = 'https://zakariyaoulhadj.com'
+languageCode = 'en-gb'
+title = 'Zakariya Oulhadj'
+theme = 'hugo-theme-stack'
+author = "Zakariya Oulhadj"
+#copyright = "Copyright © Zakariya Oulhadj."
+
+
+# Needed for GitHub Pages
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+        description = "Zakariya Oulhadj personal website."
+        rssFullContent = true
+        favicon = "/favicon.ico"
+        mainSections = ["posts"]
+
+[params.colorscheme]
+        toggle = true
+
+[params.sidebar]
+        compact = false
+        subtitle = "Happiness is only real when shared"
+        emoji = ""
+
+[params.footer]
+        since = 2020
+        customText = ""
+
+[params.sidebar.avatar]
+        src = "img/profile.jpg"
+
+[params.article]
+        headingAnchor = true
+        math = true
+
+[params.article.license]
+        enabled = true
+
+[params.comments]
+        enabled = false
+
+
+[defaultImage.opengraph]
+enabled = false
+local = false
+src = ""
+
+
+[menu]
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 10
+identifier = "home"
+
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 20
+identifier = "posts"
+
+[[menu.main]]
+name = "Projects"
+url = "/projects/"
+weight = 30
+identifier = "projects"
+
+[[menu.social]]
+identifier = "linkedin"
+name = "LinkedIn"
+url = "https://linkedin.com/in/zoulhadj"
+[menu.social.params]
+icon = "brand-linkedin"
+
+[[menu.social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/zoulhadj"
+[menu.social.params]
+icon = "brand-github"

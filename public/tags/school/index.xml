@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>School on Zakariya Oulhadj</title>
+        <link>http://localhost:1313/tags/school/</link>
+        <description>Recent content in School on Zakariya Oulhadj</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-gb</language>
+        <lastBuildDate>Sun, 02 Jun 2024 00:00:00 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/school/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Studying High Performance Computing</title>
+        <link>http://localhost:1313/posts/studying_hpc/</link>
+        <pubDate>Sun, 02 Jun 2024 00:00:00 +0100</pubDate>
+        
+        <guid>http://localhost:1313/posts/studying_hpc/</guid>
+        <description>&lt;p&gt;I have recently been offered a place at University of Edinburgh to study High
+Performance Computing (HPC) for my postgraduate degree. This is an amazing
+opportunity and one which I am extremely grateful for. It is a big step up for
+me both academically as well as for my future career aspirations and I am really
+looking forward to starting in September.&lt;/p&gt;
+&lt;p&gt;My decision to study this course stems from my profound interest in software
+development and hardware architecture with a particular focus on performance
+optimisation. Understanding how these two interoperate will enable me to address
+the computational challenges inherent in modern software. Being taught by
+professors and experts from EPCC and the University would give me the invaluable
+knowledge and skills to make an impact in my future career as a software
+engineer. Specialising in performance optimisation would also prepare me to
+potentially pursue further research for a PHD in HPC.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Graduating in Computer Science from The University of Roehampton</title>
+        <link>http://localhost:1313/posts/graduating-in-computer-science/</link>
+        <pubDate>Thu, 28 Sep 2023 00:00:00 +0100</pubDate>
+        
+        <guid>http://localhost:1313/posts/graduating-in-computer-science/</guid>
+        <description>&lt;p&gt;I am very happy to announce that I’ve graduated with First Class Honours in
+Computer Science from The University of Roehampton 🎉. It has been a long but
+fulfilling experience with many ups and downs along the way and I’d like to
+thank my family, friends and professors who have supported me. This is a big
+milestone for me and one which can hopefully open the door for many
+opportunities going forward.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

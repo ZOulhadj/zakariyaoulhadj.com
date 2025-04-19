@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Linux on Zakariya Oulhadj</title>
+        <link>http://localhost:1313/tags/linux/</link>
+        <description>Recent content in Linux on Zakariya Oulhadj</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-gb</language>
+        <lastBuildDate>Wed, 29 May 2024 00:00:00 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Using Linux in 2024 (Part 2)</title>
+        <link>http://localhost:1313/posts/using-linux-in-2024-part-2/</link>
+        <pubDate>Wed, 29 May 2024 00:00:00 +0100</pubDate>
+        
+        <guid>http://localhost:1313/posts/using-linux-in-2024-part-2/</guid>
+        <description>&lt;p&gt;Having daily driven my Linux laptop (Arch btw) for 6 months now I have quite a
+few observations. The main issue I’ve had is full system reboots due to the
+amdgpu GPU driver crashing. After a few months of investigation I believe that
+the core of the issue is related to P-State and how the CPU manages power.
+Having said this, I have not had a crash for at least a month now so heres
+hoping that it has been fixed in a recent update.&lt;/p&gt;
+&lt;p&gt;Other than that, everything else has been pretty enjoyable especially because of
+how fast Linux is compared to Windows. Occasionally, I will use my Windows
+desktop and perform simple tasks such as clicking on different web pages,
+opening Visual Studio or just interacting with the file explorer which feels
+sluggish. This is not the case on Linux which performs great even under heavy
+workloads.&lt;/p&gt;
+&lt;p&gt;As a programmer, I have to say, working on Windows is a pain. Many tools that
+are commonplace on Linux are simply not available and even if they are, I have
+to deal with installation directories being totally random as well as poor
+performance. For example, running git pull takes a good 2 seconds just to run
+the program whereas on Linux its seemingly instant. To be fair, this could be as
+a result of a another issue but I am not totally sure.&lt;/p&gt;
+&lt;p&gt;Overall, I’m pretty happy with how things are going and will see how things go
+towards the end of the year and if I will continue using Linux full time.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Using Linux in 2024 (Part 1)</title>
+        <link>http://localhost:1313/posts/using-linux-in-2024-part-1/</link>
+        <pubDate>Mon, 29 Jan 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/posts/using-linux-in-2024-part-1/</guid>
+        <description>&lt;p&gt;I have known about Linux for several years and have attempted multiple times to
+fully transition over from Windows/macOS. So far, these attempts have been
+unsuccessful for numerous reasons. For example, software not being supported on
+Linux, lack of features or issues such as failing to wake from sleep, freezing
+and applications crashing caused by driver bugs.&lt;/p&gt;
+&lt;p&gt;As an aspiring programmer, I know how beneficial Linux is and how much easier
+software development becomes. This is why, I have made it one of my goals to
+fully transition over to Linux. Throughout 2024, I would like to better
+understand the underlying operating system, create my own dotfiles and use Linux
+on a daily basis.&lt;/p&gt;
+&lt;p&gt;At the moment, I am using Ubuntu with i3 as my window manager. Over time, once
+my dotfiles are more or less complete then I would like to move over to Arch due
+to its simplicity, AUR and its rolling-release architecture.&lt;/p&gt;
+&lt;p&gt;If all goes well, I will be making a follow up post in six months time to
+showcase my progress including the things I have learnt at the half way mark.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
