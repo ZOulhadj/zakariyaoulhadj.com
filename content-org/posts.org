@@ -1,6 +1,26 @@
 #+hugo_base_dir: ../
 #+hugo_section: posts
 
+* Parallel Cellular Automaton Simulation :school:c:mpi:
+:PROPERTIES:
+:EXPORT_FILE_NAME: parallel-cellular-automaton-simulation
+:EXPORT_HUGO_PUBLISHDATE: <2024-11-27 Wed>
+:END:
+
+As part of the Message-Passing Programming ([[http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11002.htm][EPCC11002]]) course, I developed a
+parallel implementation of a 2D-decomposed cellular automaton with periodic
+boundary conditions on the \(i^{th} \) dimension. The boundary conditions for \(
+\frac{2}{3} \)​ of the \( j^{th} \) dimension are set to alive cells. A
+termination condition is imposed for the simulation in which the program
+terminates if the number of living cells is below 3/4 or greater than 4/3 of the
+initial living cells. The implementation uses MPI and a cartesian virtual
+topology to decompose the grid into two dimensions where each process receives a
+subsection of the grid. Communication between processes is performed using
+halo-swapping via non-blocking point-to-point communication (MPI_Isend and
+MPI_Irecv).
+
+[[/img/posts/mpp-cellular-automaton.png]]
+
 * Member of TeamEPCC for the ISC25 :school:
 :PROPERTIES:
 :EXPORT_FILE_NAME: member-of-teamepcc-for-the-isc25
@@ -123,27 +143,6 @@ efficiency. In- creasing the number of threads alone does not guarantee
 improvements. By addressing bottlenecks in queue accesses, both efficiency and
 scalability are enhanced, which is essential for managing large workloads in
 High-Performance Computing.
-
-* Parallel Cellular Automaton Simulation :school:c:mpi:
-:PROPERTIES:
-:EXPORT_FILE_NAME: parallel-cellular-automaton-simulation
-:EXPORT_HUGO_PUBLISHDATE: <2024-11-27 Wed>
-:END:
-
-As part of the Message-Passing Programming ([[http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11002.htm][EPCC11002]]) course, I developed a
-parallel implementation of a 2D-decomposed cellular automaton with periodic
-boundary conditions on the \(i^{th} \) dimension. The boundary conditions for \(
-\frac{2}{3} \)​ of the \( j^{th} \) dimension are set to alive cells. A
-termination condition is imposed for the simulation in which the program
-terminates if the number of living cells is below 3/4 or greater than 4/3 of the
-initial living cells. The implementation uses MPI and a cartesian virtual
-topology to decompose the grid into two dimensions where each process receives a
-subsection of the grid. Communication between processes is performed using
-halo-swapping via non-blocking point-to-point communication (MPI_Isend and
-MPI_Irecv).
-
-[[/img/posts/mpp-cellular-automaton.png]]
-
 * Studying High Performance Computing :school:
 :PROPERTIES:
 :EXPORT_FILE_NAME: studying_hpc
