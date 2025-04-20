@@ -87,6 +87,6 @@ icon = "brand-github"
 [[menu.social]]
 identifier = "email"
 name = "Email"
-url = "mailto:zakariyaouladj01@gmail.com"
+url = "mailto:zakariyaoulhadj01@gmail.com"
 [menu.social.params]
 icon = "mail"
