@@ -1,5 +1,6 @@
-#+hugo_base_dir: ../
-#+hugo_section: projects
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: projects
+#+STARTUP: fold
 
 * Vulkan Model Viewer and Exporter (VMVE)
 :PROPERTIES:

@@ -46,7 +46,7 @@ on 32 threads. Inefficiencies in the compiler and increased overhead associated
 with task creation may be the contributing factors. Further analysis was carried
 out to determine whether these results were specifically isolated to GCC version
 10.2.0. Versions 8.2.0 and 12.3.0 exhibited similar behaviour, suggesting that
-the issue may stem from a long- standing bug or inefficiency in the compiler’s
+the issue may stem from a long standing bug or inefficiency in the compiler’s
 code generation. The results are also shown in terms of speed up indicating that
 ICC was able to achieve the highest speed-up of 20.995x compared to GCC 2.143x
 on 32 threads.
@@ -107,11 +107,11 @@ queues can achieve greater accesses per second.
 {{< figure src="./img/posts/solver_2_1_vs_2_2_access_time.jpg" >}}
 
 The downside to this approach, however, is that total memory utilisation
-increases to 34.56 MB com- pared to 0.48 MB for a single queue. This balance
+increases to 34.56 MB compared to 0.48 MB for a single queue. This balance
 between performance and memory usage is a common factor that needs to be
 considered when implementing high performance software. Overall, the findings of
 this report highlight the impact of resource contention on a program’s
-efficiency. In- creasing the number of threads alone does not guarantee
+efficiency. Increasing the number of threads alone does not guarantee
 improvements. By addressing bottlenecks in queue accesses, both efficiency and
 scalability are enhanced, which is essential for managing large workloads in
 High-Performance Computing.
