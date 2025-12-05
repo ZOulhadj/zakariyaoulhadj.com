@@ -1,4 +1,4 @@
-baseURL = 'https://zakariyaoulhadj.com'
+baseURL = '/'
 languageCode = 'en-gb'
 title = 'Zakariya Oulhadj'
 theme = 'poison'
@@ -21,7 +21,7 @@ pluralizelisttitles = false   # removes the automatically appended "s" on sideba
     dark_mode = false                      # optional - defaults to false
     # favicon = "favicon.png"             # path to favicon (defaults to favicon.png)
     hideToc = false
-    front_page_content = ["about"] # Equivalent to the default value, add page bundle names to include them on the front page.
+    front_page_content = ["About"] # Equivalent to the default value, add page bundle names to include them on the front page.
 
     # MENU PLACEHOLDER
     # Menu dict keys:
