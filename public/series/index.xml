@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Zakariya Oulhadj</title>
-    <link>http://localhost:1313/zakariyaoulhadj.com/series/</link>
+    <link>http://localhost:1313/series/</link>
     <description>Recent content in Series on Zakariya Oulhadj</description>
     <generator>Hugo</generator>
     <language>en-gb</language>
-    <atom:link href="http://localhost:1313/zakariyaoulhadj.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

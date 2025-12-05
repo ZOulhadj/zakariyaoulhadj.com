@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vulkan on Zakariya Oulhadj</title>
-    <link>http://localhost:1313/zakariyaoulhadj.com/tags/vulkan/</link>
+    <link>http://localhost:1313/tags/vulkan/</link>
     <description>Recent content in Vulkan on Zakariya Oulhadj</description>
     <generator>Hugo</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 04 Oct 2023 00:00:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/zakariyaoulhadj.com/tags/vulkan/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/vulkan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vulkan Model Viewer and Exporter</title>
-      <link>http://localhost:1313/zakariyaoulhadj.com/projects/vulkan-model-viewer-and-exporter/</link>
+      <link>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</link>
       <pubDate>Wed, 04 Oct 2023 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/zakariyaoulhadj.com/projects/vulkan-model-viewer-and-exporter/</guid>
+      <guid>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</guid>
       <description>&lt;p&gt;Developed a real-time 3D renderer using Vulkan with a built-in editor&#xA;supporting model visualisation, import/export and encryption, as part of my&#xA;undergraduate degree.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ZOulhadj/vmve&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
