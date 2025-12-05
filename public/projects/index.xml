@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Zakariya Oulhadj</title>
+    <link>http://localhost:1313/projects/</link>
+    <description>Recent content in Projects on Zakariya Oulhadj</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 04 Oct 2025 00:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real-Time Rendering Engine</title>
+      <link>http://localhost:1313/projects/real-time-rendering-engine/</link>
+      <pubDate>Sat, 04 Oct 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/projects/real-time-rendering-engine/</guid>
+      <description>&lt;p&gt;Cross-platform game engine developed in C11, supporting multiple modern&#xA;rendering APIs and designed for efficiency and low-level engine research.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Porting and Performance Tuning of SeisSol on Multiple HPC Architectures</title>
+      <link>http://localhost:1313/projects/dissertation/</link>
+      <pubDate>Fri, 15 Aug 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/projects/dissertation/</guid>
+      <description>&lt;p&gt;Disseration project.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hdl.handle.net/1842/44264&#34; target=&#34;_blank&#34;&gt;https://hdl.handle.net/1842/44264&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenMP Thread Contention Investigation</title>
+      <link>http://localhost:1313/projects/openmp-threading/</link>
+      <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/openmp-threading/</guid>
+      <description>&lt;p&gt;OpenMP thread contention performance investigation for the EPCC11003 course.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ZOulhadj/omp-performance&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>MPI Decomposed 2D Cellular Automaton</title>
+      <link>http://localhost:1313/projects/mpi-cellular-automaton/</link>
+      <pubDate>Wed, 27 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/mpi-cellular-automaton/</guid>
+      <description>&lt;p&gt;2D cellular automaton decomposition across MPI processes. Developed as part of&#xA;the EPCC11002 course on the Cirrus supercomputer.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ZOulhadj/cellular-automaton&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vulkan Model Viewer and Exporter</title>
+      <link>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</link>
+      <pubDate>Wed, 04 Oct 2023 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</guid>
+      <description>&lt;p&gt;Developed a real-time 3D renderer using Vulkan with a built-in editor&#xA;supporting model visualisation, import/export and encryption, as part of my&#xA;undergraduate degree.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ZOulhadj/vmve&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

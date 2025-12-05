@@ -1,0 +1,33 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: about
+#+EXPORT_FILE_NAME: _index
+#+TITLE: About
+
+Hi, I'm **Zakariya Oulhadj** 👋🏼
+
+An aspiring software engineer passionate about low-level programming and
+high-performance design. I specialise in *C* and *C++*, with over six years of
+experience across these and *Python*. My main interests include *computer graphics,
+rendering engine architecture, and systems programming*, where I focus on
+building efficient software from first principles.
+
+Recently graduated with a distinction in *High-Performance Computing (M.Sc.)* from
+the [[https://www.ed.ac.uk][University of Edinburgh]] and currently based in London, UK. For further
+details you can view my [[file:/Zakariya_Oulhadj_CV.pdf][CV]].
+
+Full time Linux user running Debian 13 (Trixie) with my main editor of choice
+for programming being [[https://www.gnu.org/software/emacs/][Emacs]]. My dotfiles are available on GitHub [[https://github.com/ZOulhadj/dotfiles][here]].
+
+I am currently developing my own real-time cross-platform rendering engine in C
+aiming to support multiple rendering APIs through a custom render command
+system.
+
+* Skills
+- *Operating Systems*: Linux, Windows, macOS
+- *Programming Languages*: C11, C++23, Zig, Python
+- *APIs*: Win32, OpenGL 4.6, Vulkan 1.3, MPI, OpenMP
+- *Tools*: GDB, RenderDoc, Intel VTune, CrayPat, Scalasca, Linaro Forge
+- *Interests*: Rendering Engine Architecture, Performance Benchmarking and
+  Optimisation, Network Attached Storages (Synology)
+
+Check out my [[https://instagram.com/zoulhadj][Instagram]] for non-technical related content.

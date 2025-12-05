@@ -1,0 +1,21 @@
+/* Add external fontawesome icon to any external link */
+a[href^="http"]:not([href*="zakariyaoulhadj.com"]):not([href*="localhost"]):not(.social)::after {
+    content: "\f08e";
+    font-family: "fontawesome";  /* See note below about this name */
+    font-weight: 900;
+    font-size: 0.5em;
+    vertical-align: top;
+    margin-left: 2px;
+    display: inline-block;
+    opacity: 0.8;
+}
+
+.sidebar-about h1 {
+  font-size: 1.2em;
+  font-family: "fira sans", monospace;
+  font-weight: bold;
+}
+
+.sidebar-about .lead {
+    font-size: .75em;
+}

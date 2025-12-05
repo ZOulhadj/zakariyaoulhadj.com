@@ -1,0 +1,70 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: projects
+#+EXPORT_FILE_NAME: _index
+#+HUGO_CUSTOM_FRONT_MATTER: :layout single
+#+TITLE: Projects
+
+* Real-Time Rendering Engine
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: real-time-rendering-engine
+  :EXPORT_DATE: [2025-10-04]
+  :EXPORT_HUGO_TAGS: c rendering-engine
+  :EXPORT_HUGO_CATEGORIES: projects
+  :END:
+
+  Cross-platform game engine developed in C11, supporting multiple modern
+  rendering APIs and designed for efficiency and low-level engine research.
+
+
+
+* Porting and Performance Tuning of SeisSol on Multiple HPC Architectures
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: dissertation
+  :EXPORT_DATE: [2025-08-15]
+  :EXPORT_HUGO_TAGS: university-of-edinburgh dissertation
+  :EXPORT_HUGO_CATEGORIES: projects
+  :END:
+
+  Disseration project.
+
+  [[https://hdl.handle.net/1842/44264][https://hdl.handle.net/1842/44264]]
+
+* OpenMP Thread Contention Investigation
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: openmp-threading
+  :EXPORT_DATE: [2024-11-29]
+  :EXPORT_HUGO_TAGS: university-of-edinburgh c openmp
+  :EXPORT_HUGO_CATEGORIES: projects
+  :END:
+
+   OpenMP thread contention performance investigation for the EPCC11003 course.
+
+   [[https://github.com/ZOulhadj/omp-performance][GitHub]]
+
+* MPI Decomposed 2D Cellular Automaton
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: mpi-cellular-automaton
+  :EXPORT_DATE: [2024-11-27]
+  :EXPORT_HUGO_TAGS: university-of-edinburgh c mpi cellular-automaton
+  :EXPORT_HUGO_CATEGORIES: projects
+  :END:
+
+  2D cellular automaton decomposition across MPI processes. Developed as part of
+  the EPCC11002 course on the Cirrus supercomputer.
+
+  [[https://github.com/ZOulhadj/cellular-automaton][GitHub]]
+
+
+* Vulkan Model Viewer and Exporter
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: vulkan-model-viewer-and-exporter
+  :EXPORT_DATE: [2023-10-04]
+  :EXPORT_HUGO_TAGS: c++ vulkan
+  :EXPORT_HUGO_CATEGORIES: projects
+  :END:
+
+  Developed a real-time 3D renderer using Vulkan with a built-in editor
+  supporting model visualisation, import/export and encryption, as part of my
+  undergraduate degree.
+
+  [[https://github.com/ZOulhadj/vmve][GitHub]]
