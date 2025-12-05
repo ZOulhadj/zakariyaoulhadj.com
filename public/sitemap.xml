@@ -2,59 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/c/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/c/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/real-time-rendering-engine/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/real-time-rendering-engine/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rendering-engine/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/rendering-engine/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dissertation/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/dissertation/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/dissertation/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/dissertation/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/university-of-edinburgh/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/university-of-edinburgh/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/openmp/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/openmp/</loc>
     <lastmod>2024-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/openmp-threading/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/openmp-threading/</loc>
     <lastmod>2024-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cellular-automaton/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/cellular-automaton/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/mpi/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/mpi/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/mpi-cellular-automaton/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/mpi-cellular-automaton/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/c&#43;&#43;/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vulkan/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/tags/vulkan/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/projects/vulkan-model-viewer-and-exporter/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>http://localhost:1313/zakariyaoulhadj.com/series/</loc>
   </url>
 </urlset>
