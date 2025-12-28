@@ -30,4 +30,9 @@ system.
 - *Interests*: Rendering Engine Architecture, Performance Benchmarking and
   Optimisation, Network Attached Storages (Synology)
 
+
+* Hobbies
+
+[[/images/about.jpg]]
+
 Check out my [[https://instagram.com/zoulhadj][Instagram]] for non-technical related content.
