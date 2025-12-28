@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.d451ff92e80abc2a828eb9bb262e4db374bd4e954642f9245c54eec84bf690f3.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Zakariya Oulhadj - Optimising a Molecular Dynamics Application</title>
+<meta property="og:title" content=Zakariya&#32;Oulhadj&#32;-&#32;Optimising&#32;a&#32;Molecular&#32;Dynamics&#32;Application />
+<meta name="twitter:title" content=Zakariya&#32;Oulhadj&#32;-&#32;Optimising&#32;a&#32;Molecular&#32;Dynamics&#32;Application />
+<meta itemprop="name" content=Zakariya&#32;Oulhadj&#32;-&#32;Optimising&#32;a&#32;Molecular&#32;Dynamics&#32;Application />
+<meta name="application-name" content=Zakariya&#32;Oulhadj&#32;-&#32;Optimising&#32;a&#32;Molecular&#32;Dynamics&#32;Application />
+<meta property="og:site_name" content="Zakariya Oulhadj" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="//localhost:1313/posts/optimising-molecular-dynamics/" />
+<link rel="canonical" href="//localhost:1313/posts/optimising-molecular-dynamics/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/optimising-molecular-dynamics/" />
+<meta name="twitter:url" content="//localhost:1313/posts/optimising-molecular-dynamics/" />
+<meta property="og:url" content="//localhost:1313/posts/optimising-molecular-dynamics/" />
+
+
+<meta property="og:updated_time" content="2025-04-04T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="Zakariya Oulhadj" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.152.2">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.850d436f7ae2026318ad10cb91c10ceafaad03e3487433c8b40f68bdfff1613f.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+
+    <script src="https://kit.fontawesome.com/5ccda46141.js" crossorigin="anonymous"></script>
+</head>
+
+    <body class="">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="/images/avatar.jpeg" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Zakariya Oulhadj</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    M.Sc. High Performance Computing @ University of Edinburgh
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/projects/">Projects</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/zoulhadj">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://linkedin.com/in/zoulhadj">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="YouTube" href="https://youtube.com/@ZOulhadj">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Instagram" href="https://instagram.com/zoulhadj">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9S287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7s74.7 33.5 74.7 74.7s-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8c-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8s26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9c-26.2-26.2-58-34.4-93.9-36.2c-37-2.1-147.9-2.1-184.9 0c-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9c1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0c35.9-1.7 67.7-9.9 93.9-36.2c26.2-26.2 34.4-58 36.2-93.9c2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6c-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6c-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6c29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6c11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 Zakariya Oulhadj. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/optimising-molecular-dynamics/">Optimising a Molecular Dynamics Application</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>[Zakariya Oulhadj] - </span>
+        
+      
+      
+      <time datetime=" 2025-04-04T00:00:00Z" class="post-date">
+        April 4, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>15 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-c">
+        <a href="//localhost:1313/tags/c">c</a>
+      </li>
+      
+      <li class="tag-hpc">
+        <a href="//localhost:1313/tags/hpc">hpc</a>
+      </li>
+      
+      <li class="tag-masters">
+        <a href="//localhost:1313/tags/masters">masters</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <p><em>The full source code is available on <a href="https://github.com/ZOulhadj/performance-programming" target="_blank">GitHub</a>.</em></p>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>The second part of the Performance Programming module (<a href="http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11009.htm" target="_blank">EPCC11009</a>), was to
+manually optimise a C-based molecular dynamics simulation code. The project
+required the transformation of a suboptimal legacy codebase into a
+high-performance solution, prioritising runtime reduction without compromising
+the integrity of the simulation results. A key restriction imposed by the
+project was that all optimisations must be done using a single thread i.e no
+multi-threading.</p>
+<h2 id="hardware-and-tools">Hardware and Tools</h2>
+<p>The project was conducted on the Cirrus UK Tier-2 HPC service, utilizing a
+single standard compute node. The node is powered by dual 18-core Intel Xeon
+E5-2695 v4 (Broadwell) processors running at 2.1GHz, providing a total of 36
+physical cores and 72 hardware threads backed by 256GB of shared memory.</p>
+<p>To contextualize the optimization strategy, it is important to note the cache
+topology: each core possesses a private 64KiB L1 cache (split evenly between
+instructions and data) and a 256KiB L2 cache, while the sockets feature a
+substantial 45MiB shared L3 cache.</p>
+<h2 id="compilation">Compilation</h2>
+<p>The Intel oneAPI compiler (version 2024.0.2) was used (provided by <!-- raw HTML omitted --><code>oneapi</code><!-- raw HTML omitted -->
+and <!-- raw HTML omitted --><code>compiler/2024.0.2</code><!-- raw HTML omitted --> Lmod modules on Cirrus), as it delivered the best
+performance in a previous investigation using the compiler flags shown below.
+These flags are, therefore, used for compiling the code using <!-- raw HTML omitted --><code>-std=c11</code><!-- raw HTML omitted -->,
+targeting the Intel Broadwell architecture with the optimisation level
+<!-- raw HTML omitted --><code>-O3</code><!-- raw HTML omitted -->. Additionally, the program is configured to run solely on a single
+thread as the code modifications focused on improving the serial performance.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>icx -Wall -axBROADWELL -march=broadwell -mtune=broadwell -O3 -ipo -qoverride -limits
+</span></span></code></pre></div><h2 id="correctness-testing">Correctness Testing</h2>
+<p>The application was executed on Cirrus using the Slurm workload manager
+(v22.05.11). Performance analysis was conducted with Intel VTune 2024.0.0
+(vtune/2024.0) and gprof v2.30-93.el8, while memory analysis was performed using
+Valgrind v3.22.0. Each test was conducted three times, with the average and
+standard deviations recorded to ensure consistency and accuracy in the results.
+Additionally, correctness was verified using the <!-- raw HTML omitted --><code>diff-output</code><!-- raw HTML omitted --> tool
+provided as part of the code to ensure the generated <!-- raw HTML omitted --><code>output.dat</code><!-- raw HTML omitted --> files
+contained values below the 0.001 threshold. The program was further extended to
+detect <!-- raw HTML omitted --><code>NaN</code><!-- raw HTML omitted --> values using the <!-- raw HTML omitted --><code>isnan</code><!-- raw HTML omitted --> function from the C standard
+library.</p>
+<h2 id="preliminary-performance-analysis">Preliminary Performance Analysis</h2>
+<p>Previous optimisation work established a baseline runtime of 64.493 seconds
+using the unmodified source code and specific compiler flags. However, initial
+replication attempts yielded an unexpected regression to 74.342 seconds (a ~10s
+increase). This discrepancy was traced to a system update on Cirrus, where the
+default Intel compiler had shifted from ICX 2024.0.2 to 2025.0.4. The newer
+version proved less efficient with the established flag configuration. To ensure
+a consistent baseline, the environment was explicitly pinned to the
+compiler/2024.0.2 module, which restored the expected runtime.</p>
+<p>Prior to manual optimisation, the application was profiled using a 4096-particle
+simulation. The <!-- raw HTML omitted --><code>-fno-inline</code><!-- raw HTML omitted --> flag was applied alongside <!-- raw HTML omitted --><code>-O3</code><!-- raw HTML omitted --> to
+preserve the call graph structure during analysis. VTune Hotspot analysis
+identified the <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted --> function as the primary bottleneck, consuming 99.9%
+of total execution time. Within evolve, the functions <!-- raw HTML omitted --><code>forces</code><!-- raw HTML omitted -->,
+<!-- raw HTML omitted --><code>add_norms</code><!-- raw HTML omitted -->, and <!-- raw HTML omitted --><code>__intel_avx_rep_memset</code><!-- raw HTML omitted --> accounted for 43.391s.</p>
+<figure><img src="/ox-hugo/vtune.png">
+</figure>
+
+<p>Memory usage and access patterns were also analysed
+(<!-- raw HTML omitted --><code>-collect-memory-access</code><!-- raw HTML omitted -->). The results obtained, as shown below, indicate
+the primary performance bottleneck can be attributed to memory-bound operations.
+Specifically, the <!-- raw HTML omitted --><code>add_norms</code><!-- raw HTML omitted --> function reported being 83.7% memory-bound,
+with a last-level cache miss rate of 94.1% (473,234,016 misses) and an average
+access latency of 275 cycles, resulting in 20.355 seconds spent within that
+function. Additionally, the code that calculates pairwise forces accounts for
+43.790 seconds of the total runtime. Although the profiler did not explicitly
+identify this section as memory-bound, the likely causes may still be
+inefficiencies related to memory access patterns and the <!-- raw HTML omitted --><code>pow</code><!-- raw HTML omitted --> function,
+which can be computationally expensive if the compiler cannot optimise it
+effectively.</p>
+<figure><img src="/ox-hugo/vtune_memory.png">
+</figure>
+
+<p>Valgrind was also used to identify issues related to memory allocation. Running
+the program with the <!-- raw HTML omitted --><code>-ggdb3</code><!-- raw HTML omitted --> flag, revealed that a total of 608MB
+(637,960,192 bytes) were allocated across 9 blocks. The output indicated that
+none of these blocks, allocated through calloc, were freed before the program
+terminated, resulting in memory leaks.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>valgrind --leak -check=full --show -leak -kinds=all --track -origins=yes
+</span></span><span style="display:flex;"><span>--verbose ./ build/md
+</span></span></code></pre></div><h2 id="code-optimisations">Code Optimisations</h2>
+<p>Based on the performance results obtained through profiling, this section
+presents several recommendations for code modifications to enhance the program&rsquo;s
+performance. The optimisations focus on the <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted --> function, aiming to
+minimise unnecessary loop iterations, improve memory access efficiency, simplify
+calculations, and reduce the overall memory footprint.</p>
+<h3 id="loop-fusion">Loop Fusion</h3>
+<p>Loop fusion involves merging independent loops to reduce the total number of
+iterations. The <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted --> function contains 20 for-loops, many of which can
+be fused. This optimisation not only decreases the number of executed iterations
+but also enhances compiler optimisation opportunities, improving overall
+performance. The first recommendation is for the viscosity and wind terms, as
+well as the central mass distance to be combined. This is possible as each
+function iterates over <!-- raw HTML omitted --><code>Ndim</code><!-- raw HTML omitted --> times with this initial fusing of loops shown
+below. Furthermore, instead of setting each value to zero for the r array, this
+can be replaced with a call to <!-- raw HTML omitted --><code>memset</code><!-- raw HTML omitted --> before the first loop.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memset</span>(r, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>) <span style="color:#f92672">*</span> Nbody);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vis_forces</span>(Nbody , f[i], vis , velo[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wind_forces</span>(Nbody , f[i], vis , wind[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">add_norms</span>(Nbody , r, pos[i]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Each function separately loops over the <!-- raw HTML omitted --><code>Nbody</code><!-- raw HTML omitted --> array, which can be avoided
+by extracting the code of each function out directly into the <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted -->
+function, reducing the <!-- raw HTML omitted --><code>Nbody</code><!-- raw HTML omitted --> iteration count by a third.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memset</span>(r, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>) <span style="color:#f92672">*</span> Nbody);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> velo[i][j];       <span style="color:#75715e">// vis_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        f[i][j] <span style="color:#f92672">=</span> f[i][j] <span style="color:#f92672">-</span> vis[j] <span style="color:#f92672">*</span> wind[i]; <span style="color:#75715e">// wind_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        r[j] <span style="color:#f92672">+=</span> (pos[i][j] <span style="color:#f92672">*</span> pos[i][j]);      <span style="color:#75715e">// add_norms()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>At this stage, it was observed that looping over each dimension individually
+made it challenging to fuse loops due to dependencies such as the use of
+<!-- raw HTML omitted --><code>sqrt</code><!-- raw HTML omitted --> and the addition of pairwise forces. To address this, rather than
+iterating over each particle dimension separately, the loops were restructured
+to process entire particles i.e x, y, z in one go. The result of this
+transformation, eliminates the need for memset and allows the central force
+calculation to be combined into the force calculation loop.</p>
+<p><em>Whilst this is initially inefficient, we later change the memory layout of
+particles to better align with our accesses.</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> velo [<span style="color:#ae81ff">0</span>][i];       <span style="color:#75715e">// viscosity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">=</span> f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-</span> vis[i] <span style="color:#f92672">*</span> wind [<span style="color:#ae81ff">0</span>]; <span style="color:#75715e">// wind
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// X and Y here ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">0</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">1</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">2</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(r[i]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">0</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">1</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">2</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With this change in place, further analysis revealed that calculating the
+pairwise and normalised separation vector can be fused into the pairwise
+addition directly. This is due to <!-- raw HTML omitted --><code>Npair</code><!-- raw HTML omitted --> loop that iterates over particle
+pairs being identical to that of the inner for-loop of the adding of pairwise
+forces <!-- raw HTML omitted --><code>int j = i + 1; j &lt; Nbody; ++j</code><!-- raw HTML omitted -->. Therefore, the <!-- raw HTML omitted --><code>Npair</code><!-- raw HTML omitted --> loop can
+be removed and placed in the innermost loop, resulting in fewer additional
+iterations needed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// For separation for each dimension
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        delta_pos [<span style="color:#ae81ff">0</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">0</span>][j];
+</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#ae81ff">1</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">1</span>][j];
+</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#ae81ff">2</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">2</span>][j];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Squared norm calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        delta_r[k] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">0</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">0</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">1</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">1</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">2</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">2</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(delta_r[k]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Flip forces ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (delta_r[k] <span style="color:#f92672">&gt;=</span> size) {
+</span></span><span style="display:flex;"><span>            ...
+</span></span></code></pre></div><p>The last loop fusion that can be applied is at the end of the evolve function,
+where the position and velocity can also be combined.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>        pos[j][i] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[j][i];
+</span></span><span style="display:flex;"><span>        velo[j][i] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[j][i] <span style="color:#f92672">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="loop-interchange">Loop Interchange</h3>
+<p>Loop interchange refers to reordering nested loops to enhance cache locality.
+During initialisation, arrays are allocated as a contiguous one dimensional
+block of memory, with the particle layout illustrated below. This arrangement
+follows the Structure of Arrays (SOA) approach, storing each component
+continuously within a single buffer. Several loops in the original evolve
+function iterate over loops in column-major order, which results in poor cache
+usage. These are swapped so that memory accesses are instead in row-major order.
+It is important to note, however, that this is an intermediate step as the
+memory layout is later changed to an Array of Structures (AOS).</p>
+<figure><img src="/ox-hugo/soa-to-aos.png">
+</figure>
+
+<p>The loops that calculates the central force, can be swapped so that accesses
+into the <!-- raw HTML omitted --><code>f</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>pos</code><!-- raw HTML omitted --> arrays are continuous in memory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[j] <span style="color:#f92672">*</span> M_central , pos[i][j], r[j]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This can also be applied to the updating of positions and velocities:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>        pos[i][j] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i][j];
+</span></span><span style="display:flex;"><span>        velo[i][j] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i][j] <span style="color:#f92672">/</span> mass[j]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="algebraic-simplification">Algebraic Simplification</h3>
+<p>The code’s performance and readability can be substantially improved by performing algebraic
+simplification. Firstly, the code shown previously:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> velo[i][j];       <span style="color:#75715e">// vis_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f[i][j] <span style="color:#f92672">=</span> f[i][j] <span style="color:#f92672">-</span> vis[j] <span style="color:#f92672">*</span> wind[i]; <span style="color:#75715e">// wind_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>r[j] <span style="color:#f92672">+=</span> (pos[i][j] <span style="color:#f92672">*</span> pos[i][j]);      <span style="color:#75715e">// add_norms()
+</span></span></span></code></pre></div><p>can be simplified by combining the viscosity and wind terms into a single
+equation by applying the distributive property of multiplication: $ a ⋅ b +
+a ⋅ c = a ⋅ (b+c) $.</p>
+<p>$ \vec{F} = -u ⋅ \vec{V} = -u ⋅ (\vec{v} + \vec{w}) $</p>
+<p>where $ u $ is the viscosity and $ V $ is the effective velocity vector, the
+combination of velocity $ v $ and wind vector $ w $. Additionally, this
+simplification more directly maps to a Fused Multiply-Add (FMA) instruction,
+enabling supported hardware to compute each component force in a single
+instruction.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> (velo[i][j] <span style="color:#f92672">+</span> wind[i]);
+</span></span></code></pre></div><p>Next, as the central mass distance calculation is fully fused, the r array is
+now redundant as this is the only location where this is calculated. Therefore,
+this can be changed to be entirely on the stack using a single double-precision
+variable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(pos_x<span style="color:#f92672">*</span>pos_x<span style="color:#f92672">+</span>pos_y<span style="color:#f92672">*</span>pos_y<span style="color:#f92672">+</span>pos_z<span style="color:#f92672">*</span>pos_z);
+</span></span></code></pre></div><p>As identified during profiling, the <!-- raw HTML omitted --><code>pow</code><!-- raw HTML omitted --> function caused significant
+bottlenecks, resulting in runtimes of over 20 minutes, likely due to needing to
+handle raising to any power. Since the code hardcodes raising to the third
+power, the <!-- raw HTML omitted --><code>forces</code><!-- raw HTML omitted --> function for the central force calculation is extracted
+and the call to the <!-- raw HTML omitted --><code>pow</code><!-- raw HTML omitted --> function is replaced by three multiplications.
+Additionally, the <!-- raw HTML omitted --><code>Wv</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>r_pow_3</code><!-- raw HTML omitted --> are cached as the values do not
+change between the components.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// calculate central force
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> r_pow_3 <span style="color:#f92672">=</span> r<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span>r;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">/</span> r_pow_3;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">/</span> r_pow_3;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">/</span> r_pow_3;
+</span></span></code></pre></div><p>Next, after fusing the pairwise separation and norm calculations into the
+addition of pairwise forces, it was initially observed that the runtime
+increased from 13 to 21.9 seconds per 100 iterations, likely due to the compiler
+being unable to optimise effectively. However, these modifications highlighted
+that the <!-- raw HTML omitted --><code>delta_pos</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>delta_r</code><!-- raw HTML omitted --> arrays were redundant and could be
+replaced with stack-allocated five variables. By applying algebraic
+simplification and eliminating unnecessary array loads and stores, the runtime
+of the program was significantly reduced. Additionally, instead of diving three
+times, which is substantially slower than multiplication, we can compute the
+inverse once and use this precomputed value for all dimensions. Introducing the
+sign variable simplifies the code substantially as the forces do not need to be
+duplicated for the positive and negative forces. The updated pairwise particle
+calculation reduced runtime per 100 iterations to approximately 6.4 seconds on
+average.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> dx <span style="color:#f92672">=</span> pxi <span style="color:#f92672">-</span> pxj, dy <span style="color:#f92672">=</span> pyi <span style="color:#f92672">-</span> pyj, dz <span style="color:#f92672">=</span> pzi <span style="color:#f92672">-</span> pzj;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> delta_r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy <span style="color:#f92672">+</span> dz <span style="color:#f92672">*</span> dz);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> size <span style="color:#f92672">=</span> radius[i] <span style="color:#f92672">+</span> radius[j];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> mass[j];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> inv_r3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (delta_r <span style="color:#f92672">*</span> delta_r <span style="color:#f92672">*</span> delta_r);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> F <span style="color:#f92672">=</span> Wv <span style="color:#f92672">*</span> inv_r3;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dx, fy <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dy, fz <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dz;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> (delta_r <span style="color:#f92672">&gt;=</span> size) <span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1.0</span>;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fx; f[<span style="color:#ae81ff">0</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fx;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fy; f[<span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fy;
+</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fz; f[<span style="color:#ae81ff">2</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fz;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">++</span>collisions;
+</span></span></code></pre></div><p>Additionally, the <!-- raw HTML omitted --><code>k</code><!-- raw HTML omitted --> increment variable can be removed since <!-- raw HTML omitted --><code>Ndim</code><!-- raw HTML omitted -->
+is no longer used. Likewise, the <!-- raw HTML omitted --><code>hascollided</code><!-- raw HTML omitted --> variable is unnecessary, as
+collisions can be incremented directly.</p>
+<h3 id="redundant-memory-allocations">Redundant Memory Allocations</h3>
+<p>Now that the heap-allocated <!-- raw HTML omitted --><code>r</code><!-- raw HTML omitted -->, <!-- raw HTML omitted --><code>delta_r</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>delta_pos</code><!-- raw HTML omitted --> arrays
+are no longer used, they can be removed, saving 512MB of memory when simulating
+4096 particles. This shows that recalculating values on the stack can not only
+significantly improve performance but also eliminate the need for redundancy
+arrays and therefore, reduce memory usage. The <!-- raw HTML omitted --><code>f</code><!-- raw HTML omitted -->, <!-- raw HTML omitted --><code>pos</code><!-- raw HTML omitted -->, and
+<!-- raw HTML omitted --><code>velo</code><!-- raw HTML omitted --> arrays were two-dimensional, where the first index represented the
+spatial dimension and the second indexed individual particles. This was
+restructured into a one-dimensional allocation to eliminate an extra pointer
+dereference for each load and store operation. Additionally, the memory layout
+was transformed into an Array of Structures (AoS) format, interleaving particle
+positions as (x1, y1, z1), (x2, y2, z2). This new structure aligns better with
+the applied code optimisations, leading to a measurable performance improvement:
+the average runtime for 500 iterations was reduced from 6.49 to 5.95 seconds,
+equating to an improvement of approximately 0.548 seconds per 100 iterations.
+The new formula for indexing can now be expressed as $ 3i + d $ where $ i $ is
+the particle index ($ 0 ≤ i &lt; N $ body) and $ d $ is the dimension (1, 2, 3).</p>
+<p>Furthermore, Valgrind&rsquo;s analysis conducted as part of the preliminary analysis
+revealed memory leaks, prompting the addition calls to <!-- raw HTML omitted --><code>free</code><!-- raw HTML omitted --> to ensure
+that all memory allocated via <!-- raw HTML omitted --><code>calloc</code><!-- raw HTML omitted --> is properly freed at the end of the
+program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(mass);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(vis);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(radius);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(f);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(pos);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(velo);
+</span></span></code></pre></div><h3 id="branchless-sign">Branchless Sign</h3>
+<p>Intel VTune revealed a significant portion of execution time was spent on the
+two if-statements within the pairwise addition suggesting slowdowns likely as a
+result of branch misprediction.</p>
+<figure><img src="/ox-hugo/vtune_copysign.png">
+</figure>
+
+<p>A branchless version of this can be implemented using the <!-- raw HTML omitted --><code>copysign</code><!-- raw HTML omitted -->
+function, reducing the runtime per 100 iterations from 5.94 seconds to 4.85
+seconds, resulting in a total execution time of 24.34 seconds.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> <span style="color:#a6e22e">copysign</span>(<span style="color:#ae81ff">1.0</span>, size <span style="color:#f92672">-</span> delta_r);
+</span></span><span style="display:flex;"><span>collisions <span style="color:#f92672">+=</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div><h2 id="results">Results</h2>
+<p>After implementing numerous optimisations, the performance between the original
+unoptimised and newly optimsied code is compared with particle counts ranging
+from 128 to 16,384 (doubling at each step). As shown in the table below, the
+runtime exhibited a superlinear increase, primarily due to growing array sizes
+exceeding lower cache levels, leading to higher memory access latency. The
+optimised scaling results, demonstrate significant improvements across all
+particle counts. Notably, the application can now simulate four times as many
+particles within roughly the same duration.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Particle Count</th>
+          <th>Unoptimised Time (s)</th>
+          <th>Optimised Time (s)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>128</td>
+          <td>0.1068</td>
+          <td>0.00512</td>
+      </tr>
+      <tr>
+          <td>256</td>
+          <td>0.3238</td>
+          <td>0.01973</td>
+      </tr>
+      <tr>
+          <td>512</td>
+          <td>1.1180</td>
+          <td>0.07823</td>
+      </tr>
+      <tr>
+          <td>1024</td>
+          <td>4.2282</td>
+          <td>0.27985</td>
+      </tr>
+      <tr>
+          <td>2048</td>
+          <td>19.2267</td>
+          <td>1.09915</td>
+      </tr>
+      <tr>
+          <td>4096</td>
+          <td>77.5005</td>
+          <td>4.38526</td>
+      </tr>
+      <tr>
+          <td>8192</td>
+          <td>322.3570</td>
+          <td>16.06</td>
+      </tr>
+      <tr>
+          <td>16384</td>
+          <td>1077.3330</td>
+          <td>64.00</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Unoptimised</th>
+          <th>Optimised</th>
+          <th>Improvement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Elapsed Time (s)</td>
+          <td>67.553</td>
+          <td>25.618</td>
+          <td>+2.64x</td>
+      </tr>
+      <tr>
+          <td>CPU Time (s)</td>
+          <td>64.493</td>
+          <td>24.205</td>
+          <td>+2.66x</td>
+      </tr>
+      <tr>
+          <td>Memory Bound (%)</td>
+          <td>34.9</td>
+          <td>13.2</td>
+          <td>+2.64x</td>
+      </tr>
+      <tr>
+          <td>L1</td>
+          <td>6.8</td>
+          <td>18.2</td>
+          <td>+2.68x</td>
+      </tr>
+      <tr>
+          <td>L2</td>
+          <td>2.5</td>
+          <td>2.3</td>
+          <td>+1.09x</td>
+      </tr>
+      <tr>
+          <td>L3</td>
+          <td>1.6</td>
+          <td>0.0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>DRAM Bound (%)</td>
+          <td>13.7</td>
+          <td>0.0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Store Bound (%)</td>
+          <td>17.1</td>
+          <td>0.0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Loads</td>
+          <td>228,405,133,696</td>
+          <td>21,991,521, 297</td>
+          <td>+10.39x</td>
+      </tr>
+      <tr>
+          <td>Stores</td>
+          <td>100,015,973,815</td>
+          <td>3,206, 480,225</td>
+          <td>+31.19x</td>
+      </tr>
+      <tr>
+          <td>LLC Misses</td>
+          <td>502,811,142</td>
+          <td>0</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>Avg. Latency (cycles)</td>
+          <td>20</td>
+          <td>9</td>
+          <td>+2.22x</td>
+      </tr>
+  </tbody>
+</table>
+<p>The final <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted --> function is shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> hit_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> step <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; step <span style="color:#f92672">&lt;=</span> count; <span style="color:#f92672">++</span>step) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;timestep %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, step);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;collisions %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, hit_count);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// set the viscosity term in the force calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// add the wind term in the force calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> px <span style="color:#f92672">=</span> pos[i].x, py <span style="color:#f92672">=</span> pos[i].y, pz <span style="color:#f92672">=</span> pos[i].z;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> vx <span style="color:#f92672">=</span> velo[i].x, vy <span style="color:#f92672">=</span> velo[i].y, vz <span style="color:#f92672">=</span> velo[i].z;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> gravity <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> central_mass;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(px<span style="color:#f92672">*</span>px <span style="color:#f92672">+</span> py<span style="color:#f92672">*</span>py <span style="color:#f92672">+</span> pz<span style="color:#f92672">*</span>pz);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> r_pow_3 <span style="color:#f92672">=</span> r <span style="color:#f92672">*</span> r <span style="color:#f92672">*</span> r;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vx <span style="color:#f92672">+</span> wind.x);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fy <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vy <span style="color:#f92672">+</span> wind.y);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fz <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vz <span style="color:#f92672">+</span> wind.z);
+</span></span><span style="display:flex;"><span>        f[i].x <span style="color:#f92672">=</span> fx <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> px <span style="color:#f92672">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>        f[i].y <span style="color:#f92672">=</span> fy <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> py <span style="color:#f92672">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>        f[i].z <span style="color:#f92672">=</span> fz <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> pz <span style="color:#f92672">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add pairwise forces
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dx <span style="color:#f92672">=</span> pos[i].x <span style="color:#f92672">-</span> pos[j].x;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dy <span style="color:#f92672">=</span> pos[i].y <span style="color:#f92672">-</span> pos[j].y;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dz <span style="color:#f92672">=</span> pos[i].z <span style="color:#f92672">-</span> pos[j].z;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> delta_r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy <span style="color:#f92672">+</span> dz <span style="color:#f92672">*</span> dz);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> size <span style="color:#f92672">=</span> radius[i] <span style="color:#f92672">+</span> radius[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> gravity <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> mass[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> inv_r3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (delta_r <span style="color:#f92672">*</span> delta_r <span style="color:#f92672">*</span> delta_r);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> F <span style="color:#f92672">=</span> Wv <span style="color:#f92672">*</span> inv_r3;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dx , fy <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dy , fz <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dz;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> <span style="color:#a6e22e">copysign</span> (<span style="color:#ae81ff">1.0</span>, size <span style="color:#f92672">-</span> delta_r);
+</span></span><span style="display:flex;"><span>            hit_count <span style="color:#f92672">+=</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>            f[i].x <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fx;
+</span></span><span style="display:flex;"><span>            f[i].y <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fy;
+</span></span><span style="display:flex;"><span>            f[i].z <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fz;
+</span></span><span style="display:flex;"><span>            f[j].x <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fx;
+</span></span><span style="display:flex;"><span>            f[j].y <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fy;
+</span></span><span style="display:flex;"><span>            f[j].z <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fz;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// update positions and velocities
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        pos[i].x <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].x;
+</span></span><span style="display:flex;"><span>        pos[i].y <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].y;
+</span></span><span style="display:flex;"><span>        pos[i].z <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].z;
+</span></span><span style="display:flex;"><span>        velo[i].x <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].x <span style="color:#f92672">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>        velo[i].y <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].y <span style="color:#f92672">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>        velo[i].z <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].z <span style="color:#f92672">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>collisions <span style="color:#f92672">=</span> hit_count;
+</span></span></code></pre></div><p>Additional optimisations could be implemented in the future to further reduce
+the runtime including manual SIMD vectorisation as well as multi-threading with
+OpenMP.</p>
+<p>Full source code including the unoptimised and newly optimised version is
+available on <a href="https://github.com/ZOulhadj/performance-programming" target="_blank">GitHub</a>.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#problem-statement">Problem Statement</a></li>
+    <li><a href="#hardware-and-tools">Hardware and Tools</a></li>
+    <li><a href="#compilation">Compilation</a></li>
+    <li><a href="#correctness-testing">Correctness Testing</a></li>
+    <li><a href="#preliminary-performance-analysis">Preliminary Performance Analysis</a></li>
+    <li><a href="#code-optimisations">Code Optimisations</a>
+      <ul>
+        <li><a href="#loop-fusion">Loop Fusion</a></li>
+        <li><a href="#loop-interchange">Loop Interchange</a></li>
+        <li><a href="#algebraic-simplification">Algebraic Simplification</a></li>
+        <li><a href="#redundant-memory-allocations">Redundant Memory Allocations</a></li>
+        <li><a href="#branchless-sign">Branchless Sign</a></li>
+      </ul>
+    </li>
+    <li><a href="#results">Results</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

@@ -37,6 +37,20 @@
       <description></description>
     </item>
     <item>
+      <title>Hpc</title>
+      <link>//localhost:1313/tags/hpc/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/hpc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Masters</title>
+      <link>//localhost:1313/tags/masters/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/masters/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Openmp</title>
       <link>//localhost:1313/tags/openmp/</link>
       <pubDate>Fri, 29 Nov 2024 00:00:00 +0000</pubDate>

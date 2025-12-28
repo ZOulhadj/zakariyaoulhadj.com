@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Zakariya Oulhadj</title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on Zakariya Oulhadj</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 04 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimising a Molecular Dynamics Application</title>
+      <link>//localhost:1313/posts/optimising-molecular-dynamics/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/optimising-molecular-dynamics/</guid>
+      <description>&lt;p&gt;&lt;em&gt;The full source code is available on &lt;a href=&#34;https://github.com/ZOulhadj/performance-programming&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;&#xA;&lt;p&gt;The second part of the Performance Programming module (&lt;a href=&#34;http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11009.htm&#34; target=&#34;_blank&#34;&gt;EPCC11009&lt;/a&gt;), was to&#xA;manually optimise a C-based molecular dynamics simulation code. The project&#xA;required the transformation of a suboptimal legacy codebase into a&#xA;high-performance solution, prioritising runtime reduction without compromising&#xA;the integrity of the simulation results. A key restriction imposed by the&#xA;project was that all optimisations must be done using a single thread i.e no&#xA;multi-threading.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
