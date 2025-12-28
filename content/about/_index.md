@@ -27,7 +27,7 @@ system.
 ## Skills {#skills}
 
 -   **Operating Systems**: Linux, Windows, macOS
--   **Programming Languages**: C11, C++23, Zig, Python
+-   **Programming Languages**: C11, C++23, Zig, Python, GLSL, HLSL
 -   **APIs**: Win32, OpenGL 4.6, Vulkan 1.3, MPI, OpenMP
 -   **Tools**: GDB, RenderDoc, Intel VTune, CrayPat, Scalasca, Linaro Forge
 -   **Interests**: Rendering Engine Architecture, Performance Benchmarking and
