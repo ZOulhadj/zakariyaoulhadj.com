@@ -4,7 +4,7 @@ author = ["Zakariya Oulhadj"]
 draft = false
 +++
 
-Hi, I'm ****Zakariya Oulhadj**** 👋🏼
+Hi, I'm ****Zakariya Oulhadj**** (Zak) 👋🏼
 
 An aspiring software engineer passionate about low-level programming and
 high-performance design. I specialise in **C** and **C++** with experience in **Python** as
