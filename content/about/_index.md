@@ -7,10 +7,10 @@ draft = false
 Hi, I'm ****Zakariya Oulhadj**** 👋🏼
 
 An aspiring software engineer passionate about low-level programming and
-high-performance design. I specialise in **C** and **C++**, with over six years of
-experience across these and **Python**. My main interests include **computer graphics,
-rendering engine architecture, and systems programming**, where I focus on
-building efficient software from first principles.
+high-performance design. I specialise in **C** and **C++** with experience in Python as
+well. My main interests include **computer graphics, rendering engine
+architecture, and systems programming**, where I focus on building efficient
+software from first principles.
 
 Recently graduated with a distinction in **High-Performance Computing (M.Sc.)** from
 the [University of Edinburgh](https://www.ed.ac.uk) and currently based in London, UK. For further
