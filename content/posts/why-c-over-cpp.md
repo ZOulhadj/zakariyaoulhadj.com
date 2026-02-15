@@ -1,9 +1,9 @@
 +++
 title = "Why I prefer C instead of C++"
 author = ["Zakariya Oulhadj"]
-date = 2026-10-10
+date = 2026-02-10
 tags = ["c", "cpp"]
-draft = false
+draft = true
 +++
 
 **Disclaimer**: This blog post is meant to be a light hearted rant/discussion on
