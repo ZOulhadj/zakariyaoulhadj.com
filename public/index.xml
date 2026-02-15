@@ -6,8 +6,15 @@
     <description>Recent content on Zakariya Oulhadj</description>
     <generator>Hugo</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 04 Oct 2025 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I prefer C instead of C&#43;&#43;</title>
+      <link>//localhost:1313/posts/why-c-over-cpp/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/why-c-over-cpp/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This blog post is meant to be a light hearted rant/discussion on&#xA;some of C++&amp;rsquo;s pitfalls and is highly opinionated. I&amp;rsquo;m sure many will attempt to&#xA;find flaws in my arguments so take everything with a grain of salt. End of the&#xA;day, you can program in any language you like, just remember to keep things&#xA;simple.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;TLDR&lt;/strong&gt;:&lt;/em&gt; Only gigachads write in C.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Very early on&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Casey Muratori (Granny3D, Handmade Hero)&lt;/li&gt;&#xA;&lt;li&gt;Johnathan Blow (Braid, The Witness)&lt;/li&gt;&#xA;&lt;li&gt;Sean Barret (Author of STB libraries)&lt;/li&gt;&#xA;&lt;li&gt;Ryan Fluerer (Author of RAD Debugger)&lt;/li&gt;&#xA;&lt;li&gt;Eskil Steenberg&lt;/li&gt;&#xA;&lt;li&gt;Shawn McGrath&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Is the pixel an object or is it a group of objects? Is there a container? Do I&#xA;have to ask a factory to get me a color?&amp;rdquo;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Real-Time Rendering Engine</title>
       <link>//localhost:1313/projects/real-time-rendering-engine/</link>
@@ -42,6 +49,13 @@
       <pubDate>Wed, 27 Nov 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/projects/mpi-cellular-automaton/</guid>
       <description>&lt;p&gt;2D cellular automaton decomposition across MPI processes. Developed as part of&#xA;the EPCC11002 course on the Cirrus supercomputer.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ZOulhadj/cellular-automaton&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenMP Thread Queue Contention Analysis</title>
+      <link>//localhost:1313/posts/omp-thread-contention/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/omp-thread-contention/</guid>
+      <description>&lt;p&gt;The full source code is available on &lt;a href=&#34;https://github.com/ZOulhadj/omp-performance&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;&#xA;&lt;p&gt;We were provided with two codes which implement the same algorithm in two&#xA;different ways. The algorithm is an adaptive quadrature method that computes the&#xA;integral of a function on a closed interval using a divide-and-conquer method.&#xA;The algorithm starts by applying two quadrature rules (3-point and 5-point&#xA;Simpson&amp;rsquo;s rules) to the whole interval. If the difference between the integral&#xA;estimates from the two rules is small enough (or the interval is too short), the&#xA;result in added to the total integral estimate. If it is not small enough, the&#xA;interval is split into two equal halves, and the method is applied recursively&#xA;to each half. In the case supplied, evaluating the function requires the&#xA;solution of an ODE (ordinary differential equation) which is relatively&#xA;expensive in time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vulkan Model Viewer and Exporter</title>

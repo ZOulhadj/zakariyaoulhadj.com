@@ -105,7 +105,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.850d436f7ae2026318ad10cb91c10ceafaad03e3487433c8b40f68bdfff1613f.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.925a055c376f5667f41dcde99d80ac069eec570e25f7349bca6b7d2e0f9c37f0.css">
 
 
     
@@ -240,6 +240,8 @@
                 
                         
                 
+                        
+                
             
         
         
@@ -288,6 +290,8 @@
                 
                         
                 
+                        
+                
             
         
         
@@ -313,6 +317,8 @@
                 
             
                 
+                
+                        
                 
                         
                 
@@ -400,7 +406,7 @@
         <p class="footnote">
 powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
     <br>
-    &copy; 2025 Zakariya Oulhadj. All rights reserved.
+    &copy; 2026 Zakariya Oulhadj. All rights reserved.
 </p>
 
   </div>
@@ -486,7 +492,7 @@ These flags are, therefore, used for compiling the code using <!-- raw HTML omit
 targeting the Intel Broadwell architecture with the optimisation level
 <!-- raw HTML omitted --><code>-O3</code><!-- raw HTML omitted -->. Additionally, the program is configured to run solely on a single
 thread as the code modifications focused on improving the serial performance.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>icx -Wall -axBROADWELL -march=broadwell -mtune=broadwell -O3 -ipo -qoverride -limits
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>icx -Wall -axBROADWELL -march=broadwell -mtune=broadwell -O3 -ipo -qoverride -limits
 </span></span></code></pre></div><h2 id="correctness-testing">Correctness Testing</h2>
 <p>The application was executed on Cirrus using the Slurm workload manager
 (v22.05.11). Performance analysis was conducted with Intel VTune 2024.0.0
@@ -536,7 +542,7 @@ the program with the <!-- raw HTML omitted --><code>-ggdb3</code><!-- raw HTML o
 (637,960,192 bytes) were allocated across 9 blocks. The output indicated that
 none of these blocks, allocated through calloc, were freed before the program
 terminated, resulting in memory leaks.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>valgrind --leak -check=full --show -leak -kinds=all --track -origins=yes
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>valgrind --leak -check=full --show -leak -kinds=all --track -origins=yes
 </span></span><span style="display:flex;"><span>--verbose ./ build/md
 </span></span></code></pre></div><h2 id="code-optimisations">Code Optimisations</h2>
 <p>Based on the performance results obtained through profiling, this section
@@ -554,22 +560,22 @@ well as the central mass distance to be combined. This is possible as each
 function iterates over <!-- raw HTML omitted --><code>Ndim</code><!-- raw HTML omitted --> times with this initial fusing of loops shown
 below. Furthermore, instead of setting each value to zero for the r array, this
 can be replaced with a call to <!-- raw HTML omitted --><code>memset</code><!-- raw HTML omitted --> before the first loop.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memset</span>(r, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>) <span style="color:#f92672">*</span> Nbody);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vis_forces</span>(Nbody , f[i], vis , velo[i]);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wind_forces</span>(Nbody , f[i], vis , wind[i]);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">add_norms</span>(Nbody , r, pos[i]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#feacd0">memset</span>(r, <span style="color:#00bcff">0</span>, <span style="color:#b6a0ff">sizeof</span>(<span style="color:#6ae4b9">double</span>) <span style="color:#00d3d0">*</span> Nbody);
+</span></span><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Ndim; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#feacd0">vis_forces</span>(Nbody , f[i], vis , velo[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#feacd0">wind_forces</span>(Nbody , f[i], vis , wind[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#feacd0">add_norms</span>(Nbody , r, pos[i]);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Each function separately loops over the <!-- raw HTML omitted --><code>Nbody</code><!-- raw HTML omitted --> array, which can be avoided
 by extracting the code of each function out directly into the <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted -->
 function, reducing the <!-- raw HTML omitted --><code>Nbody</code><!-- raw HTML omitted --> iteration count by a third.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">memset</span>(r, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">double</span>) <span style="color:#f92672">*</span> Nbody);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> velo[i][j];       <span style="color:#75715e">// vis_forces()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        f[i][j] <span style="color:#f92672">=</span> f[i][j] <span style="color:#f92672">-</span> vis[j] <span style="color:#f92672">*</span> wind[i]; <span style="color:#75715e">// wind_forces()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        r[j] <span style="color:#f92672">+=</span> (pos[i][j] <span style="color:#f92672">*</span> pos[i][j]);      <span style="color:#75715e">// add_norms()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#feacd0">memset</span>(r, <span style="color:#00bcff">0</span>, <span style="color:#b6a0ff">sizeof</span>(<span style="color:#6ae4b9">double</span>) <span style="color:#00d3d0">*</span> Nbody);
+</span></span><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Ndim; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; j <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[j] <span style="color:#00d3d0">*</span> velo[i][j];       <span style="color:#a8a8a8">// vis_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>        f[i][j] <span style="color:#00d3d0">=</span> f[i][j] <span style="color:#00d3d0">-</span> vis[j] <span style="color:#00d3d0">*</span> wind[i]; <span style="color:#a8a8a8">// wind_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>        r[j] <span style="color:#00d3d0">+=</span> (pos[i][j] <span style="color:#00d3d0">*</span> pos[i][j]);      <span style="color:#a8a8a8">// add_norms()
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>At this stage, it was observed that looping over each dimension individually
 made it challenging to fuse loops due to dependencies such as the use of
@@ -580,20 +586,20 @@ transformation, eliminates the need for memset and allows the central force
 calculation to be combined into the force calculation loop.</p>
 <p><em>Whilst this is initially inefficient, we later change the memory layout of
 particles to better align with our accesses.</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> velo [<span style="color:#ae81ff">0</span>][i];       <span style="color:#75715e">// viscosity
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">=</span> f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-</span> vis[i] <span style="color:#f92672">*</span> wind [<span style="color:#ae81ff">0</span>]; <span style="color:#75715e">// wind
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// X and Y here ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
-</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">0</span>][i]);
-</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">1</span>][i]);
-</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">+=</span> (pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">2</span>][i]);
-</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(r[i]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[i] <span style="color:#00d3d0">*</span> velo [<span style="color:#00bcff">0</span>][i];       <span style="color:#a8a8a8">// viscosity
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">=</span> f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">-</span> vis[i] <span style="color:#00d3d0">*</span> wind [<span style="color:#00bcff">0</span>]; <span style="color:#a8a8a8">// wind
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    <span style="color:#a8a8a8">// X and Y here ...
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0.0</span>;
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#00d3d0">+=</span> (pos [<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">0</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#00d3d0">+=</span> (pos [<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">1</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#00d3d0">+=</span> (pos [<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">2</span>][i]);
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(r[i]);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">0</span>][i], r[i]);
-</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">1</span>][i], r[i]);
-</span></span><span style="display:flex;"><span>    f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central , pos [<span style="color:#ae81ff">2</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>    f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">-=</span> <span style="color:#feacd0">forces</span>(G <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> M_central , pos [<span style="color:#00bcff">0</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>    f[<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">-=</span> <span style="color:#feacd0">forces</span>(G <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> M_central , pos [<span style="color:#00bcff">1</span>][i], r[i]);
+</span></span><span style="display:flex;"><span>    f[<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">-=</span> <span style="color:#feacd0">forces</span>(G <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> M_central , pos [<span style="color:#00bcff">2</span>][i], r[i]);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>With this change in place, further analysis revealed that calculating the
 pairwise and normalised separation vector can be fused into the pairwise
@@ -602,30 +608,30 @@ pairs being identical to that of the inner for-loop of the adding of pairwise
 forces <!-- raw HTML omitted --><code>int j = i + 1; j &lt; Nbody; ++j</code><!-- raw HTML omitted -->. Therefore, the <!-- raw HTML omitted --><code>Npair</code><!-- raw HTML omitted --> loop can
 be removed and placed in the innermost loop, resulting in fewer additional
 iterations needed.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// For separation for each dimension
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        delta_pos [<span style="color:#ae81ff">0</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">0</span>][j];
-</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#ae81ff">1</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">1</span>][j];
-</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#ae81ff">2</span>][k] <span style="color:#f92672">=</span> pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-</span> pos [<span style="color:#ae81ff">2</span>][j];
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#6ae4b9">int</span> k <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> i <span style="color:#00d3d0">+</span> <span style="color:#00bcff">1</span>; j <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a8a8a8">// For separation for each dimension
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>        delta_pos [<span style="color:#00bcff">0</span>][k] <span style="color:#00d3d0">=</span> pos [<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">-</span> pos [<span style="color:#00bcff">0</span>][j];
+</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#00bcff">1</span>][k] <span style="color:#00d3d0">=</span> pos [<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">-</span> pos [<span style="color:#00bcff">1</span>][j];
+</span></span><span style="display:flex;"><span>        delta_pos [<span style="color:#00bcff">2</span>][k] <span style="color:#00d3d0">=</span> pos [<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">-</span> pos [<span style="color:#00bcff">2</span>][j];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Squared norm calculation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        delta_r[k] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
-</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">0</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">0</span>][k]);
-</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">1</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">1</span>][k]);
-</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">+=</span> (delta_pos [<span style="color:#ae81ff">2</span>][k] <span style="color:#f92672">*</span> delta_pos [<span style="color:#ae81ff">2</span>][k]);
-</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(delta_r[k]);
+</span></span><span style="display:flex;"><span>        <span style="color:#a8a8a8">// Squared norm calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>        delta_r[k] <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0.0</span>;
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#00d3d0">+=</span> (delta_pos [<span style="color:#00bcff">0</span>][k] <span style="color:#00d3d0">*</span> delta_pos [<span style="color:#00bcff">0</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#00d3d0">+=</span> (delta_pos [<span style="color:#00bcff">1</span>][k] <span style="color:#00d3d0">*</span> delta_pos [<span style="color:#00bcff">1</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#00d3d0">+=</span> (delta_pos [<span style="color:#00bcff">2</span>][k] <span style="color:#00d3d0">*</span> delta_pos [<span style="color:#00bcff">2</span>][k]);
+</span></span><span style="display:flex;"><span>        delta_r[k] <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(delta_r[k]);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Flip forces ...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (delta_r[k] <span style="color:#f92672">&gt;=</span> size) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a8a8a8">// Flip forces ...
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>        <span style="color:#b6a0ff">if</span> (delta_r[k] <span style="color:#00d3d0">&gt;=</span> size) {
 </span></span><span style="display:flex;"><span>            ...
 </span></span></code></pre></div><p>The last loop fusion that can be applied is at the end of the evolve function,
 where the position and velocity can also be combined.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>        pos[j][i] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[j][i];
-</span></span><span style="display:flex;"><span>        velo[j][i] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[j][i] <span style="color:#f92672">/</span> mass[i]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; j <span style="color:#00d3d0">&lt;</span> Ndim; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>        pos[j][i] <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> velo[j][i];
+</span></span><span style="display:flex;"><span>        velo[j][i] <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> (f[j][i] <span style="color:#00d3d0">/</span> mass[i]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="loop-interchange">Loop Interchange</h3>
@@ -643,24 +649,24 @@ memory layout is later changed to an Array of Structures (AOS).</p>
 
 <p>The loops that calculates the central force, can be swapped so that accesses
 into the <!-- raw HTML omitted --><code>f</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>pos</code><!-- raw HTML omitted --> arrays are continuous in memory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#f92672">-=</span> <span style="color:#a6e22e">forces</span>(G <span style="color:#f92672">*</span> mass[j] <span style="color:#f92672">*</span> M_central , pos[i][j], r[j]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Ndim; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; j <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>        f[i][j] <span style="color:#00d3d0">-=</span> <span style="color:#feacd0">forces</span>(G <span style="color:#00d3d0">*</span> mass[j] <span style="color:#00d3d0">*</span> M_central , pos[i][j], r[j]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This can also be applied to the updating of positions and velocities:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Ndim; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> Nbody; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>        pos[i][j] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i][j];
-</span></span><span style="display:flex;"><span>        velo[i][j] <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i][j] <span style="color:#f92672">/</span> mass[j]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> Ndim; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; j <span style="color:#00d3d0">&lt;</span> Nbody; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>        pos[i][j] <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> velo[i][j];
+</span></span><span style="display:flex;"><span>        velo[i][j] <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> (f[i][j] <span style="color:#00d3d0">/</span> mass[j]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="algebraic-simplification">Algebraic Simplification</h3>
 <p>The code’s performance and readability can be substantially improved by performing algebraic
 simplification. Firstly, the code shown previously:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> velo[i][j];       <span style="color:#75715e">// vis_forces()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>f[i][j] <span style="color:#f92672">=</span> f[i][j] <span style="color:#f92672">-</span> vis[j] <span style="color:#f92672">*</span> wind[i]; <span style="color:#75715e">// wind_forces()
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>r[j] <span style="color:#f92672">+=</span> (pos[i][j] <span style="color:#f92672">*</span> pos[i][j]);      <span style="color:#75715e">// add_norms()
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[j] <span style="color:#00d3d0">*</span> velo[i][j];       <span style="color:#a8a8a8">// vis_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>f[i][j] <span style="color:#00d3d0">=</span> f[i][j] <span style="color:#00d3d0">-</span> vis[j] <span style="color:#00d3d0">*</span> wind[i]; <span style="color:#a8a8a8">// wind_forces()
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>r[j] <span style="color:#00d3d0">+=</span> (pos[i][j] <span style="color:#00d3d0">*</span> pos[i][j]);      <span style="color:#a8a8a8">// add_norms()
 </span></span></span></code></pre></div><p>can be simplified by combining the viscosity and wind terms into a single
 equation by applying the distributive property of multiplication: $ a ⋅ b +
 a ⋅ c = a ⋅ (b+c) $.</p>
@@ -670,12 +676,12 @@ combination of velocity $ v $ and wind vector $ w $. Additionally, this
 simplification more directly maps to a Fused Multiply-Add (FMA) instruction,
 enabling supported hardware to compute each component force in a single
 instruction.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[j] <span style="color:#f92672">*</span> (velo[i][j] <span style="color:#f92672">+</span> wind[i]);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>f[i][j] <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[j] <span style="color:#00d3d0">*</span> (velo[i][j] <span style="color:#00d3d0">+</span> wind[i]);
 </span></span></code></pre></div><p>Next, as the central mass distance calculation is fully fused, the r array is
 now redundant as this is the only location where this is calculated. Therefore,
 this can be changed to be entirely on the stack using a single double-precision
 variable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(pos_x<span style="color:#f92672">*</span>pos_x<span style="color:#f92672">+</span>pos_y<span style="color:#f92672">*</span>pos_y<span style="color:#f92672">+</span>pos_z<span style="color:#f92672">*</span>pos_z);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> r <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(pos_x<span style="color:#00d3d0">*</span>pos_x<span style="color:#00d3d0">+</span>pos_y<span style="color:#00d3d0">*</span>pos_y<span style="color:#00d3d0">+</span>pos_z<span style="color:#00d3d0">*</span>pos_z);
 </span></span></code></pre></div><p>As identified during profiling, the <!-- raw HTML omitted --><code>pow</code><!-- raw HTML omitted --> function caused significant
 bottlenecks, resulting in runtimes of over 20 minutes, likely due to needing to
 handle raising to any power. Since the code hardcodes raising to the third
@@ -683,12 +689,12 @@ power, the <!-- raw HTML omitted --><code>forces</code><!-- raw HTML omitted -->
 and the call to the <!-- raw HTML omitted --><code>pow</code><!-- raw HTML omitted --> function is replaced by three multiplications.
 Additionally, the <!-- raw HTML omitted --><code>Wv</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>r_pow_3</code><!-- raw HTML omitted --> are cached as the values do not
 change between the components.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// calculate central force
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> M_central;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> r_pow_3 <span style="color:#f92672">=</span> r<span style="color:#f92672">*</span>r<span style="color:#f92672">*</span>r;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">/</span> r_pow_3;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">/</span> r_pow_3;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">-=</span> Wv <span style="color:#f92672">*</span> pos [<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">/</span> r_pow_3;
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a8a8a8">// calculate central force
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span><span style="color:#6ae4b9">double</span> Wv <span style="color:#00d3d0">=</span> G <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> M_central;
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> r_pow_3 <span style="color:#00d3d0">=</span> r<span style="color:#00d3d0">*</span>r<span style="color:#00d3d0">*</span>r;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">-=</span> Wv <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">/</span> r_pow_3;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">-=</span> Wv <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">/</span> r_pow_3;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">-=</span> Wv <span style="color:#00d3d0">*</span> pos [<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">/</span> r_pow_3;
 </span></span></code></pre></div><p>Next, after fusing the pairwise separation and norm calculations into the
 addition of pairwise forces, it was initially observed that the runtime
 increased from 13 to 21.9 seconds per 100 iterations, likely due to the compiler
@@ -703,20 +709,20 @@ sign variable simplifies the code substantially as the forces do not need to be
 duplicated for the positive and negative forces. The updated pairwise particle
 calculation reduced runtime per 100 iterations to approximately 6.4 seconds on
 average.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> dx <span style="color:#f92672">=</span> pxi <span style="color:#f92672">-</span> pxj, dy <span style="color:#f92672">=</span> pyi <span style="color:#f92672">-</span> pyj, dz <span style="color:#f92672">=</span> pzi <span style="color:#f92672">-</span> pzj;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> delta_r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy <span style="color:#f92672">+</span> dz <span style="color:#f92672">*</span> dz);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> size <span style="color:#f92672">=</span> radius[i] <span style="color:#f92672">+</span> radius[j];
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> G <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> mass[j];
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> inv_r3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (delta_r <span style="color:#f92672">*</span> delta_r <span style="color:#f92672">*</span> delta_r);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> F <span style="color:#f92672">=</span> Wv <span style="color:#f92672">*</span> inv_r3;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dx, fy <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dy, fz <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dz;
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> dx <span style="color:#00d3d0">=</span> pxi <span style="color:#00d3d0">-</span> pxj, dy <span style="color:#00d3d0">=</span> pyi <span style="color:#00d3d0">-</span> pyj, dz <span style="color:#00d3d0">=</span> pzi <span style="color:#00d3d0">-</span> pzj;
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> delta_r <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(dx <span style="color:#00d3d0">*</span> dx <span style="color:#00d3d0">+</span> dy <span style="color:#00d3d0">*</span> dy <span style="color:#00d3d0">+</span> dz <span style="color:#00d3d0">*</span> dz);
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> size <span style="color:#00d3d0">=</span> radius[i] <span style="color:#00d3d0">+</span> radius[j];
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> Wv <span style="color:#00d3d0">=</span> G <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> mass[j];
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> inv_r3 <span style="color:#00d3d0">=</span> <span style="color:#00bcff">1.0</span> <span style="color:#00d3d0">/</span> (delta_r <span style="color:#00d3d0">*</span> delta_r <span style="color:#00d3d0">*</span> delta_r);
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> F <span style="color:#00d3d0">=</span> Wv <span style="color:#00d3d0">*</span> inv_r3;
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> fx <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dx, fy <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dy, fz <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dz;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> (delta_r <span style="color:#f92672">&gt;=</span> size) <span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1.0</span>;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fx; f[<span style="color:#ae81ff">0</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fx;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fy; f[<span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fy;
-</span></span><span style="display:flex;"><span>f[<span style="color:#ae81ff">2</span>][i] <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fz; f[<span style="color:#ae81ff">2</span>][j] <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fz;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">++</span>collisions;
+</span></span><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> sign <span style="color:#00d3d0">=</span> (delta_r <span style="color:#00d3d0">&gt;=</span> size) <span style="color:#00d3d0">?</span> <span style="color:#00d3d0">-</span><span style="color:#00bcff">1.0</span> <span style="color:#00d3d0">:</span> <span style="color:#00bcff">1.0</span>;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">0</span>][i] <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fx; f[<span style="color:#00bcff">0</span>][j] <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fx;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">1</span>][i] <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fy; f[<span style="color:#00bcff">1</span>][j] <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fy;
+</span></span><span style="display:flex;"><span>f[<span style="color:#00bcff">2</span>][i] <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fz; f[<span style="color:#00bcff">2</span>][j] <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fz;
+</span></span><span style="display:flex;"><span><span style="color:#b6a0ff">if</span> (sign <span style="color:#00d3d0">&gt;</span> <span style="color:#00bcff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#00d3d0">++</span>collisions;
 </span></span></code></pre></div><p>Additionally, the <!-- raw HTML omitted --><code>k</code><!-- raw HTML omitted --> increment variable can be removed since <!-- raw HTML omitted --><code>Ndim</code><!-- raw HTML omitted -->
 is no longer used. Likewise, the <!-- raw HTML omitted --><code>hascollided</code><!-- raw HTML omitted --> variable is unnecessary, as
 collisions can be incremented directly.</p>
@@ -741,12 +747,12 @@ the particle index ($ 0 ≤ i &lt; N $ body) and $ d $ is the dimension (1, 2, 3
 revealed memory leaks, prompting the addition calls to <!-- raw HTML omitted --><code>free</code><!-- raw HTML omitted --> to ensure
 that all memory allocated via <!-- raw HTML omitted --><code>calloc</code><!-- raw HTML omitted --> is properly freed at the end of the
 program.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(mass);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(vis);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(radius);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(f);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(pos);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">free</span>(velo);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#feacd0">free</span>(mass);
+</span></span><span style="display:flex;"><span><span style="color:#feacd0">free</span>(vis);
+</span></span><span style="display:flex;"><span><span style="color:#feacd0">free</span>(radius);
+</span></span><span style="display:flex;"><span><span style="color:#feacd0">free</span>(f);
+</span></span><span style="display:flex;"><span><span style="color:#feacd0">free</span>(pos);
+</span></span><span style="display:flex;"><span><span style="color:#feacd0">free</span>(velo);
 </span></span></code></pre></div><h3 id="branchless-sign">Branchless Sign</h3>
 <p>Intel VTune revealed a significant portion of execution time was spent on the
 two if-statements within the pairwise addition suggesting slowdowns likely as a
@@ -757,8 +763,8 @@ result of branch misprediction.</p>
 <p>A branchless version of this can be implemented using the <!-- raw HTML omitted --><code>copysign</code><!-- raw HTML omitted -->
 function, reducing the runtime per 100 iterations from 5.94 seconds to 4.85
 seconds, resulting in a total execution time of 24.34 seconds.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> <span style="color:#a6e22e">copysign</span>(<span style="color:#ae81ff">1.0</span>, size <span style="color:#f92672">-</span> delta_r);
-</span></span><span style="display:flex;"><span>collisions <span style="color:#f92672">+=</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#6ae4b9">double</span> sign <span style="color:#00d3d0">=</span> <span style="color:#feacd0">copysign</span>(<span style="color:#00bcff">1.0</span>, size <span style="color:#00d3d0">-</span> delta_r);
+</span></span><span style="display:flex;"><span>collisions <span style="color:#00d3d0">+=</span> (sign <span style="color:#00d3d0">&gt;</span> <span style="color:#00bcff">0</span>);
 </span></span></code></pre></div><h2 id="results">Results</h2>
 <p>After implementing numerous optimisations, the performance between the original
 unoptimised and newly optimsied code is compared with particle counts ranging
@@ -904,62 +910,62 @@ particles within roughly the same duration.</p>
   </tbody>
 </table>
 <p>The final <!-- raw HTML omitted --><code>evolve</code><!-- raw HTML omitted --> function is shown below:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> hit_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> step <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; step <span style="color:#f92672">&lt;=</span> count; <span style="color:#f92672">++</span>step) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;timestep %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, step);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;collisions %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, hit_count);
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#6ae4b9">int</span> hit_count <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> step <span style="color:#00d3d0">=</span> <span style="color:#00bcff">1</span>; step <span style="color:#00d3d0">&lt;=</span> count; <span style="color:#00d3d0">++</span>step) {
+</span></span><span style="display:flex;"><span>    <span style="color:#feacd0">printf</span>(<span style="color:#79a8ff">&#34;timestep %d</span><span style="color:#79a8ff">\n</span><span style="color:#79a8ff">&#34;</span>, step);
+</span></span><span style="display:flex;"><span>    <span style="color:#feacd0">printf</span>(<span style="color:#79a8ff">&#34;collisions %d</span><span style="color:#79a8ff">\n</span><span style="color:#79a8ff">&#34;</span>, hit_count);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// set the viscosity term in the force calculation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// add the wind term in the force calculation
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> px <span style="color:#f92672">=</span> pos[i].x, py <span style="color:#f92672">=</span> pos[i].y, pz <span style="color:#f92672">=</span> pos[i].z;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> vx <span style="color:#f92672">=</span> velo[i].x, vy <span style="color:#f92672">=</span> velo[i].y, vz <span style="color:#f92672">=</span> velo[i].z;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> gravity <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> central_mass;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(px<span style="color:#f92672">*</span>px <span style="color:#f92672">+</span> py<span style="color:#f92672">*</span>py <span style="color:#f92672">+</span> pz<span style="color:#f92672">*</span>pz);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> r_pow_3 <span style="color:#f92672">=</span> r <span style="color:#f92672">*</span> r <span style="color:#f92672">*</span> r;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vx <span style="color:#f92672">+</span> wind.x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fy <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vy <span style="color:#f92672">+</span> wind.y);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> fz <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>vis[i] <span style="color:#f92672">*</span> (vz <span style="color:#f92672">+</span> wind.z);
-</span></span><span style="display:flex;"><span>        f[i].x <span style="color:#f92672">=</span> fx <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> px <span style="color:#f92672">/</span> r_pow_3);
-</span></span><span style="display:flex;"><span>        f[i].y <span style="color:#f92672">=</span> fy <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> py <span style="color:#f92672">/</span> r_pow_3);
-</span></span><span style="display:flex;"><span>        f[i].z <span style="color:#f92672">=</span> fz <span style="color:#f92672">-</span> (Wv <span style="color:#f92672">*</span> pz <span style="color:#f92672">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>    <span style="color:#a8a8a8">// set the viscosity term in the force calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    <span style="color:#a8a8a8">// add the wind term in the force calculation
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> px <span style="color:#00d3d0">=</span> pos[i].x, py <span style="color:#00d3d0">=</span> pos[i].y, pz <span style="color:#00d3d0">=</span> pos[i].z;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> vx <span style="color:#00d3d0">=</span> velo[i].x, vy <span style="color:#00d3d0">=</span> velo[i].y, vz <span style="color:#00d3d0">=</span> velo[i].z;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> Wv <span style="color:#00d3d0">=</span> gravity <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> central_mass;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> r <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(px<span style="color:#00d3d0">*</span>px <span style="color:#00d3d0">+</span> py<span style="color:#00d3d0">*</span>py <span style="color:#00d3d0">+</span> pz<span style="color:#00d3d0">*</span>pz);
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> r_pow_3 <span style="color:#00d3d0">=</span> r <span style="color:#00d3d0">*</span> r <span style="color:#00d3d0">*</span> r;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> fx <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[i] <span style="color:#00d3d0">*</span> (vx <span style="color:#00d3d0">+</span> wind.x);
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> fy <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[i] <span style="color:#00d3d0">*</span> (vy <span style="color:#00d3d0">+</span> wind.y);
+</span></span><span style="display:flex;"><span>        <span style="color:#6ae4b9">double</span> fz <span style="color:#00d3d0">=</span> <span style="color:#00d3d0">-</span>vis[i] <span style="color:#00d3d0">*</span> (vz <span style="color:#00d3d0">+</span> wind.z);
+</span></span><span style="display:flex;"><span>        f[i].x <span style="color:#00d3d0">=</span> fx <span style="color:#00d3d0">-</span> (Wv <span style="color:#00d3d0">*</span> px <span style="color:#00d3d0">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>        f[i].y <span style="color:#00d3d0">=</span> fy <span style="color:#00d3d0">-</span> (Wv <span style="color:#00d3d0">*</span> py <span style="color:#00d3d0">/</span> r_pow_3);
+</span></span><span style="display:flex;"><span>        f[i].z <span style="color:#00d3d0">=</span> fz <span style="color:#00d3d0">-</span> (Wv <span style="color:#00d3d0">*</span> pz <span style="color:#00d3d0">/</span> r_pow_3);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Add pairwise forces
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dx <span style="color:#f92672">=</span> pos[i].x <span style="color:#f92672">-</span> pos[j].x;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dy <span style="color:#f92672">=</span> pos[i].y <span style="color:#f92672">-</span> pos[j].y;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> dz <span style="color:#f92672">=</span> pos[i].z <span style="color:#f92672">-</span> pos[j].z;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> delta_r <span style="color:#f92672">=</span> <span style="color:#a6e22e">sqrt</span>(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy <span style="color:#f92672">+</span> dz <span style="color:#f92672">*</span> dz);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> size <span style="color:#f92672">=</span> radius[i] <span style="color:#f92672">+</span> radius[j];
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> Wv <span style="color:#f92672">=</span> gravity <span style="color:#f92672">*</span> mass[i] <span style="color:#f92672">*</span> mass[j];
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> inv_r3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (delta_r <span style="color:#f92672">*</span> delta_r <span style="color:#f92672">*</span> delta_r);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> F <span style="color:#f92672">=</span> Wv <span style="color:#f92672">*</span> inv_r3;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> fx <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dx , fy <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dy , fz <span style="color:#f92672">=</span> F <span style="color:#f92672">*</span> dz;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> sign <span style="color:#f92672">=</span> <span style="color:#a6e22e">copysign</span> (<span style="color:#ae81ff">1.0</span>, size <span style="color:#f92672">-</span> delta_r);
-</span></span><span style="display:flex;"><span>            hit_count <span style="color:#f92672">+=</span> (sign <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>            f[i].x <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fx;
-</span></span><span style="display:flex;"><span>            f[i].y <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fy;
-</span></span><span style="display:flex;"><span>            f[i].z <span style="color:#f92672">+=</span> sign <span style="color:#f92672">*</span> fz;
-</span></span><span style="display:flex;"><span>            f[j].x <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fx;
-</span></span><span style="display:flex;"><span>            f[j].y <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fy;
-</span></span><span style="display:flex;"><span>            f[j].z <span style="color:#f92672">-=</span> sign <span style="color:#f92672">*</span> fz;
+</span></span><span style="display:flex;"><span>    <span style="color:#a8a8a8">// Add pairwise forces
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> j <span style="color:#00d3d0">=</span> i <span style="color:#00d3d0">+</span> <span style="color:#00bcff">1</span>; j <span style="color:#00d3d0">&lt;</span> nbody; <span style="color:#00d3d0">++</span>j) {
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> dx <span style="color:#00d3d0">=</span> pos[i].x <span style="color:#00d3d0">-</span> pos[j].x;
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> dy <span style="color:#00d3d0">=</span> pos[i].y <span style="color:#00d3d0">-</span> pos[j].y;
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> dz <span style="color:#00d3d0">=</span> pos[i].z <span style="color:#00d3d0">-</span> pos[j].z;
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> delta_r <span style="color:#00d3d0">=</span> <span style="color:#feacd0">sqrt</span>(dx <span style="color:#00d3d0">*</span> dx <span style="color:#00d3d0">+</span> dy <span style="color:#00d3d0">*</span> dy <span style="color:#00d3d0">+</span> dz <span style="color:#00d3d0">*</span> dz);
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> size <span style="color:#00d3d0">=</span> radius[i] <span style="color:#00d3d0">+</span> radius[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> Wv <span style="color:#00d3d0">=</span> gravity <span style="color:#00d3d0">*</span> mass[i] <span style="color:#00d3d0">*</span> mass[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> inv_r3 <span style="color:#00d3d0">=</span> <span style="color:#00bcff">1.0</span> <span style="color:#00d3d0">/</span> (delta_r <span style="color:#00d3d0">*</span> delta_r <span style="color:#00d3d0">*</span> delta_r);
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> F <span style="color:#00d3d0">=</span> Wv <span style="color:#00d3d0">*</span> inv_r3;
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> fx <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dx , fy <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dy , fz <span style="color:#00d3d0">=</span> F <span style="color:#00d3d0">*</span> dz;
+</span></span><span style="display:flex;"><span>            <span style="color:#6ae4b9">double</span> sign <span style="color:#00d3d0">=</span> <span style="color:#feacd0">copysign</span> (<span style="color:#00bcff">1.0</span>, size <span style="color:#00d3d0">-</span> delta_r);
+</span></span><span style="display:flex;"><span>            hit_count <span style="color:#00d3d0">+=</span> (sign <span style="color:#00d3d0">&gt;</span> <span style="color:#00bcff">0</span>);
+</span></span><span style="display:flex;"><span>            f[i].x <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fx;
+</span></span><span style="display:flex;"><span>            f[i].y <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fy;
+</span></span><span style="display:flex;"><span>            f[i].z <span style="color:#00d3d0">+=</span> sign <span style="color:#00d3d0">*</span> fz;
+</span></span><span style="display:flex;"><span>            f[j].x <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fx;
+</span></span><span style="display:flex;"><span>            f[j].y <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fy;
+</span></span><span style="display:flex;"><span>            f[j].z <span style="color:#00d3d0">-=</span> sign <span style="color:#00d3d0">*</span> fz;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// update positions and velocities
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nbody; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>        pos[i].x <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].x;
-</span></span><span style="display:flex;"><span>        pos[i].y <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].y;
-</span></span><span style="display:flex;"><span>        pos[i].z <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> velo[i].z;
-</span></span><span style="display:flex;"><span>        velo[i].x <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].x <span style="color:#f92672">/</span> mass[i]);
-</span></span><span style="display:flex;"><span>        velo[i].y <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].y <span style="color:#f92672">/</span> mass[i]);
-</span></span><span style="display:flex;"><span>        velo[i].z <span style="color:#f92672">+=</span> dt <span style="color:#f92672">*</span> (f[i].z <span style="color:#f92672">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#a8a8a8">// update positions and velocities
+</span></span></span><span style="display:flex;"><span><span style="color:#a8a8a8"></span>    <span style="color:#b6a0ff">for</span> (<span style="color:#6ae4b9">int</span> i <span style="color:#00d3d0">=</span> <span style="color:#00bcff">0</span>; i <span style="color:#00d3d0">&lt;</span> nbody; <span style="color:#00d3d0">++</span>i) {
+</span></span><span style="display:flex;"><span>        pos[i].x <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> velo[i].x;
+</span></span><span style="display:flex;"><span>        pos[i].y <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> velo[i].y;
+</span></span><span style="display:flex;"><span>        pos[i].z <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> velo[i].z;
+</span></span><span style="display:flex;"><span>        velo[i].x <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> (f[i].x <span style="color:#00d3d0">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>        velo[i].y <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> (f[i].y <span style="color:#00d3d0">/</span> mass[i]);
+</span></span><span style="display:flex;"><span>        velo[i].z <span style="color:#00d3d0">+=</span> dt <span style="color:#00d3d0">*</span> (f[i].z <span style="color:#00d3d0">/</span> mass[i]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>collisions <span style="color:#f92672">=</span> hit_count;
+</span></span><span style="display:flex;"><span><span style="color:#00d3d0">*</span>collisions <span style="color:#00d3d0">=</span> hit_count;
 </span></span></code></pre></div><p>Additional optimisations could be implemented in the future to further reduce
 the runtime including manual SIMD vectorisation as well as multi-threading with
 OpenMP.</p>
@@ -971,7 +977,13 @@ available on <a href="https://github.com/ZOulhadj/performance-programming" targe
 <div class="footer">
     
 	    
+            <a class="previous-post" href="//localhost:1313/posts/omp-thread-contention/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>OpenMP Thread Queue Contention Analysis</a>
+        
 	    
+            <div class="next-post">
+                <a href="//localhost:1313/posts/why-c-over-cpp/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Why I prefer C instead of C++</a>
+            </div>
+        
     
 </div>
 

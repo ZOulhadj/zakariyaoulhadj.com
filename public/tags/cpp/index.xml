@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cpp on Zakariya Oulhadj</title>
+    <link>//localhost:1313/tags/cpp/</link>
+    <description>Recent content in Cpp on Zakariya Oulhadj</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I prefer C instead of C&#43;&#43;</title>
+      <link>//localhost:1313/posts/why-c-over-cpp/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/why-c-over-cpp/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This blog post is meant to be a light hearted rant/discussion on&#xA;some of C++&amp;rsquo;s pitfalls and is highly opinionated. I&amp;rsquo;m sure many will attempt to&#xA;find flaws in my arguments so take everything with a grain of salt. End of the&#xA;day, you can program in any language you like, just remember to keep things&#xA;simple.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;TLDR&lt;/strong&gt;:&lt;/em&gt; Only gigachads write in C.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Very early on&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Casey Muratori (Granny3D, Handmade Hero)&lt;/li&gt;&#xA;&lt;li&gt;Johnathan Blow (Braid, The Witness)&lt;/li&gt;&#xA;&lt;li&gt;Sean Barret (Author of STB libraries)&lt;/li&gt;&#xA;&lt;li&gt;Ryan Fluerer (Author of RAD Debugger)&lt;/li&gt;&#xA;&lt;li&gt;Eskil Steenberg&lt;/li&gt;&#xA;&lt;li&gt;Shawn McGrath&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Is the pixel an object or is it a group of objects? Is there a container? Do I&#xA;have to ask a factory to get me a color?&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
