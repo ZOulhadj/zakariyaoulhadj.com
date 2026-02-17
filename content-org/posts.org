@@ -77,7 +77,6 @@ time.
 
 @@ - Add image of command buffer recording then replaying.
 
-
 ** What should and shouldn't an RHI have?
 In many RHI designs, there is a tendency for high-level abstractions to 'leak'
 into the lower levels. Concepts like meshes and materials are frequent
@@ -487,7 +486,6 @@ the bind call is skipped entirely.
 
 - *Stateless Rendering* -
 
-
 ** Final Thoughts
 I hope this brief dive into my RHI architecture provides some value to others
 navigating the same "abstraction hell." While the system is still very much a
@@ -869,7 +867,6 @@ according to the blog post:
 Orthodox C++ (sometimes referred as C+) is minimal subset of C++ that improves
 C, but avoids all unnecessary things from so called Modern C++.
 #+END_QUOTE
-
 
 * Optimising a Molecular Dynamics Application                 :c:hpc:masters:
 :PROPERTIES:
@@ -1370,7 +1367,6 @@ available on [[https://github.com/ZOulhadj/performance-programming][GitHub]].
 # :EXPORT_FILE_NAME: mpi-cellular-automaton
 # :EXPORT_DATE: 2025-11-21
 # :END:
-
 
 * OpenMP Thread Queue Contention Analysis                     :c:hpc:masters:
 :PROPERTIES:
