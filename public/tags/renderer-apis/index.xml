@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Renderer-Apis on Zakariya Oulhadj</title>
-    <link>//localhost:1313/tags/renderer-apis/</link>
+    <link>http://localhost:1313/tags/renderer-apis/</link>
     <description>Recent content in Renderer-Apis on Zakariya Oulhadj</description>
     <generator>Hugo</generator>
     <language>en-gb</language>
     <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/renderer-apis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/renderer-apis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Designing a Graphics Renderer Hardware Interface</title>
-      <link>//localhost:1313/posts/rhi-design/</link>
+      <link>http://localhost:1313/posts/rhi-design/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/rhi-design/</guid>
+      <guid>http://localhost:1313/posts/rhi-design/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Before we can talk about Renderer Hardware Interfaces we must first understand&#xA;the goal of Graphics APIs.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunatly, if you want your graphics application to run on many different&#xA;devices whether thats on PCs, Consoles, due to the vast number of different&#xA;graphics APIs some form of abstraction is required. For instance, take a look at&#xA;the table below which shows different graphics APIs and on what platforms they&#xA;are supported:&lt;/p&gt;</description>
     </item>
   </channel>

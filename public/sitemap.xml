@@ -2,92 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/tags/c/</loc>
+    <loc>http://localhost:1313/tags/c/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/cpp/</loc>
+    <loc>http://localhost:1313/tags/cpp/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/rhi-design/</loc>
+    <loc>http://localhost:1313/posts/rhi-design/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/renderer-apis/</loc>
+    <loc>http://localhost:1313/tags/renderer-apis/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/rendering/</loc>
+    <loc>http://localhost:1313/tags/rendering/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/rhi/</loc>
+    <loc>http://localhost:1313/tags/rhi/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/why-c-over-cpp/</loc>
+    <loc>http://localhost:1313/posts/why-c-over-cpp/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/</loc>
+    <loc>http://localhost:1313/projects/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/real-time-rendering-engine/</loc>
+    <loc>http://localhost:1313/projects/real-time-rendering-engine/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/rendering-engine/</loc>
+    <loc>http://localhost:1313/tags/rendering-engine/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/dissertation/</loc>
+    <loc>http://localhost:1313/tags/dissertation/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/dissertation/</loc>
+    <loc>http://localhost:1313/projects/dissertation/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/university-of-edinburgh/</loc>
+    <loc>http://localhost:1313/tags/university-of-edinburgh/</loc>
     <lastmod>2025-08-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/hpc/</loc>
+    <loc>http://localhost:1313/tags/hpc/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/masters/</loc>
+    <loc>http://localhost:1313/tags/masters/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/optimising-molecular-dynamics/</loc>
+    <loc>http://localhost:1313/posts/optimising-molecular-dynamics/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/openmp/</loc>
+    <loc>http://localhost:1313/tags/openmp/</loc>
     <lastmod>2024-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/openmp-threading/</loc>
+    <loc>http://localhost:1313/projects/openmp-threading/</loc>
     <lastmod>2024-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/cellular-automaton/</loc>
+    <loc>http://localhost:1313/tags/cellular-automaton/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/mpi/</loc>
+    <loc>http://localhost:1313/tags/mpi/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/mpi-cellular-automaton/</loc>
+    <loc>http://localhost:1313/projects/mpi-cellular-automaton/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/omp-thread-contention/</loc>
+    <loc>http://localhost:1313/posts/omp-thread-contention/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/c&#43;&#43;/</loc>
+    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/vulkan/</loc>
+    <loc>http://localhost:1313/tags/vulkan/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/projects/vulkan-model-viewer-and-exporter/</loc>
+    <loc>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>//localhost:1313/series/</loc>
+    <loc>http://localhost:1313/series/</loc>
   </url>
 </urlset>
