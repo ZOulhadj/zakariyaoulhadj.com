@@ -1,14 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
 
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-It.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-LightIt.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-ExtraLightIt.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-BoldIt.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-BlackIt.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 body {
-    font-size: 1rem;
+    font-family: "Source Sans Pro";
+    font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Source Sans Pro";
+    font-weight: 600;
 }
 
 code, pre {
-    font-family: "Cascadia Code", "JetBrains Mono", "Fira Code", "Courier New", monospace !important;
+    font-family: "Cascadia Code", monospace;
     font-weight: normal;
-    font-variant-ligatures: common-ligatures; /* Optional: enables ligatures if your font supports them */
-    font-size: 0.9em; /* Optional: code often looks larger than body text */
+    font-variant-ligatures: common-ligatures;
+    font-size: 0.80em;
+}
+
+.brand h1 {
+    font-family: "Source Sans Pro";
 }
 
 .content {
@@ -46,11 +136,14 @@ a[href^="http"]:not([href*="zakariyaoulhadj.com"]):not([href*="localhost"]):not(
 }
 
 .sidebar-about h1 {
-  font-size: 1.2em;
-  font-family: "fira sans", monospace;
-  font-weight: bold;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .sidebar-about .lead {
     font-size: .75em;
+}
+
+.toc-wrapper {
+    font-family: "Source Sans Pro";
 }

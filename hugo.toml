@@ -7,7 +7,6 @@ theme = 'poison'
   [caches.images]
     dir = ':cacheDir/images'
 
-
 [markup]
   [markup.highlight]
     anchorLineNos = false

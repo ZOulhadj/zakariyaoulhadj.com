@@ -4,24 +4,20 @@ author = ["Zakariya Oulhadj"]
 draft = false
 +++
 
-Hi, I'm ****Zakariya Oulhadj**** (Zak) 👋🏼
+Hi, I'm Zakariya Oulhadj (Zak) 👋🏼
 
 An aspiring software engineer passionate about low-level programming and
-high-performance design. I specialise in **C** and **C++** with experience in **Python** as
-well. My main interests include **computer graphics, rendering engine
-architecture, and systems programming**, where I focus on building efficient
+high-performance design. I specialise in C and C++ with experience in Python as
+well. My main interests include Computer Graphics, Rendering Engine
+Architecture, and Systems Programming, where I focus on building efficient
 software from first principles.
 
-Recently graduated with a distinction in **High-Performance Computing (M.Sc.)** from
+Recently graduated with a distinction in High-Performance Computing (M.Sc.) from
 the [University of Edinburgh](https://www.ed.ac.uk) and currently based in London, UK. For further
 details you can view my [CV](/Zakariya_Oulhadj_CV.pdf).
 
-Full time Linux user running Debian 13 (Trixie) with my main editor of choice
-for programming being [Emacs](https://www.gnu.org/software/emacs/). My dotfiles are available on GitHub [here](https://github.com/ZOulhadj/dotfiles).
-
-I am currently developing my own real-time cross-platform rendering engine in C
-aiming to support multiple rendering APIs through a custom render command
-system.
+Full time Linux user running Debian with my main editor of choice for
+programming being [Emacs](https://www.gnu.org/software/emacs/). My dotfiles are available on GitHub [here](https://github.com/ZOulhadj/dotfiles).
 
 
 ## Skills {#skills}
@@ -32,6 +28,14 @@ system.
 -   **Tools**: GDB, RenderDoc, Intel VTune, CrayPat, Scalasca, Linaro Forge
 -   **Interests**: Rendering Engine Architecture, Performance Benchmarking and
     Optimisation, Network Attached Storages (Synology)
+
+
+## Current Project {#current-project}
+
+A real-time cross-platform rendering engine in C and Zig aiming to support
+multiple rendering backends (OpenGL, Vulkan, D3D12) through a custom render
+command system.
+![](/ox-hugo/current_project.png)
 
 
 ## Hobbies {#hobbies}
