@@ -80,10 +80,9 @@ listed building that was designed by Benjamin Ferrey and consecrated in 1898
 The vintage photograph shows the church and its stone spire as a central
 landmark on what was then a rural, unpaved road. The original flint-faced
 vicarage is visible to the left, while the land to the right is open green
-space. In the modern image, the road has been upgraded to a paved thoroughfare
-with traffic islands and bus stops. The church itself is now partially obscured
-by mature trees and is surrounded by the modern infrastructure of the Alton
-Estate.
+space. In the modern image, the road has been upgraded to a paved road with
+traffic islands and bus stops. The church itself is now partially obscured by
+mature trees and is surrounded by the modern infrastructure of the Alton Estate.
 
 {{< figure src="/ox-hugo/3.jpg" >}}
 
@@ -94,18 +93,17 @@ Moving further on Roehampton Lane and then travelling down along Kingston Road
 (A3) highlights the dramatic transition of this arterial route from a suburban
 lane into a busy dual carriageway. In the mid-20th century, the road was a
 simpler, single-carriageway route lined with residential semi-detached houses
-and early, basic a petrol station. While the homes on the left have remained a
-constant through the decades, the right side of the road has evolved from a
-small-scale filling station into the modern Asda Express and petrol forecourt
-seen today. The modern perspective also reveals the addition of the Alton Estate
-high-rises in the distance and significant infrastructure upgrades, including
-dedicated bus and cycle lanes, reflecting the massive increase in traffic volume
-since the 1940s and 50s.
+and a basic petrol station. While the homes on the left have remained a constant
+through the decades, the right side of the road has seen significant
+developments. The modern perspective also reveals the addition of the Alton
+Estate high-rises in the distance and significant infrastructure upgrades,
+including dedicated bus and cycle lanes, reflecting the massive increase in
+traffic volume since the 1940s and 50s.
 
 {{< figure src="/ox-hugo/4.jpg" >}}
 
 Walking further down, we reach the Asda supermarket; however, past photos reveal
-that during the mid-20th century, the landscape was dominated by the K.L.G.
+that during the mid-20th century, this was actually the location of the K.L.G.
 Sparking Plugs factory. This striking Art Deco structure was founded by Kenelm
 (Bill) Edward Lee Guinness (14 August 1887-10 April 1937), a member of the
 famous Guinness brewing family and a celebrated racing driver throughout the
