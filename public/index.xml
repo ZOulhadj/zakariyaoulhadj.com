@@ -6,22 +6,8 @@
     <description>Recent content on Zakariya Oulhadj</description>
     <generator>Hugo</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Oct 2025 00:00:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Designing a Graphics Renderer Hardware Interface</title>
-      <link>http://localhost:1313/posts/rhi-design/</link>
-      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/rhi-design/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Before we can talk about Renderer Hardware Interfaces we must first understand&#xA;the goal of Graphics APIs.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunatly, if you want your graphics application to run on many different&#xA;devices whether thats on PCs, Consoles, due to the vast number of different&#xA;graphics APIs some form of abstraction is required. For instance, take a look at&#xA;the table below which shows different graphics APIs and on what platforms they&#xA;are supported:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Why I prefer C instead of C&#43;&#43;</title>
-      <link>http://localhost:1313/posts/why-c-over-cpp/</link>
-      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/why-c-over-cpp/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This blog post is meant to be a light hearted rant/discussion on&#xA;some of C++&amp;rsquo;s pitfalls and is highly opinionated. I&amp;rsquo;m sure many will attempt to&#xA;find flaws in my arguments so take everything with a grain of salt. End of the&#xA;day, you can program in any language you like, just remember to keep things&#xA;simple.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;My journey of learning to program started with C++.&lt;/p&gt;&#xA;&lt;p&gt;Having been exposed to C++ for over 5 years, my thinking slowly started to&#xA;shift. I started to realise that after all these years my knowledge of C++&#xA;whilst decent I&amp;rsquo;d say I always felt that I didn&amp;rsquo;t know everything.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Real-Time Rendering Engine</title>
       <link>http://localhost:1313/projects/real-time-rendering-engine/</link>
