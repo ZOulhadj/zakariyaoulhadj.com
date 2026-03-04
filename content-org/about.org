@@ -30,7 +30,8 @@ programming being [[https://www.gnu.org/software/emacs/][Emacs]]. My dotfiles ar
 A real-time cross-platform rendering engine in C and Zig aiming to support
 multiple rendering backends (OpenGL, Vulkan, D3D12) through a custom render
 command system.
-[[./images/current_project.png]]
+
+[[/images/current_project.png]]
 
 * Hobbies
 

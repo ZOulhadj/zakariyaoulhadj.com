@@ -35,7 +35,8 @@ programming being [Emacs](https://www.gnu.org/software/emacs/). My dotfiles are 
 A real-time cross-platform rendering engine in C and Zig aiming to support
 multiple rendering backends (OpenGL, Vulkan, D3D12) through a custom render
 command system.
-![](/ox-hugo/current_project.png)
+
+{{< figure src="/images/current_project.png" >}}
 
 
 ## Hobbies {#hobbies}
