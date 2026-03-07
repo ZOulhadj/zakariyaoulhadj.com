@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OpenMP Thread Queue Contention Analysis | Zakariya Oulhadj</title>
+<meta name="title" content="OpenMP Thread Queue Contention Analysis" />
+<meta name="description" content="The full source code is available on GitHub.
+Problem Statement
+We were provided with two codes which implement the same algorithm in two
+different ways. The algorithm is an adaptive quadrature method that computes the
+integral of a function on a closed interval using a divide-and-conquer method.
+The algorithm starts by applying two quadrature rules (3-point and 5-point
+Simpson&rsquo;s rules) to the whole interval. If the difference between the integral
+estimates from the two rules is small enough (or the interval is too short), the
+result in added to the total integral estimate. If it is not small enough, the
+interval is split into two equal halves, and the method is applied recursively
+to each half. In the case supplied, evaluating the function requires the
+solution of an ODE (ordinary differential equation) which is relatively
+expensive in time." />
+<meta name="keywords" content="c,hpc,masters," />
+
+
+<meta property="og:url" content="http://localhost:1313/blog/omp-thread-contention/">
+  <meta property="og:site_name" content="Zakariya Oulhadj">
+  <meta property="og:title" content="OpenMP Thread Queue Contention Analysis">
+  <meta property="og:description" content="The full source code is available on GitHub.
+Problem Statement We were provided with two codes which implement the same algorithm in two different ways. The algorithm is an adaptive quadrature method that computes the integral of a function on a closed interval using a divide-and-conquer method. The algorithm starts by applying two quadrature rules (3-point and 5-point Simpson’s rules) to the whole interval. If the difference between the integral estimates from the two rules is small enough (or the interval is too short), the result in added to the total integral estimate. If it is not small enough, the interval is split into two equal halves, and the method is applied recursively to each half. In the case supplied, evaluating the function requires the solution of an ODE (ordinary differential equation) which is relatively expensive in time.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="C">
+    <meta property="article:tag" content="Hpc">
+    <meta property="article:tag" content="Masters">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OpenMP Thread Queue Contention Analysis">
+  <meta name="twitter:description" content="The full source code is available on GitHub.
+Problem Statement We were provided with two codes which implement the same algorithm in two different ways. The algorithm is an adaptive quadrature method that computes the integral of a function on a closed interval using a divide-and-conquer method. The algorithm starts by applying two quadrature rules (3-point and 5-point Simpson’s rules) to the whole interval. If the difference between the integral estimates from the two rules is small enough (or the interval is too short), the result in added to the total integral estimate. If it is not small enough, the interval is split into two equal halves, and the method is applied recursively to each half. In the case supplied, evaluating the function requires the solution of an ODE (ordinary differential equation) which is relatively expensive in time.">
+
+
+
+
+  <meta itemprop="name" content="OpenMP Thread Queue Contention Analysis">
+  <meta itemprop="description" content="The full source code is available on GitHub.
+Problem Statement We were provided with two codes which implement the same algorithm in two different ways. The algorithm is an adaptive quadrature method that computes the integral of a function on a closed interval using a divide-and-conquer method. The algorithm starts by applying two quadrature rules (3-point and 5-point Simpson’s rules) to the whole interval. If the difference between the integral estimates from the two rules is small enough (or the interval is too short), the result in added to the total integral estimate. If it is not small enough, the interval is split into two equal halves, and the method is applied recursively to each half. In the case supplied, evaluating the function requires the solution of an ODE (ordinary differential equation) which is relatively expensive in time.">
+  <meta itemprop="datePublished" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="965">
+  <meta itemprop="keywords" content="C,Hpc,Masters">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-It.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-LightIt.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLightIt.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BoldIt.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BlackIt.otf") format("opentype");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --width: 900px;
+    --font-main: "Source Sans Pro", Verdana, sans-serif;
+    --font-secondary: "Source Sans Pro", Verdana, sans-serif;
+    --font-scale: 1.2em;
+    --background-color: #fdfdfd;
+    --heading-color: #222;
+    --text-color: #333;
+    --link-color: #0066cc;
+    --visited-color: #663399;
+    --blockquote-color: #555;
+    --code-bg: #f5f5f5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;  
+      --heading-color: #eee;
+      --text-color: #c5d3d6;
+      --link-color: #8cc2dd;
+      --visited-color: #b59fdf;
+      --blockquote-color: #ccc;
+      --code-bg: #003340;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 40px 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+    margin-top: 1.5em;
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 15px;
+    font-weight: 600;
+  }
+
+  strong, b {
+    color: var(--heading-color);
+  }
+
+  time {
+    font-family: "Cascadia Code", monospace;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--text-color);
+    opacity: 0.3;
+    margin: 2rem 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--link-color);
+    color: var(--blockquote-color);
+    padding-left: 20px;
+    margin: 1.5em 0;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+
+  .site-header {
+    margin-bottom: 1em;
+  }
+
+  .title h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+
+  .avatar img {
+    float: right;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+  }
+
+
+  .highlight, .code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 3px;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+    font-family: "Cascadia Code", monospace;
+    font-size: 0.85em;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+
+
+</head>
+
+<body>
+  <header><div class="site-header">
+  <a href="/" class="title">
+    <h1>Zakariya Oulhadj</h1>
+  </a>
+  <small class="site-description">High Performance Computing (M.Sc.) Graduate from The University of Edinburgh</small>
+</div>
+
+<nav>
+<a href="/">Home</a>
+
+<a href="/blog/">Blog</a>
+
+<a href="/projects/">Projects</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>OpenMP Thread Queue Contention Analysis</h1>
+<p>
+  <i>
+    <time datetime='2024-11-21'>
+      21 Nov, 2024
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>The full source code is available on <a href="https://github.com/ZOulhadj/omp-performance">GitHub</a>.</p>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>We were provided with two codes which implement the same algorithm in two
+different ways. The algorithm is an adaptive quadrature method that computes the
+integral of a function on a closed interval using a divide-and-conquer method.
+The algorithm starts by applying two quadrature rules (3-point and 5-point
+Simpson&rsquo;s rules) to the whole interval. If the difference between the integral
+estimates from the two rules is small enough (or the interval is too short), the
+result in added to the total integral estimate. If it is not small enough, the
+interval is split into two equal halves, and the method is applied recursively
+to each half. In the case supplied, evaluating the function requires the
+solution of an ODE (ordinary differential equation) which is relatively
+expensive in time.</p>
+<p>Using this algorithm we were required to do the following tasks:</p>
+<ol>
+<li>
+<p>Create a parallel version of the code in <!-- raw HTML omitted --><code>solver1.c</code><!-- raw HTML omitted --> using OpenMP task
+constructs.</p>
+</li>
+<li>
+<p>Create a parallel version of the code in <!-- raw HTML omitted --><code>solver2.c</code><!-- raw HTML omitted --> without using task
+constructs. Enclose the while loop in an OpenMP parallel region and allow all
+thethreads to enqueue and dequeue intervals from a single queue. Take care to
+synchronise the accesses to the queue correctly. Note that the termination
+condition for the while loop (an empty queue) is not sufficient in the
+parallel version, as the queue might be empty, but another thread may
+subsequently enqueue new intervals. The while loop should terminate only when
+the queue is empty and there are no intervals currently being processed.</p>
+</li>
+<li>
+<p>Create another parallel version of the code in solver2.c where every thread
+has a separate queue. Implement a work-stealing method of your choice that
+attempts to balance the load between the threads. Pay attention to correct
+synchronisation and to the termination criterion.</p>
+</li>
+<li>
+<p>Run all three parallel versions on <!-- raw HTML omitted --><code>1, 2, 4, 6, 8, 12, 16, 24</code><!-- raw HTML omitted --> and
+<!-- raw HTML omitted --><code>32</code><!-- raw HTML omitted --> threads on Cirrus using the Intel 20.4 compiler with the <!-- raw HTML omitted --><code>-O3 -qopenmp</code><!-- raw HTML omitted --> flags.</p>
+</li>
+<li>
+<p>Run all three parallel versions on <!-- raw HTML omitted --><code>1, 2, 4, 6, 8, 12, 16, 24</code><!-- raw HTML omitted --> and
+<!-- raw HTML omitted --><code>32</code><!-- raw HTML omitted --> threads on Cirrus using the GNU 10.2 compiler with the <!-- raw HTML omitted --><code>-O3 -fopenmp</code><!-- raw HTML omitted --> flags.</p>
+</li>
+</ol>
+<h2 id="solver-1--recursive-tasks">Solver 1 (Recursive Tasks)</h2>
+<p>The first program, Solver 1, implements the divide-and-conquer algorithm
+recursively using OpenMP tasks. A parallel region is created at the root simpson
+function call, executed by a single thread. During the recursive process, when
+an interval is divided into two, a new task is created for each half. Before
+returning from a recursive call, a taskwait directive is used to ensure that
+both subtasks have finished execution.</p>
+<p>The execution times indicate two varying performance characteristics between ICC
+v20.4 (Intel C/C++ Compiler) and GCC v10.2.0 (GNU Compiler Collections). The
+Intel compiler consistently outperforms GCC on all thread counts, showing strong
+scalability. This can be attributed to compiler optimisations which produce more
+efficient assembly instructions for the Intel Xeon E5-2695 processor used on the
+Cirrus compute node. Beyond 16 threads, GCC performance deteriorates
+significantly, with a sharp increase in execution time and therefore, decline in
+scalability. The runtime disparity between the compilers reaches 11.776 seconds
+on 32 threads. Inefficiencies in the compiler and increased overhead associated
+with task creation may be the contributing factors. Further analysis was carried
+out to determine whether these results were specifically isolated to GCC version
+10.2.0. Versions 8.2.0 and 12.3.0 exhibited similar behaviour, suggesting that
+the issue may stem from a long standing bug or inefficiency in the compiler’s
+code generation. The results are also shown in terms of speed up indicating that
+ICC was able to achieve the highest speed-up of 20.995x compared to GCC 2.143x
+on 32 threads.</p>
+<p><img src="/ox-hugo/solver_1_execution_time.jpg" alt="">
+<img src="/ox-hugo/solver_1_speed_up.jpg" alt=""></p>
+<h2 id="solver-2--shared-queue">Solver 2 (Shared Queue)</h2>
+<p>Solver 2 implements the same algorithm but utilises a LIFO (Last-In-First-Out)
+queue for managing intervals. OpenMP locks were introduced to ensure thread-safe
+enqueuing and dequeuing operations on the shared queue. The termination criteria
+was revised to account for scenarios where the queue might be empty while
+intervals are still being processed. As a result, the computation only completes
+when the queue is empty and no threads remain active.</p>
+<p>The execution times for both the ICC and GCC compilers are similar, with
+standard deviations of 8.084 and 7.719 seconds, respectively. Execution times
+generally decrease as the number of threads increases. However, beyond 16
+threads, both compilers exhibit an increase in execution time of approximately
+3.567 seconds, with performance becoming more irregular. This is attributed to
+the synchronisation overhead introduced by frequent locking and unlocking of the
+shared queue as threads compete for access. Consequently, the performance gains
+achievable with this implementation are inherently limited by this bottleneck,
+highlighting the need for alternative approaches. Another factor affecting
+performance is the lack of load balancing, which results in certain threads
+having more work whilst others are idle.</p>
+<p><img src="/ox-hugo/solver_2_1_execution_time.jpg" alt="">
+<img src="/ox-hugo/solver_2_1_speed_up.jpg" alt=""></p>
+<h2 id="solver-2--separate-queues">Solver 2 (Separate Queues)</h2>
+<p>To address the performance limitations of using a shared queue, a second
+implementation of Solver 2 was developed in which each thread maintains its own
+separate queue. If the current threads queue is not empty, then an interval is
+dequeued. However, if it is empty, then the thread attempts to “steal work” from
+another thread for processing. Work is distributed in a round-robin fashion to
+ensure load balancing, keeping the number of tasks in each thread’s queue
+roughly equal. Each queue access is again synchronised using OpenMP locks.</p>
+<p>Performance results, demonstrate a significant improvement compared to the first
+Solver 2 using a single queue. The program reduces contention for queue access,
+as each thread operates on its queue, leading to better scalability with larger
+thread counts, aligning with Amdahl’s Law. The execution time is comparable to
+that of Solver 1 using the ICC compiler. The speed up increasing sub-linearly
+for both compilers, reaching a maximum of 20.174x and 21.523x for ICC and GCC
+respectively on 32 threads.</p>
+<p><img src="/ox-hugo/solver_2_2_execution_time.jpg" alt="">
+<img src="/ox-hugo/solver_2_2_speed_up.jpg" alt=""></p>
+
+</content>
+
+
+
+<p>
+  
+  <a href="http://localhost:1313/tags/c/">#C</a>
+  
+  <a href="http://localhost:1313/tags/hpc/">#Hpc</a>
+  
+  <a href="http://localhost:1313/tags/masters/">#Masters</a>
+  
+</p>
+
+  </main>
+  <footer><div class="social-links">
+    <a href="https://github.com/zoulhadj" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+    <a href="https://linkedin.com/in/zoulhadj" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="https://youtube.com/@ZOulhadj" target="_blank" rel="noopener">YouTube</a> &nbsp;|&nbsp;
+    <a href="https://instagram.com/zoulhadj" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <p class="copyright">
+    Copyright &copy; 2026, Zakariya Oulhadj.
+  </p>
+
+  
+  <p class="made-with">
+    Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+  </p>
+  
+</footer>
+</body>
+
+</html>

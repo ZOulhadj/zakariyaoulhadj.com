@@ -1,0 +1,16 @@
+<div class="social-links">
+    <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+    <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="{{ .Site.Params.youtube }}" target="_blank" rel="noopener">YouTube</a> &nbsp;|&nbsp;
+    <a href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <p class="copyright">
+    Copyright &copy; {{ now.Format "2006" }}, {{ .Site.Author.name | default .Site.Title }}.
+  </p>
+
+  {{ if not (.Param "hideMadeWithLine") }}
+  <p class="made-with">
+    Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+  </p>
+  {{ end }}

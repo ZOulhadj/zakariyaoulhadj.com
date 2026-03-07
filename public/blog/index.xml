@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Zakariya Oulhadj</title>
+    <link>http://localhost:1313/blog/</link>
+    <description>Recent content in Blog on Zakariya Oulhadj</description>
+    <generator>Hugo</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 03 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Before and After: Roehampton #1</title>
+      <link>http://localhost:1313/blog/before-and-after-roehampton-1/</link>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/before-and-after-roehampton-1/</guid>
+      <description>&lt;p&gt;A personal hobby of mine, and a pastime I am particularly interested in, is&#xA;exploring the hidden layers of local history. There is something uniquely&#xA;rewarding about uncovering how a familiar landscape has evolved over decades, or&#xA;even centuries, and seeing the traces of the past that still linger in the&#xA;present.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will be showing some before and after comparisons of Roehampton,&#xA;the area where I grew up. By matching archival photographs with modern-day&#xA;views, we can trace the transformation of the village from a quiet Victorian hub&#xA;into a bustling London suburb, uncovering everything from &amp;ldquo;lost&amp;rdquo; industrial&#xA;landmarks to forgotten coaching roads hidden in plain sight.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Optimising a Molecular Dynamics Application</title>
+      <link>http://localhost:1313/blog/optimising-molecular-dynamics/</link>
+      <pubDate>Fri, 04 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/optimising-molecular-dynamics/</guid>
+      <description>&lt;p&gt;&lt;em&gt;The full source code is available on &lt;a href=&#34;https://github.com/ZOulhadj/performance-programming&#34;&gt;GitHub&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;&#xA;&lt;p&gt;The second part of the Performance Programming module (&lt;a href=&#34;http://www.drps.ed.ac.uk/24-25/dpt/cxepcc11009.htm&#34;&gt;EPCC11009&lt;/a&gt;), was to&#xA;manually optimise a C-based molecular dynamics simulation code. The project&#xA;required the transformation of a suboptimal legacy codebase into a&#xA;high-performance solution, prioritising runtime reduction without compromising&#xA;the integrity of the simulation results. A key restriction imposed by the&#xA;project was that all optimisations must be done using a single thread i.e no&#xA;multi-threading.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenMP Thread Queue Contention Analysis</title>
+      <link>http://localhost:1313/blog/omp-thread-contention/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/omp-thread-contention/</guid>
+      <description>&lt;p&gt;The full source code is available on &lt;a href=&#34;https://github.com/ZOulhadj/omp-performance&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;&#xA;&lt;p&gt;We were provided with two codes which implement the same algorithm in two&#xA;different ways. The algorithm is an adaptive quadrature method that computes the&#xA;integral of a function on a closed interval using a divide-and-conquer method.&#xA;The algorithm starts by applying two quadrature rules (3-point and 5-point&#xA;Simpson&amp;rsquo;s rules) to the whole interval. If the difference between the integral&#xA;estimates from the two rules is small enough (or the interval is too short), the&#xA;result in added to the total integral estimate. If it is not small enough, the&#xA;interval is split into two equal halves, and the method is applied recursively&#xA;to each half. In the case supplied, evaluating the function requires the&#xA;solution of an ODE (ordinary differential equation) which is relatively&#xA;expensive in time.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

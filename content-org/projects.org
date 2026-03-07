@@ -1,8 +1,13 @@
 #+HUGO_BASE_DIR: ../
 #+HUGO_SECTION: projects
-#+EXPORT_FILE_NAME: _index
-#+HUGO_CUSTOM_FRONT_MATTER: :layout single
 #+TITLE: Projects
+#+AUTHOR: Zakariya Oulhadj
+
+* Projects
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_MENU: :menu "main" :weight 3
+:END:
 
 * Real-Time Rendering Engine
   :PROPERTIES:
@@ -36,7 +41,6 @@
   :EXPORT_HUGO_TAGS: university-of-edinburgh c openmp
   :EXPORT_HUGO_CATEGORIES: projects
   :END:
-
    OpenMP thread contention performance investigation for the EPCC11003 course.
 
    [[https://github.com/ZOulhadj/omp-performance][GitHub]]

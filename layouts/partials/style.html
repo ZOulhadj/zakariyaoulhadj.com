@@ -1,0 +1,235 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-It.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-LightIt.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLightIt.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BoldIt.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BlackIt.otf") format("opentype");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --width: 900px;
+    --font-main: "Source Sans Pro", Verdana, sans-serif;
+    --font-secondary: "Source Sans Pro", Verdana, sans-serif;
+    --font-scale: 1.2em;
+    --background-color: #fdfdfd;
+    --heading-color: #222;
+    --text-color: #333;
+    --link-color: #0066cc;
+    --visited-color: #663399;
+    --blockquote-color: #555;
+    --code-bg: #f5f5f5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e; /* Emacs dark teal */
+      --heading-color: #eee;
+      --text-color: #c5d3d6;
+      --link-color: #8cc2dd;
+      --visited-color: #b59fdf;
+      --blockquote-color: #ccc;
+      --code-bg: #003340;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 40px 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+    margin-top: 1.5em;
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 15px;
+    font-weight: 600;
+  }
+
+  strong, b {
+    color: var(--heading-color);
+  }
+
+  time {
+    font-family: "Cascadia Code", monospace;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--text-color);
+    opacity: 0.3;
+    margin: 2rem 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--link-color);
+    color: var(--blockquote-color);
+    padding-left: 20px;
+    margin: 1.5em 0;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+
+  .site-header {
+    margin-bottom: 1em;
+  }
+
+  .title h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+
+  .avatar img {
+    float: right;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+  }
+
+
+  .highlight, .code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 3px;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+    font-family: "Cascadia Code", monospace;
+    font-size: 0.85em;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>

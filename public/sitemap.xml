@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/before-and-after-roehampton-1/</loc>
+    <loc>http://localhost:1313/blog/before-and-after-roehampton-1/</loc>
     <lastmod>2026-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2026-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
@@ -41,7 +41,7 @@
     <loc>http://localhost:1313/tags/masters/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/optimising-molecular-dynamics/</loc>
+    <loc>http://localhost:1313/blog/optimising-molecular-dynamics/</loc>
     <lastmod>2025-04-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/openmp/</loc>
@@ -59,7 +59,7 @@
     <loc>http://localhost:1313/projects/mpi-cellular-automaton/</loc>
     <lastmod>2024-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/omp-thread-contention/</loc>
+    <loc>http://localhost:1313/blog/omp-thread-contention/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
@@ -70,8 +70,6 @@
   </url><url>
     <loc>http://localhost:1313/projects/vulkan-model-viewer-and-exporter/</loc>
     <lastmod>2023-10-04T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/about/</loc>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
   </url>

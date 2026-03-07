@@ -5,7 +5,6 @@ date = 2025-08-15T00:00:00+01:00
 tags = ["university-of-edinburgh", "dissertation"]
 categories = ["projects"]
 draft = false
-layout = "single"
 +++
 
 Disseration project.

@@ -1,0 +1,8 @@
+<div class="site-header">
+  <a href="{{ "" | relURL }}" class="title">
+    <h1>{{ .Site.Title }}</h1>
+  </a>
+  <small class="site-description">{{ .Site.Params.description }}</small>
+</div>
+
+<nav>{{- partial "nav.html" . -}}</nav>

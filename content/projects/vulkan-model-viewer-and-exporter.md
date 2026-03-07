@@ -5,7 +5,6 @@ date = 2023-10-04T00:00:00+01:00
 tags = ["c++", "vulkan"]
 categories = ["projects"]
 draft = false
-layout = "single"
 +++
 
 Developed a real-time 3D renderer using Vulkan with a built-in editor
