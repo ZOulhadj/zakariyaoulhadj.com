@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Designing a Graphics Renderer Hardware Interface | Zakariya Oulhadj</title>
+<meta name="title" content="Designing a Graphics Renderer Hardware Interface" />
+<meta name="description" content="Introduction
+Before we can talk about Renderer Hardware Interfaces we must first understand
+the goal of Graphics APIs.
+Unfortunatly, if you want your graphics application to run on many different
+devices whether thats on PCs, Consoles, due to the vast number of different
+graphics APIs some form of abstraction is required. For instance, take a look at
+the table below which shows different graphics APIs and on what platforms they
+are supported:" />
+<meta name="keywords" content="rendering,renderer-apis,rhi," />
+
+
+<meta property="og:url" content="http://localhost:1313/blog/rhi-design/">
+  <meta property="og:site_name" content="Zakariya Oulhadj">
+  <meta property="og:title" content="Designing a Graphics Renderer Hardware Interface">
+  <meta property="og:description" content="Introduction Before we can talk about Renderer Hardware Interfaces we must first understand the goal of Graphics APIs.
+Unfortunatly, if you want your graphics application to run on many different devices whether thats on PCs, Consoles, due to the vast number of different graphics APIs some form of abstraction is required. For instance, take a look at the table below which shows different graphics APIs and on what platforms they are supported:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-02-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-10T00:00:00+00:00">
+    <meta property="article:tag" content="Rendering">
+    <meta property="article:tag" content="Renderer-Apis">
+    <meta property="article:tag" content="Rhi">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Designing a Graphics Renderer Hardware Interface">
+  <meta name="twitter:description" content="Introduction Before we can talk about Renderer Hardware Interfaces we must first understand the goal of Graphics APIs.
+Unfortunatly, if you want your graphics application to run on many different devices whether thats on PCs, Consoles, due to the vast number of different graphics APIs some form of abstraction is required. For instance, take a look at the table below which shows different graphics APIs and on what platforms they are supported:">
+
+
+
+
+  <meta itemprop="name" content="Designing a Graphics Renderer Hardware Interface">
+  <meta itemprop="description" content="Introduction Before we can talk about Renderer Hardware Interfaces we must first understand the goal of Graphics APIs.
+Unfortunatly, if you want your graphics application to run on many different devices whether thats on PCs, Consoles, due to the vast number of different graphics APIs some form of abstraction is required. For instance, take a look at the table below which shows different graphics APIs and on what platforms they are supported:">
+  <meta itemprop="datePublished" content="2026-02-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2739">
+  <meta itemprop="keywords" content="Rendering,Renderer-Apis,Rhi">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-It.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-LightIt.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLightIt.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BoldIt.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BlackIt.otf") format("opentype");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --width: 900px;
+    --font-main: "Source Sans Pro", Verdana, sans-serif;
+    --font-secondary: "Source Sans Pro", Verdana, sans-serif;
+    --font-scale: 1.2em;
+    --background-color: #fdfdfd;
+    --heading-color: #222;
+    --text-color: #333;
+    --link-color: #0066cc;
+    --visited-color: #663399;
+    --blockquote-color: #555;
+    --code-bg: #f5f5f5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;  
+      --heading-color: #eee;
+      --text-color: #c5d3d6;
+      --link-color: #8cc2dd;
+      --visited-color: #b59fdf;
+      --blockquote-color: #ccc;
+      --code-bg: #003340;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 40px 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+    margin-top: 1.5em;
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 15px;
+    font-weight: 600;
+  }
+
+  strong, b {
+    color: var(--heading-color);
+  }
+
+  time {
+    font-family: "Cascadia Code", monospace;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--text-color);
+    opacity: 0.3;
+    margin: 2rem 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--link-color);
+    color: var(--blockquote-color);
+    padding-left: 20px;
+    margin: 1.5em 0;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+
+  .site-header {
+    margin-bottom: 1em;
+  }
+
+  .title h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+
+  .avatar img {
+    float: right;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+  }
+
+
+  .highlight, .code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 3px;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+    font-family: "Cascadia Code", monospace;
+    font-size: 0.85em;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+
+
+</head>
+
+<body>
+  <header><div class="site-header">
+  <a href="/" class="title">
+    <h1>Zakariya Oulhadj</h1>
+  </a>
+  <small class="site-description">High Performance Computing (M.Sc.) Graduate from The University of Edinburgh</small>
+</div>
+
+<nav>
+<a href="/">Home</a>
+
+<a href="/blog/">Blog</a>
+
+<a href="/projects/">Projects</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Designing a Graphics Renderer Hardware Interface</h1>
+<p>
+  <i>
+    <time datetime='2026-02-10'>
+      10 Feb, 2026
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="introduction">Introduction</h2>
+<p>Before we can talk about Renderer Hardware Interfaces we must first understand
+the goal of Graphics APIs.</p>
+<p>Unfortunatly, if you want your graphics application to run on many different
+devices whether thats on PCs, Consoles, due to the vast number of different
+graphics APIs some form of abstraction is required. For instance, take a look at
+the table below which shows different graphics APIs and on what platforms they
+are supported:</p>
+<table>
+  <thead>
+      <tr>
+          <th>API</th>
+          <th>Windows</th>
+          <th>Linux</th>
+          <th>macOS</th>
+          <th>Android</th>
+          <th>iOS</th>
+          <th>Xbox</th>
+          <th>PS5</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><strong>OpenGL (4.6)</strong></strong></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>⚠️</td>
+          <td>✅ (ES)</td>
+          <td>⚠️</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong><strong>DirectX 12</strong></strong></td>
+          <td>✅</td>
+          <td>🛠️</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong><strong>Vulkan (1.4)</strong></strong></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>🛠️</td>
+          <td>✅</td>
+          <td>🛠️</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong><strong>Metal (4.0)</strong></strong></td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong><strong>AGC / GNM</strong></strong></td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>❌</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td><strong><strong>WebGPU</strong></strong></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+  </tbody>
+</table>
+<!-- raw HTML omitted -->
+<ul>
+<li>✅ <strong><strong>Native Support</strong></strong> (First-class citizen)</li>
+<li>🛠️ <strong><strong>Layered/Translation</strong></strong> (Proton, MoltenVK, DXVK)</li>
+<li>⚠️ <strong><strong>Legacy/Deprecated</strong></strong> (Not maintained)</li>
+<li>❌ <strong><strong>No Support</strong></strong></li>
+</ul>
+<!-- raw HTML omitted -->
+<p>In my opinion, its a mess and in a ideal world we would only need a single API.
+Maybe in the future this could hopefully be the case but as of now we need to
+deal with this through abstractions.</p>
+<figure><img src="/ox-hugo/xkcd-standards.png">
+</figure>
+
+<p>Reference: <a href="https://xkcd.com/927">https://xkcd.com/927</a></p>
+<p>So, here is where a Renderer Hardware Interface comes in. It is an abstraction
+used in rendering applications (such as rendering engines) where the goal is to
+allow us to utilize multiple rendering APIs depending on the platform without
+being tied to a specific one. This, however, is not an easy task and can be
+incredibly challenging. In fact, in my quest to make my own game engine, this
+has been by far the most challenging aspect.</p>
+<p>Existing designs range from using C++&rsquo;s polymorphism feature—where a base
+<!-- raw HTML omitted --><code>RHIDevice</code><!-- raw HTML omitted --> class is inherited by <!-- raw HTML omitted --><code>VulkanDevice</code><!-- raw HTML omitted --> or
+<!-- raw HTML omitted --><code>OpenGLDevice</code><!-- raw HTML omitted -->—to more modern, data-oriented approaches.</p>
+<p>Common patterns include:</p>
+<ul>
+<li>
+<p><strong>Virtual Function Tables (V-Tables)</strong>: The engine calls a generic interface, and
+the CPU looks up the correct backend function at runtime. While intuitive,
+this can introduce a small amount of overhead and often leads to &ldquo;leaky
+abstractions&rdquo; where backend-specific logic starts cluttering the base class.</p>
+</li>
+<li>
+<p><strong>Compile-time Dispatch (Templates/Header Overrides)</strong>: Selecting the backend at
+compile time. This is high-performance but makes it difficult to switch APIs
+without a full rebuild, and it doesn&rsquo;t solve the problem of managing disparate
+state machines.</p>
+</li>
+</ul>
+<p>Instead, I prefer to utilize the concept of a <strong>Deferred Render Command Buffer</strong>.
+This moves away from the immediate-mode wrappers typical of many open-source RHI
+implementations and toward the more explicit, command-driven flow used by
+libraries like <a href="https://github.com/bkaradzic/bgfx">bgfx</a> as well as in proprietary engines such as EA&rsquo;s <a href="https://media.contentapi.ea.com/content/dam/ea/seed/presentations/wihlidal-halcyonarchitecture-notes.pdf">Halcyon</a> and
+<a href="https://ruby0x1.github.io/machinery_blog_archive/post/a-modern-rendering-architecture/">Our Machinary</a>. This design ensures that the engine never stalls waiting for the
+GPU, allowing the front-end to record a frame&rsquo;s worth of intent while the
+backend handles the heavy lifting of API-specific execution at a later point in
+time.</p>
+<p>@@ - Add image of command buffer recording then replaying.</p>
+<h2 id="what-should-and-shouldn-t-an-rhi-have">What should and shouldn&rsquo;t an RHI have?</h2>
+<p>In many RHI designs, there is a tendency for high-level abstractions to &rsquo;leak'
+into the lower levels. Concepts like meshes and materials are frequent
+offenders, but fundamentally, these are gameplay or engine-side constructs. The
+GPU is indifferent to what a &lsquo;material&rsquo; represents; it only understands buffers,
+pipelines, and state. When an RHI is littered with mesh or entity data, it
+creates tight coupling that hinders portability. A clean interface should treat
+the GPU as a raw data processor, keeping the &lsquo;what&rsquo; (engine logic) strictly
+separated from the &lsquo;how&rsquo; (hardware execution). This is something I&rsquo;ve had to
+learn the hard way.</p>
+<p>An RHI should consist of very few basic concepts such as the ones listed:</p>
+<ul>
+<li>Buffer</li>
+<li>Texture</li>
+<li>Sampler</li>
+<li>Shader</li>
+<li>Bind Group</li>
+<li>Graphics Pipeline</li>
+<li>Framebuffer</li>
+</ul>
+<p>If you find yourself needing to expose &ldquo;Frames in Flight&rdquo; to the RHI then I&rsquo;d
+question if this is really needed. A truly generic RHI should hide the messy
+fence-and-semaphore dance entirely, providing the illusion of a linear execution
+stream even when the hardware is working asynchronously.</p>
+<p>The only &lsquo;ordering&rsquo; the engine should care about is data dependency—specifically
+through Barriers. If a Compute Shader is writing to a texture that a Fragment
+Shader needs to read, the engine should simply insert a barrier command. The RHI
+then translates this into API specific primitives. This ensures the engine
+focuses on the logic of the data flow, while the RHI handles the
+hardware-specific stalls and transitions required to make that flow safe.</p>
+<h2 id="how-i-design-my-rhi-abstraction">How I Design my RHI Abstraction</h2>
+<p><em><strong>Disclaimer</strong>: This design is an evolving project. While the current
+implementation is built on an OpenGL 4.6 backend, the architecture is
+specifically engineered to support future Vulkan and DirectX 12
+implementations.</em></p>
+<p>The system is built on a strict decoupling of responsibilities, split into two
+primary layers: a <strong>Renderer Frontend</strong> and a <strong>Renderer Backend</strong>.</p>
+<p>The Frontend acts as the producer; its sole responsibility is to record a
+sequence of high-level, API-agnostic commands into a linear array. At the end of
+the frame, the Backend takes over as the consumer. It &ldquo;replays&rdquo; this command
+stream, dispatching each instruction to its API-specific implementation. This
+&ldquo;Record-and-Playback&rdquo; model ensures that the engine&rsquo;s core logic remains
+entirely isolated from the underlying graphics hardware.</p>
+<figure><img src="/ox-hugo/rhi-design.png">
+</figure>
+
+<p>At the heart of the RHI is the <!-- raw HTML omitted --><code>render_commands</code><!-- raw HTML omitted --> structure, which manages
+the lifecycle of the frame through two dedicated byte-streams: one for Resources
+and one for Rendering.</p>
+<p>Rather than using a fixed-size array or a union of commands, I&rsquo;ve implemented
+these buffers as a contiguous block of bytes. The reasoning here is twofold:</p>
+<ul>
+<li>
+<p><strong>Memory Efficiency</strong>: Commands vary significantly in size. A
+<!-- raw HTML omitted --><code>cmd_buffer_destroy</code><!-- raw HTML omitted --> might only need a few bytes for a handle, whereas a
+<!-- raw HTML omitted --><code>cmd_draw</code><!-- raw HTML omitted --> might exceed 64 bytes to accommodate pipelines, buffers, and
+bindings. Using a union would force every command to occupy the space of the
+largest possible type—leading to massive memory fragmentation. By packing
+commands tightly into a byte array, we minimize the memory footprint.</p>
+</li>
+<li>
+<p><strong>Cache Locality</strong>: A linear byte-stream is incredibly friendly to the CPU cache.
+During the backend&rsquo;s &ldquo;playback&rdquo; phase, the CPU can pre-fetch the command data
+sequentially, avoiding the pointer-chasing and cache misses associated with
+linked lists or arrays of pointers.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">command_buffer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u8</span> <span class="o">*</span><span class="n">buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">capacity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">offset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">u32</span> <span class="n">command_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">read_offset</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">render_commands</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">command_buffer</span> <span class="n">resource_cmd_buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">command_buffer</span> <span class="n">render_cmd_buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Pointer to memory mapped GPU staging buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">u8</span> <span class="o">*</span><span class="n">g_staging_buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">g_staging_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">max_staging_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h3 id="commands">Commands</h3>
+<p>To facilitate a stateless and deferred architecture, I have defined various
+command types. These are categorized into Resource Commands (handling the
+lifecycle and data of GPU objects) and Rendering Commands (handling the actual
+submission of work to the hardware).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">render_cmd_type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Resource commands */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Buffer_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Buffer_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Buffer_Upload</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Buffer_Copy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Texture_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Texture_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Texture_Upload</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Texture_Copy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Sampler_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Sampler_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Shader_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Shader_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Bind_Group_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Bind_Group_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Graphics_Pipeline_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Graphics_Pipeline_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Framebuffer_Create</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Framebuffer_Destroy</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Rendering commands */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Framebuffer_Begin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Framebuffer_End</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Set_Viewport</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Draw</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Present</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Debug_Marker_Begin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Debug_Marker_End</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Timer_Query_Begin</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Command_Timer_Query_End</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>Every entry in the byte-stream follows a strict protocol consisting of a Header
+followed by a Data Payload. The header serves as the &ldquo;Instruction Pointer&rdquo; for
+the backend, providing the necessary metadata to decode the variably-sized data
+that follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">render_cmd_header</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">render_cmd_type</span> <span class="n">type</span><span class="p">;</span> <span class="c1">// What is this command?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">u32</span> <span class="n">size</span><span class="p">;</span>                  <span class="c1">// How many bytes is the total payload?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></div><p>By embedding the size in the header, the backend dispatcher knows exactly how
+many bytes to skip to reach the next command, allowing the stream to be
+traversed linearly.</p>
+<p>For instance, a buffer creation command encapsulates the header, the
+pre-allocated handle, and the configuration descriptors into a single,
+tightly-packed structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">render_cmd_buffer_create</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">render_cmd_header</span> <span class="n">header</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">buffer</span><span class="p">;</span>     <span class="c1">// The ID reserved by the frontend
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="n">info</span><span class="p">;</span>  <span class="c1">// Usage flags, size, and memory type
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></div><p>Once the frontend has finished recording the frame&rsquo;s intent, the command buffer
+is handed off to the backend for execution. A major advantage of this
+architecture is that each backend (OpenGL, Vulkan, Metal) has total autonomy
+over how it interprets the stream. If a specific platform doesn&rsquo;t support a
+feature—such as certain debug markers or specific timer queries—the backend can
+simply ignore those commands without affecting the frontend logic.</p>
+<p>In my current OpenGL implementation, the backend processes the buffer by
+iterating through the byte-stream and &ldquo;dispatching&rdquo; each entry. For every
+command encountered, the backend identifies the type via the header and calls
+the corresponding API-specific function to update the GPU state or issue a draw
+call.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define COMMAND_ENTRY(type, command, function) \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    case type: {                               \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    const command *cmd = (command *)header;    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">        function(gl, cmd);                     \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    } break                                    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">static</span> <span class="kt">void</span>
+</span></span><span class="line"><span class="cl"><span class="nf">opengl_handle_commands</span><span class="p">(</span><span class="k">struct</span> <span class="n">opengl_backend</span> <span class="o">*</span><span class="n">gl</span><span class="p">,</span> <span class="k">struct</span> <span class="n">command_buffer</span> <span class="o">*</span><span class="n">cb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nf">command_buffer_has_commands</span><span class="p">(</span><span class="n">cb</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">struct</span> <span class="n">render_cmd_header</span> <span class="o">*</span><span class="n">header</span> <span class="o">=</span> <span class="nf">command_buffer_get_next_command</span><span class="p">(</span><span class="n">cb</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">header</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="cm">/* Resource Dispatch */</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Buffer_Create</span><span class="p">,</span>             <span class="k">struct</span> <span class="n">render_cmd_buffer_create</span><span class="p">,</span>             <span class="n">opengl_buffer_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Buffer_Destroy</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_buffer_destroy</span><span class="p">,</span>            <span class="n">opengl_buffer_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Buffer_Upload</span><span class="p">,</span>             <span class="k">struct</span> <span class="n">render_cmd_buffer_upload</span><span class="p">,</span>             <span class="n">opengl_buffer_upload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Buffer_Copy</span><span class="p">,</span>               <span class="k">struct</span> <span class="n">render_cmd_buffer_copy</span><span class="p">,</span>               <span class="n">opengl_buffer_copy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Texture_Create</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_texture_create</span><span class="p">,</span>            <span class="n">opengl_texture_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Texture_Destroy</span><span class="p">,</span>           <span class="k">struct</span> <span class="n">render_cmd_texture_destroy</span><span class="p">,</span>           <span class="n">opengl_texture_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Texture_Upload</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_texture_upload</span><span class="p">,</span>            <span class="n">opengl_texture_upload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Texture_Copy</span><span class="p">,</span>              <span class="k">struct</span> <span class="n">render_cmd_texture_copy</span><span class="p">,</span>              <span class="n">opengl_texture_copy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Sampler_Create</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_sampler_create</span><span class="p">,</span>            <span class="n">opengl_sampler_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Sampler_Destroy</span><span class="p">,</span>           <span class="k">struct</span> <span class="n">render_cmd_sampler_destroy</span><span class="p">,</span>           <span class="n">opengl_sampler_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Framebuffer_Create</span><span class="p">,</span>        <span class="k">struct</span> <span class="n">render_cmd_framebuffer_create</span><span class="p">,</span>        <span class="n">opengl_framebuffer_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Framebuffer_Destroy</span><span class="p">,</span>       <span class="k">struct</span> <span class="n">render_cmd_framebuffer_destroy</span><span class="p">,</span>       <span class="n">opengl_framebuffer_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Shader_Create</span><span class="p">,</span>             <span class="k">struct</span> <span class="n">render_cmd_shader_create</span><span class="p">,</span>             <span class="n">opengl_shader_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Shader_Destroy</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_shader_destroy</span><span class="p">,</span>            <span class="n">opengl_shader_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Bind_Group_Create</span><span class="p">,</span>         <span class="k">struct</span> <span class="n">render_cmd_bind_group_create</span><span class="p">,</span>         <span class="n">opengl_bind_group_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Bind_Group_Destroy</span><span class="p">,</span>        <span class="k">struct</span> <span class="n">render_cmd_bind_group_destroy</span><span class="p">,</span>        <span class="n">opengl_bind_group_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Graphics_Pipeline_Create</span><span class="p">,</span>  <span class="k">struct</span> <span class="n">render_cmd_graphics_pipeline_create</span><span class="p">,</span>  <span class="n">opengl_pipeline_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Graphics_Pipeline_Destroy</span><span class="p">,</span> <span class="k">struct</span> <span class="n">render_cmd_graphics_pipeline_destroy</span><span class="p">,</span> <span class="n">opengl_pipeline_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Compute_Pipeline_Create</span><span class="p">,</span>   <span class="k">struct</span> <span class="n">render_cmd_compute_pipeline_create</span><span class="p">,</span>   <span class="n">opengl_compute_pipeline_create</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Compute_Pipeline_Destroy</span><span class="p">,</span>  <span class="k">struct</span> <span class="n">render_cmd_compute_pipeline_destroy</span><span class="p">,</span>  <span class="n">opengl_compute_pipeline_destroy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="cm">/* Render Dispatch */</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Framebuffer_Begin</span><span class="p">,</span>  <span class="k">struct</span> <span class="n">render_cmd_framebuffer_begin</span><span class="p">,</span>  <span class="n">opengl_framebuffer_begin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Framebuffer_End</span><span class="p">,</span>    <span class="k">struct</span> <span class="n">render_cmd_framebuffer_end</span><span class="p">,</span>    <span class="n">opengl_framebuffer_end</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Set_Viewport</span><span class="p">,</span>       <span class="k">struct</span> <span class="n">render_cmd_viewport</span><span class="p">,</span>           <span class="n">opengl_set_viewport</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Draw</span><span class="p">,</span>               <span class="k">struct</span> <span class="n">render_cmd_draw</span><span class="p">,</span>               <span class="n">opengl_draw</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Dispatch</span><span class="p">,</span>           <span class="k">struct</span> <span class="n">render_cmd_dispatch</span><span class="p">,</span>           <span class="n">opengl_dispatch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Present</span><span class="p">,</span>            <span class="k">struct</span> <span class="n">render_cmd_present</span><span class="p">,</span>            <span class="n">opengl_present</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Debug_Marker_Begin</span><span class="p">,</span> <span class="k">struct</span> <span class="n">render_cmd_debug_marker_begin</span><span class="p">,</span> <span class="n">opengl_debug_marker_begin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Debug_Marker_End</span><span class="p">,</span>   <span class="k">struct</span> <span class="n">render_cmd_debug_marker_end</span><span class="p">,</span>   <span class="n">opengl_debug_marker_end</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Timer_Query_Begin</span><span class="p">,</span>  <span class="k">struct</span> <span class="n">render_cmd_timer_query_begin</span><span class="p">,</span>  <span class="n">opengl_timer_query_begin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">COMMAND_ENTRY</span><span class="p">(</span><span class="n">Command_Timer_Query_End</span><span class="p">,</span>    <span class="k">struct</span> <span class="n">render_cmd_timer_query_end</span><span class="p">,</span>    <span class="n">opengl_timer_query_end</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">assert</span><span class="p">(</span><span class="nb">false</span> <span class="o">&amp;&amp;</span> <span class="s">&#34;Unknown command type encountered in backend dispatcher&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="resources-commands">Resources Commands</h3>
+<p>My approach to RHI is to take this a step further and have the creation and
+deletion of GPU resources be part of the render command system.</p>
+<p>Here is a snippet of some functions that are used to push resource commands to
+the resource command buffer. Note that <!-- raw HTML omitted --><code>cb</code><!-- raw HTML omitted --> would just be a pointer to the
+<!-- raw HTML omitted --><code>render_commands</code><!-- raw HTML omitted --> struture but has been omitted for the purposes of
+clarity.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_buffer_create</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="n">info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_buffer_destroy</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_buffer_upload</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">u32</span> <span class="n">size</span><span class="p">,</span> <span class="n">u32</span> <span class="n">dst_offset</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_buffer_copy</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">src_id</span><span class="p">,</span> <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">dst_id</span><span class="p">,</span> <span class="n">u32</span> <span class="n">src_offset</span><span class="p">,</span> <span class="n">u32</span> <span class="n">dst_offset</span><span class="p">,</span> <span class="n">u32</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_texture_create</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">texture_handle</span> <span class="n">id</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">texture_create_info</span> <span class="n">info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_texture_destroy</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">texture_handle</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_texture_upload</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">texture_handle</span> <span class="n">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">u32</span> <span class="n">mip_level</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">u32</span> <span class="n">x_offset</span><span class="p">,</span> <span class="n">u32</span> <span class="n">y_offset</span><span class="p">,</span> <span class="n">u32</span> <span class="n">z_offset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">u32</span> <span class="n">width</span><span class="p">,</span> <span class="n">u32</span> <span class="n">height</span><span class="p">,</span> <span class="n">u32</span> <span class="n">depth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">u32</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_texture_copy</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">texture_handle</span> <span class="n">src_id</span><span class="p">,</span> <span class="k">struct</span> <span class="n">texture_handle</span> <span class="n">dst_id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Simmilar commands for samplers, shaders, bind groups, pipelines,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// framebuffers, etc.
+</span></span></span></code></pre></div><p>This raises some interesting and important questions.</p>
+<ul>
+<li>(1) <strong>Identity: How are handles (IDs) generated and managed?</strong></li>
+<li>(2) <strong>Availability: How can the engine reference a GPU resource before the hardware has actually allocated it?</strong></li>
+<li>(3) <strong>Ordering: How do we ensure a draw call doesn&rsquo;t attempt to use a resource
+that hasn&rsquo;t finished initializing?</strong></li>
+</ul>
+<p>To solve these, we must shift our mental model of resource management. In this
+system, handles are a front-end responsibility. When the engine requires a new
+vertex buffer, it doesn&rsquo;t wait for a GPU pointer; it simply reserves a unique ID
+from a handle manager. This ID is then passed to the various <!-- raw HTML omitted --><code>cmd_*</code><!-- raw HTML omitted -->
+functions, acting as a &ldquo;contract&rdquo; that the backend will eventually fulfill by
+associating that ID with a concrete GPU object.</p>
+<p>Regarding availability, it is vital to remember that all commands are deferred.
+The front-end is not interacting with live GPU memory; it is recording a
+manifest of future work. The &ldquo;resource&rdquo; exists as a logical concept in the
+command stream long before it exists as a physical allocation in VRAM.</p>
+<p>Finally, to address ordering, the <!-- raw HTML omitted --><code>render_commands</code><!-- raw HTML omitted --> structure maintains two
+distinct streams: a Resource Command Buffer and a Render Command Buffer. By
+segregating &ldquo;structural&rdquo; commands (creation, destruction, and uploads) from
+&ldquo;operational&rdquo; commands (draw calls and state changes), we can guarantee
+execution order. The backend always flushes the resource buffer first, ensuring
+that every buffer, texture, and pipeline state is fully baked and resident in
+memory before the first draw call is ever dispatched.</p>
+<p>Let&rsquo;s take a look at simple example for creating a buffer. Below is all the
+definitions used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">buffer_usage_flags</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Buffer_Usage_Vertex</span>         <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Buffer_Usage_Index</span>          <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Buffer_Usage_Uniform</span>        <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Other types can be added ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">buffer_memory_type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Buffer_Memory_Device_Local</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Buffer_Memory_Host_Visible</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">buffer_usage_flags</span> <span class="n">usage_flags</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">buffer_memory_type</span> <span class="n">memory_type</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u32</span> <span class="n">size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">render_cmd_buffer_create</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">render_cmd_header</span> <span class="n">header</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="n">info</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_buffer_create</span><span class="p">(</span><span class="k">struct</span> <span class="n">render_commands</span> <span class="o">*</span><span class="n">cb</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">buffer</span><span class="p">,</span>   <span class="c1">// uint16_t ID handle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                       <span class="k">const</span> <span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="n">info</span><span class="p">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">buffer_create_info</span> <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">usage_flags</span> <span class="o">=</span> <span class="n">Buffer_Usage_Vertex</span> <span class="o">|</span>
+</span></span><span class="line"><span class="cl">                   <span class="n">Buffer_Usage_Index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">memory_type</span> <span class="o">=</span> <span class="n">Buffer_Memory_Device_Local</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">my_handle</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span> <span class="c1">// Engine generated uint16_t ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">cmd_buffer_create</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">my_handle</span><span class="p">,</span> <span class="n">info</span><span class="p">);</span>
+</span></span></code></pre></div><p>Notice that the buffer creation command intentionally excludes data
+initialization. Much like the standard library separates memory allocation
+<!-- raw HTML omitted --><code>malloc</code><!-- raw HTML omitted --> from data population <!-- raw HTML omitted --><code>memcpy</code><!-- raw HTML omitted -->, the RHI treats resource
+residency and data transfer as distinct operations. This is handled via a
+dedicated <!-- raw HTML omitted --><code>cmd_buffer_upload</code><!-- raw HTML omitted --> command.</p>
+<p>Because these commands are deferred, we face a synchronization challenge: the
+source data must remain valid until the backend eventually processes the queue.
+We solve this by copying the user&rsquo;s data into a staging area—either a transient
+CPU ring buffer or, for maximum performance, a persistently mapped GPU buffer
+that the backend can read from directly during the dispatch phase.</p>
+<h3 id="render-commands">Render Commands</h3>
+<p>Unlike resource commands, there are significantly fewer render-specific commands
+as shown below:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_framebuffer_begin</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">framebuffer_handle</span> <span class="n">fb_id</span><span class="p">,</span> <span class="k">const</span> <span class="n">f32</span> <span class="n">clear_color</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">f32</span> <span class="n">clear_depth</span><span class="p">,</span> <span class="n">u32</span> <span class="n">clear_stencil</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_framebuffer_end</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">framebuffer_handle</span> <span class="n">fb_id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_set_viewport</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">u32</span> <span class="n">x</span><span class="p">,</span> <span class="n">u32</span> <span class="n">y</span><span class="p">,</span> <span class="n">u32</span> <span class="n">width</span><span class="p">,</span> <span class="n">u32</span> <span class="n">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cmd_draw</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">struct</span> <span class="n">graphics_pipeline_handle</span> <span class="n">pipeline_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">const</span> <span class="k">struct</span> <span class="n">bind_group_handle</span> <span class="o">*</span><span class="n">groups</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">group_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="o">*</span><span class="n">vbs_ids</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">vb_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">struct</span> <span class="n">buffer_handle</span> <span class="n">ib_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">enum</span> <span class="n">draw_index_type</span> <span class="n">index_type</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">element_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">vertex_offset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">index_offset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">instance_offset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">u32</span> <span class="n">instance_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="k">struct</span> <span class="n">scissor_rect</span> <span class="n">scissor</span><span class="p">);</span>
+</span></span></code></pre></div><p>You&rsquo;ll notice that the <!-- raw HTML omitted --><code>cmd_draw</code><!-- raw HTML omitted --> function is quite parameter-heavy. This
+is a deliberate design choice to move away from stateful rendering in favor of a
+stateless architecture. Rather than relying on separate commands to bind buffers
+or set pipeline states—which often leads to the &lsquo;state leakage&rsquo; notorious in
+OpenGL—every piece of data required to fulfill a draw call is encapsulated
+within a single, self-contained command. This ensures that each draw call is
+independent; it neither inherits state from the previous command nor leaks its
+own state into the next, providing a much higher degree of predictability and
+thread-safety.</p>
+<p>While the frontend interface is stateless, the backend is responsible for
+redundant state filtering. To avoid the heavy performance cost of unnecessary
+driver calls, the backend tracks the currently bound resource handles. When a
+new draw command is dispatched, the backend compares the requested handles
+(pipelines, buffers, bind groups) against the previous ones; if the IDs match,
+the bind call is skipped entirely.</p>
+<h3 id="benefits-of-this-design">Benefits of this Design</h3>
+<ul>
+<li>
+<p><strong>Backend Isolation</strong> - Within an engine&rsquo;s renderer, render backend commands
+issued simply append (writes memory) to a linear buffer with no API-specific
+calls begin made which subsequently means no GPU driver communication. All GPU
+communication only happens when the command stream is being replayed leading
+to predictable communication.</p>
+<p>In fact, as I do within my own engine, since no API-specific calls are made,
+the render backend can be compiled as a completly separate shared library that
+gets loaded at runtime allowing for it to be hot-reloaded or changed
+dynamically to a different backend.</p>
+</li>
+<li>
+<p><strong>Debugging/Replaying</strong> - Since the entire is render command buffer is recorded,
+it can easily be saved/restored for debugging purposes.</p>
+</li>
+<li>
+<p><strong>Stateless Rendering</strong> -</p>
+</li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>I hope this brief dive into my RHI architecture provides some value to others
+navigating the same &ldquo;abstraction hell.&rdquo; While the system is still very much a
+work in progress, and certain specifics regarding explicit APIs like Vulkan or
+DX12 are still being refined, I am confident that this Deferred Command approach
+is the right foundation. It moves the complexity away from the engine logic and
+puts it exactly where it belongs: in the backend translator.</p>
+<p>Designing a renderer is rarely about finding the &ldquo;perfect&rdquo; solution on the first
+try; it is about building a contract between your engine and the hardware that
+is flexible enough to evolve. As I continue to battle with the nuances of modern
+graphics programming, I will post further updates and deep dives into major
+architectural changes.</p>
+<p>If you&rsquo;re building your own engine, my advice is simple: keep your RHI &ldquo;dumb,&rdquo;
+your commands stateless, and your data local. The GPU doesn&rsquo;t care about your
+game&rsquo;s abstractions—it just wants its buffers and its state.</p>
+<h2 id="helpful-resources">Helpful Resources</h2>
+<ul>
+<li><a href="https://www.gijskaerts.com/wordpress/?p=112">https://www.gijskaerts.com/wordpress/?p=112</a></li>
+<li><a href="https://media.contentapi.ea.com/content/dam/ea/seed/presentations/wihlidal-halcyonarchitecture-notes.pdf">https://media.contentapi.ea.com/content/dam/ea/seed/presentations/wihlidal-halcyonarchitecture-notes.pdf</a></li>
+<li><a href="https://alextardif.com/RenderingAbstractionLayers.html">https://alextardif.com/RenderingAbstractionLayers.html</a></li>
+<li><a href="https://www.sebastianaaltonen.com/blog/no-graphics-api">https://www.sebastianaaltonen.com/blog/no-graphics-api</a></li>
+<li><a href="https://www.gamedev.net/forums/topic/694968-renderer-design-bitquid-our-machinery/">https://www.gamedev.net/forums/topic/694968-renderer-design-bitquid-our-machinery/</a></li>
+<li><a href="https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/">https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/</a></li>
+<li><a href="https://advances.realtimerendering.com/s2023/AaltonenHypeHypeAdvances2023.pdf">https://advances.realtimerendering.com/s2023/AaltonenHypeHypeAdvances2023.pdf</a></li>
+<li><a href="https://bitsquid.blogspot.com/2017/02/stingray-renderer-walkthrough.html">https://bitsquid.blogspot.com/2017/02/stingray-renderer-walkthrough.html</a></li>
+<li><a href="http://alinloghin.com/articles/command_buffer.html">http://alinloghin.com/articles/command_buffer.html</a></li>
+<li><a href="https://blog.mecheye.net/2023/09/how-to-write-a-renderer-for-modern-apis/">https://blog.mecheye.net/2023/09/how-to-write-a-renderer-for-modern-apis/</a></li>
+<li><a href="https://ruby0x1.github.io/machinery_blog_archive/post/a-modern-rendering-architecture/">https://ruby0x1.github.io/machinery_blog_archive/post/a-modern-rendering-architecture/</a></li>
+</ul>
+
+</content>
+
+
+
+<p>
+  
+  <a href="http://localhost:1313/tags/rendering/">#Rendering</a>
+  
+  <a href="http://localhost:1313/tags/renderer-apis/">#Renderer-Apis</a>
+  
+  <a href="http://localhost:1313/tags/rhi/">#Rhi</a>
+  
+</p>
+
+  </main>
+  <footer><div class="social-links">
+    <a href="https://github.com/zoulhadj" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+    <a href="https://linkedin.com/in/zoulhadj" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="https://youtube.com/@ZOulhadj" target="_blank" rel="noopener">YouTube</a> &nbsp;|&nbsp;
+    <a href="https://instagram.com/zoulhadj" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <p class="copyright">
+    Copyright &copy; 2026, Zakariya Oulhadj.
+  </p>
+
+  
+  <p class="made-with">
+    Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+  </p>
+  
+</footer>
+</body>
+
+</html>

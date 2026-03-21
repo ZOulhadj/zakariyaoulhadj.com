@@ -16,6 +16,20 @@
       <description>&lt;p&gt;A personal hobby of mine, and a pastime I am particularly interested in, is&#xA;exploring the hidden layers of local history. There is something uniquely&#xA;rewarding about uncovering how a familiar landscape has evolved over decades, or&#xA;even centuries, and seeing the traces of the past that still linger in the&#xA;present.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will be showing some before and after comparisons of Roehampton,&#xA;the area where I grew up. By matching archival photographs with modern-day&#xA;views, we can trace the transformation of the village from a quiet Victorian hub&#xA;into a bustling London suburb, uncovering everything from &amp;ldquo;lost&amp;rdquo; industrial&#xA;landmarks to forgotten coaching roads hidden in plain sight.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Designing a Graphics Renderer Hardware Interface</title>
+      <link>http://localhost:1313/blog/rhi-design/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/rhi-design/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Before we can talk about Renderer Hardware Interfaces we must first understand&#xA;the goal of Graphics APIs.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunatly, if you want your graphics application to run on many different&#xA;devices whether thats on PCs, Consoles, due to the vast number of different&#xA;graphics APIs some form of abstraction is required. For instance, take a look at&#xA;the table below which shows different graphics APIs and on what platforms they&#xA;are supported:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why I prefer C instead of C&#43;&#43;</title>
+      <link>http://localhost:1313/blog/why-c-over-cpp/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/why-c-over-cpp/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: This blog post is meant to be a light hearted rant/discussion on&#xA;some of C++&amp;rsquo;s pitfalls and is highly opinionated. I&amp;rsquo;m sure many will attempt to&#xA;find flaws in my arguments so take everything with a grain of salt. End of the&#xA;day, you can program in any language you like, just remember to keep things&#xA;simple.&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;My journey of learning to program started with C++.&lt;/p&gt;&#xA;&lt;p&gt;Having been exposed to C++ for over 5 years, my thinking slowly started to&#xA;shift. I started to realise that after all these years my knowledge of C++&#xA;whilst decent I&amp;rsquo;d say I always felt that I didn&amp;rsquo;t know everything.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Real-Time Rendering Engine</title>
       <link>http://localhost:1313/projects/real-time-rendering-engine/</link>
       <pubDate>Sat, 04 Oct 2025 00:00:00 +0100</pubDate>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why I prefer C instead of C&#43;&#43; | Zakariya Oulhadj</title>
+<meta name="title" content="Why I prefer C instead of C&#43;&#43;" />
+<meta name="description" content="Disclaimer: This blog post is meant to be a light hearted rant/discussion on
+some of C&#43;&#43;&rsquo;s pitfalls and is highly opinionated. I&rsquo;m sure many will attempt to
+find flaws in my arguments so take everything with a grain of salt. End of the
+day, you can program in any language you like, just remember to keep things
+simple.
+Background
+My journey of learning to program started with C&#43;&#43;.
+Having been exposed to C&#43;&#43; for over 5 years, my thinking slowly started to
+shift. I started to realise that after all these years my knowledge of C&#43;&#43;
+whilst decent I&rsquo;d say I always felt that I didn&rsquo;t know everything." />
+<meta name="keywords" content="c,cpp," />
+
+
+<meta property="og:url" content="http://localhost:1313/blog/why-c-over-cpp/">
+  <meta property="og:site_name" content="Zakariya Oulhadj">
+  <meta property="og:title" content="Why I prefer C instead of C&#43;&#43;">
+  <meta property="og:description" content="Disclaimer: This blog post is meant to be a light hearted rant/discussion on some of C&#43;&#43;’s pitfalls and is highly opinionated. I’m sure many will attempt to find flaws in my arguments so take everything with a grain of salt. End of the day, you can program in any language you like, just remember to keep things simple.
+Background My journey of learning to program started with C&#43;&#43;.
+Having been exposed to C&#43;&#43; for over 5 years, my thinking slowly started to shift. I started to realise that after all these years my knowledge of C&#43;&#43; whilst decent I’d say I always felt that I didn’t know everything.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-02-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-10T00:00:00+00:00">
+    <meta property="article:tag" content="C">
+    <meta property="article:tag" content="Cpp">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Why I prefer C instead of C&#43;&#43;">
+  <meta name="twitter:description" content="Disclaimer: This blog post is meant to be a light hearted rant/discussion on some of C&#43;&#43;’s pitfalls and is highly opinionated. I’m sure many will attempt to find flaws in my arguments so take everything with a grain of salt. End of the day, you can program in any language you like, just remember to keep things simple.
+Background My journey of learning to program started with C&#43;&#43;.
+Having been exposed to C&#43;&#43; for over 5 years, my thinking slowly started to shift. I started to realise that after all these years my knowledge of C&#43;&#43; whilst decent I’d say I always felt that I didn’t know everything.">
+
+
+
+
+  <meta itemprop="name" content="Why I prefer C instead of C&#43;&#43;">
+  <meta itemprop="description" content="Disclaimer: This blog post is meant to be a light hearted rant/discussion on some of C&#43;&#43;’s pitfalls and is highly opinionated. I’m sure many will attempt to find flaws in my arguments so take everything with a grain of salt. End of the day, you can program in any language you like, just remember to keep things simple.
+Background My journey of learning to program started with C&#43;&#43;.
+Having been exposed to C&#43;&#43; for over 5 years, my thinking slowly started to shift. I started to realise that after all these years my knowledge of C&#43;&#43; whilst decent I’d say I always felt that I didn’t know everything.">
+  <meta itemprop="datePublished" content="2026-02-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2111">
+  <meta itemprop="keywords" content="C,Cpp">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
+
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-It.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-LightIt.otf") format("opentype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-ExtraLightIt.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BoldIt.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-BlackIt.otf") format("opentype");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --width: 900px;
+    --font-main: "Source Sans Pro", Verdana, sans-serif;
+    --font-secondary: "Source Sans Pro", Verdana, sans-serif;
+    --font-scale: 1.2em;
+    --background-color: #fdfdfd;
+    --heading-color: #222;
+    --text-color: #333;
+    --link-color: #0066cc;
+    --visited-color: #663399;
+    --blockquote-color: #555;
+    --code-bg: #f5f5f5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;  
+      --heading-color: #eee;
+      --text-color: #c5d3d6;
+      --link-color: #8cc2dd;
+      --visited-color: #b59fdf;
+      --blockquote-color: #ccc;
+      --code-bg: #003340;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 40px 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+    margin-top: 1.5em;
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 15px;
+    font-weight: 600;
+  }
+
+  strong, b {
+    color: var(--heading-color);
+  }
+
+  time {
+    font-family: "Cascadia Code", monospace;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--text-color);
+    opacity: 0.3;
+    margin: 2rem 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--link-color);
+    color: var(--blockquote-color);
+    padding-left: 20px;
+    margin: 1.5em 0;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.7;
+  }
+
+  .site-header {
+    margin-bottom: 1em;
+  }
+
+  .title h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+
+  .avatar img {
+    float: right;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+  }
+
+
+  .highlight, .code {
+    font-family: "Cascadia Code", monospace;
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 3px;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+    font-family: "Cascadia Code", monospace;
+    font-size: 0.85em;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+</style>
+
+
+</head>
+
+<body>
+  <header><div class="site-header">
+  <a href="/" class="title">
+    <h1>Zakariya Oulhadj</h1>
+  </a>
+  <small class="site-description">High Performance Computing (M.Sc.) Graduate from The University of Edinburgh</small>
+</div>
+
+<nav>
+<a href="/">Home</a>
+
+<a href="/blog/">Blog</a>
+
+<a href="/projects/">Projects</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Why I prefer C instead of C&#43;&#43;</h1>
+<p>
+  <i>
+    <time datetime='2026-02-10'>
+      10 Feb, 2026
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><strong>Disclaimer</strong>: This blog post is meant to be a light hearted rant/discussion on
+some of C++&rsquo;s pitfalls and is highly opinionated. I&rsquo;m sure many will attempt to
+find flaws in my arguments so take everything with a grain of salt. End of the
+day, you can program in any language you like, just remember to keep things
+simple.</p>
+<h2 id="background">Background</h2>
+<p>My journey of learning to program started with C++.</p>
+<p>Having been exposed to C++ for over 5 years, my thinking slowly started to
+shift. I started to realise that after all these years my knowledge of C++
+whilst decent I&rsquo;d say I always felt that I didn&rsquo;t know everything.</p>
+<p>Over the years, through my own research I stumbled across a wide range of
+resources</p>
+<p>my never ending on <a href="https://en.cppreference.com/index.html">cppreference</a></p>
+<p>The following people are well known within the game development community and
+are considered highly experienced programmers. It is they who have significantly
+influenced my way of thinking about code and programming style:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Casey_Muratori">Casey Muratori</a> (Handmade Hero)</li>
+<li><a href="https://en.wikipedia.org/wiki/Jonathan_Blow">Johnathan Blow</a> (CEO of Thekla Inc. and creator of Braid and The Witness)</li>
+<li>Sean Barret (Author of <a href="https://github.com/nothings/stb">STB</a> libraries)</li>
+<li>Ryan Fluerer (Author of RAD Debugger)</li>
+<li>Eskil Steenberg (YouTuber?)</li>
+<li>Shawn McGrath (Game developer?)</li>
+</ul>
+<p>It was only after I discovered Casey Muratori and his Handmade Hero series in
+which he develops his own game from scratch that opened my eyes to a different
+way of thinking about and writing code.</p>
+<p>Ever since I started, I have always been exposed to C++ and object-oriented
+programming which has been presented as this holy grail and taught that the
+&ldquo;correct&rdquo; and clean way to write code was.</p>
+<p>Uncle Bob vs Casey Muratori Clean Code Q&amp;A
+<a href="https://github.com/unclebob/cmuratori-discussion">https://github.com/unclebob/cmuratori-discussion</a></p>
+<blockquote>
+<p>&ldquo;Is the pixel an object or is it a group of objects? Is there a container? Do I
+have to ask a factory to get me a color?&rdquo;</p>
+</blockquote>
+<p><a href="https://youtu.be/GKYCA3UsmrU?t=140">Source: Getting rid of the OOP mindset</a></p>
+<p>I&rsquo;m certaintly not the first and will not be the last when it comes to critising
+C++.</p>
+<p>When being taught how to program for the first time, students are often
+introduced to C first in order to teach them about memory, allocations,
+pointers. It&rsquo;s not long, however, until they move onto to learning C++  C</p>
+<p><a href="https://youtu.be/C90H3ZueZMM?si=BYGETZNMBqVTmDd9&amp;t=926">Why OOP Is A Nightmare</a></p>
+<h2 id="the-paradox-of-choice-the-real-cost-of-flexibility">The Paradox of Choice: The Real Cost of &ldquo;Flexibility&rdquo;</h2>
+<p>C++ programmers often cite the language&rsquo;s vast feature set as its primary
+strength, offering the &ldquo;flexibility&rdquo; to solve any problem. In reality, this
+flexibility is a double-edged sword due to decades of questionable design
+decisions and a committee&rsquo;s rigid adherence to backwards compatibility. The
+result is a language that has become a &ldquo;kitchen sink&rdquo; of abstractions, imposing
+a constant, draining <strong>cognitive load</strong> on the developer.</p>
+<p>This is the <strong>Paradox of Choice</strong> applied to systems programming: when a language
+provides ten different ways to initialize a single variable or pass a piece of
+data, it forces the programmer to expend finite mental energy on the how rather
+than the what. Instead of focusing on the actual problem, you are trapped in a
+cycle of micro-evaluations—weighing &ldquo;modern&rdquo; best practices against &ldquo;legacy&rdquo;
+realities.</p>
+<p>Consider a simple analogy: shopping at a hypermarket with fifty aisles of
+cereal. You only need a basic meal, yet you are forced to navigate endless
+variations, marketing claims, and &ldquo;modern&rdquo; vs. &ldquo;legacy&rdquo; packaging. By the time
+you reach the checkout, you are experiencing Analysis Paralysis. You have
+exhausted your mental capital on a trivial choice, leaving you with less focus
+for the rest of your day.</p>
+<p>C++ is that hypermarket. Every line of code requires a series of
+micro-decisions: Should this be a template? Is a virtual destructor necessary
+here? Am I using the &lsquo;modern&rsquo; C++20 way or the &lsquo;safe&rsquo; C++11 way? This creates a
+culture of bikeshedding and internal debate that has nothing to do with the
+machine or the end user. It is a slow accumulation of &ldquo;choice fatigue&rdquo; that
+makes a codebase feel heavy and unpredictable.</p>
+<p>Don&rsquo;t take my word for it. Lets take a look at of all the main ways we can
+initialize a variable in C++ (as of writing).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">basic</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>             <span class="c1">// 1. C-style copy initialization
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">direct</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>             <span class="c1">// 2. Functional/Constructor style
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">brace</span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>              <span class="c1">// 3. Uniform initialization (C++11) - Prevents narrowing
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">list</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">};</span>            <span class="c1">// 4. Copy list initialization (C++11)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">value_init</span><span class="p">{};</span>           <span class="c1">// 5. Value initialization (Zeroes the memory)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">deduced</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>          <span class="c1">// 6. Type deduction (C++11)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">braced_deduce</span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>     <span class="c1">// 7. Direct braced deduction (C++17)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The &#34;Trap&#34;: These look similar but result in different types
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>                <span class="c1">// x is an int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">y</span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>                 <span class="c1">// y is an int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">auto</span> <span class="n">z</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">};</span>              <span class="c1">// z is a std::initializer_list&lt;int&gt; !!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// C++20 Designated Initializers (Borrowed from C, but with more rules)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">Point</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="p">{.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">};</span>
+</span></span></code></pre></div><p>(Copy Elision C++17) - Look into this</p>
+<p>Not sure about you, but personally&hellip;? That&rsquo;s just confusing and uneccesarily
+complicated for simply just assigning a single value to a variable.</p>
+<p>C, by contrast, functions like a small local shop. It provides a limited set of
+tools that have remained largely unchanged for decades. There is no &ldquo;perfect&rdquo;
+abstraction for every niche scenario, but there is also no choice to be made.
+You pick up the tool, you apply it to the hardware, and you move on. In C, the
+constraints are a pragmatic mercy; they remove the burden of the language
+itself, allowing you to focus entirely on the logic of your program.</p>
+<p>The purpose of this post is to give my personal experience of the two languages
+and why I choose to use C for most projects.</p>
+<ul>
+<li>Templates</li>
+<li>Overloading (Unpredictable code flow)</li>
+<li>Inheritence (links to context)</li>
+<li>WYSIWYG (No hidden function calls or other side effects)</li>
+<li>Context (Needing to understand large parts of a code base)</li>
+</ul>
+<h2 id="overloading">Overloading</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>       <span class="c1">// (A) Integer version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">);</span>   <span class="c1">// (B) Float version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// (C) Double version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>                  <span class="c1">// Calls (A): Exact match
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">add</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>               <span class="c1">// Calls (C): Exact match
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// We can&#39;t be sure which overload gets called...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">add</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>               <span class="c1">// Error: Ambigious: (A) or (B) ?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span>                 <span class="c1">// Error: Ambigious: (A) or (C) ?
+</span></span></span></code></pre></div><p>Whilst this will fail to build as a C++ compiler recognises the ambigiouity, the
+point is that we as programmers need to understand the types and order to even
+know which function may be called. This becomes increasingly tricky in larger
+code bases and lots of different function names.</p>
+<p>If we compare this to a C version we get the following which makes all function
+calls explicit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">addi</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>       <span class="c1">// (A) Integer version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">addf</span><span class="p">(</span><span class="kt">float</span> <span class="n">a</span><span class="p">,</span> <span class="kt">float</span> <span class="n">b</span><span class="p">);</span>   <span class="c1">// (B) Float version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">addd</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// (C) Double version
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">addi</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>                 <span class="c1">// &#34;i&#34; for integer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">addf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>                 <span class="c1">// &#34;f&#34; for float
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">addd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>                 <span class="c1">// &#34;d&#34; for double
+</span></span></span></code></pre></div><p>A side benfit to having each function be unqiue is that we can easily grep for
+the specific one we are looking for which makes searching a codebase
+significantly easier.</p>
+<p>Take the following example which performs an operation between two vectors
+<!-- raw HTML omitted --><code>vec_b</code><!-- raw HTML omitted --> and <!-- raw HTML omitted --><code>vec_c</code><!-- raw HTML omitted --> and stores the result in <!-- raw HTML omitted --><code>vec_a</code><!-- raw HTML omitted -->. A
+challenge to the reader: Is this a pairwise multiplication or a dot product?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// C++ - Is this mul or dot? We must now check overloaded operator to find
+</span></span></span><span class="line"><span class="cl"><span class="c1">// out...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vec_a</span> <span class="o">=</span> <span class="n">vec_b</span> <span class="o">*</span> <span class="n">vec_c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// C - Explicit functions clearly defines operation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vector_mul</span><span class="p">(</span><span class="n">vec_a</span><span class="p">,</span> <span class="n">vec_b</span><span class="p">,</span> <span class="n">vec_c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">vector_dot</span><span class="p">(</span><span class="n">vec_a</span><span class="p">,</span> <span class="n">vec_b</span><span class="p">,</span> <span class="n">vec_c</span><span class="p">);</span>
+</span></span></code></pre></div><p>Some argue that this is simply &lsquo;bad API design&rsquo; rather than a flaw of C++.
+However, C++ is the only language of the two that permits and encourages this
+ambiguity. By allowing the programmer to hide complex, potentially heavy math
+operations behind a simple * operator, C++ prioritizes &lsquo;math-like&rsquo; syntax over
+engineering clarity. In C, you don&rsquo;t have the option to be ambiguous with
+operators. You must name the operation, which forces clarity by default.</p>
+<p>A few times I wanted out to out of mere interest to look at the Linux source
+code</p>
+<p>Whilst I do admit my knowelege of operating systems is very little I did have
+this sudden realisation the code I was looking at whilst I did not understand
+from a larger context, the specific lines of code were easy to understand</p>
+<p>Having said all this, you may come to the conclusion that all this is a skill
+issue. This very well may be the case, and I never claimed to be the best
+programmer in fact I&rsquo;d argue the opposite but I rest my case.</p>
+<h2 id="inheritence--links-to-context">Inheritence (links to context)</h2>
+<h2 id="code-flow">Code Flow</h2>
+<p>When reading a book we are not expected to constantly be jumping</p>
+<h2 id="templates">Templates</h2>
+<p>Out of all C++ language features, templates has to be by far the number one
+reason that made be ultimetly switch to C. From not knowing the underlying type
+(by definition), significantly longer compile times and larger executables.</p>
+<p>There is this infamous <a href="http://archive.md/2014.04.28-125041/http://www.boost.org/doc/libs/1_55_0/libs/geometry/doc/html/geometry/design.html">post</a> from the <a href="https://www.boost.org/">Boost</a> C++ library which takes a simple,
+easy to reason about <!-- raw HTML omitted --><code>distance</code><!-- raw HTML omitted --> function that calculates the Euclidean
+distance between two points and turns it into a over-engineered templated mess,
+enabled by C++.</p>
+<p>Before:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Simple, easy to understand code where we can see what the CPU is doing.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">double</span> <span class="nf">distance</span><span class="p">(</span><span class="k">struct</span> <span class="nc">point</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">point</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>After:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Now we have geometric objects, dispatching, tag dispatching, different
+</span></span></span><span class="line"><span class="cl"><span class="c1">// strategies
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">G1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">G2</span><span class="p">,</span> <span class="k">typename</span> <span class="n">S</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">double</span> <span class="n">distance</span><span class="p">(</span><span class="n">G1</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">g1</span><span class="p">,</span> <span class="n">G2</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">g2</span><span class="p">,</span> <span class="n">S</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">strategy</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">dispatch</span><span class="o">::</span><span class="n">distance</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">tag</span><span class="o">&lt;</span><span class="n">G1</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="k">typename</span> <span class="n">tag</span><span class="o">&lt;</span><span class="n">G2</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">G1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">G2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">S</span><span class="o">&gt;::</span><span class="n">apply</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">strategy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The transparency of the original function is sacrificed for a generic
+abstraction that provides no immediate clarity. We&rsquo;ve traded a five-line
+Euclidean formula for a riddle of template parameters. Does <!-- raw HTML omitted --><code>::apply</code><!-- raw HTML omitted -->
+eventually subtract <!-- raw HTML omitted --><code>x</code><!-- raw HTML omitted --> from <!-- raw HTML omitted --><code>y</code><!-- raw HTML omitted -->? Probably, but you’ll have to dig
+through layers of Boost&rsquo;s &ldquo;dispatch&rdquo; logic just to be sure.</p>
+<p>Let&rsquo;s take a look at a more extreme example. <a href="https://github.com/skypjack/entt/">EnTT</a> is a highly popular ECS
+(Entity Component System) library. The library itself is great and so I am not
+attempting to bash the library but rather use it as a case study in regards to
+code readability. There is a specific function <!-- raw HTML omitted --><code>group</code><!-- raw HTML omitted --> which according to
+the library wiki:</p>
+<blockquote>
+<p>Groups are meant to iterate multiple components at once and to offer a faster
+alternative to multi type views.</p>
+</blockquote>
+<p>The implementation details is not important. If you can understand the code
+below then hats off but personally I still struggle to fully understand it. Is
+this a <strong>skill issue</strong>? Maybe, but even so, to understand what this code is doing we
+need to first understand templates, variadic expansion, compile-time branching,
+fold expressions, etc. All of which distract us from what the code is actually
+attempting to do which is merely to perform a cache lookup for an existing
+component grouping or, if none exists, allocate and initialize a new one.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Owned</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Get</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Exclude</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">basic_group</span><span class="o">&lt;</span><span class="n">owned_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Owned</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">get_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Get</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exclude_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Exclude</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">group</span><span class="p">(</span><span class="n">get_t</span><span class="o">&lt;</span><span class="n">Get</span><span class="p">...</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">get_t</span><span class="p">{},</span> <span class="n">exclude_t</span><span class="o">&lt;</span><span class="n">Exclude</span><span class="p">...</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">exclude_t</span><span class="p">{})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">group_type</span> <span class="o">=</span> <span class="n">basic_group</span><span class="o">&lt;</span><span class="n">owned_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Owned</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">get_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Get</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">exclude_t</span><span class="o">&lt;</span><span class="n">storage_for_type</span><span class="o">&lt;</span><span class="n">Exclude</span><span class="o">&gt;</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">handler_type</span> <span class="o">=</span> <span class="k">typename</span> <span class="n">group_type</span><span class="o">::</span><span class="n">handler</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">groups</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">group_type</span><span class="o">::</span><span class="n">group_id</span><span class="p">());</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">groups</span><span class="p">.</span><span class="n">cend</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">{</span><span class="o">*</span><span class="n">std</span><span class="o">::</span><span class="n">static_pointer_cast</span><span class="o">&lt;</span><span class="n">handler_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">)};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">handler_type</span><span class="o">&gt;</span> <span class="n">handler</span><span class="p">{};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nf">constexpr</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Owned</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0u</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">handler</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">allocate_shared</span><span class="o">&lt;</span><span class="n">handler_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">get_allocator</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">get_allocator</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span><span class="n">assure</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">Get</span><span class="o">&gt;&gt;</span><span class="p">()...),</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span><span class="n">assure</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">Exclude</span><span class="o">&gt;&gt;</span><span class="p">()...));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">handler</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">allocate_shared</span><span class="o">&lt;</span><span class="n">handler_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">get_allocator</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span><span class="n">assure</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">Owned</span><span class="o">&gt;&gt;</span><span class="p">()...,</span>
+</span></span><span class="line"><span class="cl">                                                                           <span class="n">assure</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">Get</span><span class="o">&gt;&gt;</span><span class="p">()...),</span>
+</span></span><span class="line"><span class="cl">                                                     <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span><span class="n">assure</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">remove_const_t</span><span class="o">&lt;</span><span class="n">Exclude</span><span class="o">&gt;&gt;</span><span class="p">()...));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ENTT_ASSERT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">all_of</span><span class="p">(</span><span class="n">groups</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">groups</span><span class="p">.</span><span class="n">cend</span><span class="p">(),</span> <span class="p">[](</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">!</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">owned</span><span class="p">(</span><span class="n">type_id</span><span class="o">&lt;</span><span class="n">Owned</span><span class="o">&gt;</span><span class="p">().</span><span class="n">hash</span><span class="p">())</span> <span class="o">||</span> <span class="p">...);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}),</span> <span class="s">&#34;Conflicting groups&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">groups</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">group_type</span><span class="o">::</span><span class="n">group_id</span><span class="p">(),</span> <span class="n">handler</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span><span class="o">*</span><span class="n">handler</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>I am sure this code has been extensively tested and is highly optimised,
+however, from the point of view of a programmer its a nightmare. This has poor
+readability, high cognitive load and requires large amount of outside context to
+understand.</p>
+<h2 id="context">Context</h2>
+<ul>
+<li>WYSIWYG (No hidden function calls or other side effects)</li>
+<li>Context (Needing to understand large parts of a code base)</li>
+</ul>
+<h2 id="cognitive-load">Cognitive Load</h2>
+<p>With all this being said, I believe this all comes down to the simple principle
+of congitive load and clarity. As programmers, we want to focus and solve the
+actual problem at hand. Wether thats implementing new functionaility, debugging
+existing code etc. We do not want to have to constantly fight the language
+itself</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Ultimately, this all comes down to</p>
+<p>A quote that I think best explains is phomenon:</p>
+<p>A quote from Terry Davis, Creator of Temple OS (Full quote <a href="https://www.goodreads.com/quotes/10480697-an-idiot-admires-complexity-a-genius-admires-simplicity-a-physicist">here</a>):</p>
+<blockquote>
+<p>An idiot admires complexity, a genius admires simplicity</p>
+</blockquote>
+<p>If you must use C++, I&rsquo;d suggest you take a look at <a href="https://bkaradzic.github.io/posts/orthodoxc++/">Orthodox C++</a> which is
+according to the blog post:</p>
+<blockquote>
+<p>Orthodox C++ (sometimes referred as C+) is minimal subset of C++ that improves
+C, but avoids all unnecessary things from so called Modern C++.</p>
+</blockquote>
+
+</content>
+
+
+
+<p>
+  
+  <a href="http://localhost:1313/tags/c/">#C</a>
+  
+  <a href="http://localhost:1313/tags/cpp/">#Cpp</a>
+  
+</p>
+
+  </main>
+  <footer><div class="social-links">
+    <a href="https://github.com/zoulhadj" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp;
+    <a href="https://linkedin.com/in/zoulhadj" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="https://youtube.com/@ZOulhadj" target="_blank" rel="noopener">YouTube</a> &nbsp;|&nbsp;
+    <a href="https://instagram.com/zoulhadj" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <p class="copyright">
+    Copyright &copy; 2026, Zakariya Oulhadj.
+  </p>
+
+  
+  <p class="made-with">
+    Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+  </p>
+  
+</footer>
+</body>
+
+</html>

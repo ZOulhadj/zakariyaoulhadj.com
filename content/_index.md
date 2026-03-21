@@ -35,7 +35,7 @@ programming being [Emacs](https://www.gnu.org/software/emacs/). My dotfiles are 
 ## Skills {#skills}
 
 -   **Operating Systems**: Linux, Windows, macOS
--   **Programming Languages**: C11, C++23, Zig, Python, GLSL, HLSL
+-   **Programming Languages**: C, C++, Zig, Python, GLSL, HLSL
 -   **APIs**: Win32, OpenGL 4.6, Vulkan 1.3, MPI, OpenMP
 -   **Tools**: GDB, RenderDoc, Intel VTune, AMD uProf, CrayPat, Scalasca, Linaro Forge
 -   **Interests**: Rendering Engine Architecture, Performance Benchmarking and

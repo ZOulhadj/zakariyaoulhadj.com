@@ -12,7 +12,28 @@
     <lastmod>2026-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/c/</loc>
-    <lastmod>2025-10-04T00:00:00+01:00</lastmod>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/cpp/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/rhi-design/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/renderer-apis/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rendering/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rhi/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/why-c-over-cpp/</loc>
+    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/projects/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
@@ -21,9 +42,6 @@
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/rendering-engine/</loc>
-    <lastmod>2025-10-04T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-10-04T00:00:00+01:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/dissertation/</loc>
