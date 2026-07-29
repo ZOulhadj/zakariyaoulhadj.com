@@ -7,5 +7,5 @@ categories = ["projects"]
 draft = false
 +++
 
-Cross-platform game engine developed in C11, supporting multiple modern
+Cross-platform game engine developed in Zig, supporting multiple modern
 rendering APIs and designed for efficiency and low-level engine research.
