@@ -13,7 +13,7 @@
       <link>http://localhost:1313/projects/real-time-rendering-engine/</link>
       <pubDate>Sat, 04 Oct 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:1313/projects/real-time-rendering-engine/</guid>
-      <description>&lt;p&gt;Cross-platform game engine developed in C11, supporting multiple modern&#xA;rendering APIs and designed for efficiency and low-level engine research.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Cross-platform game engine developed in Zig, supporting multiple modern&#xA;rendering APIs and designed for efficiency and low-level engine research.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
