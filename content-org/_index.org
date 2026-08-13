@@ -17,12 +17,12 @@ well. My main interests include Computer Graphics, Rendering Engine
 Architecture, and Systems Programming, where I focus on building efficient
 software from first principles.
 
-Currently, I work at Sony Interactive Entertainment within the Advanced
-Technology Group (ATG) which includes all things Playstation.
+Currently, based in London where I work at [[https://sonyinteractive.com/en/][Sony Interactive Entertainment Europe]]
+(SIEE) within the Advanced Technology Group (ATG) developing core systems for
+the PlayStation platform.
 
-Previously, I graduated with a distinction in High-Performance Computing (M.Sc.)
-from the [[https://www.ed.ac.uk][University of Edinburgh]] and currently based in London, UK. For further
-details you can view my [[file:/Zakariya_Oulhadj_CV.pdf][CV]].
+Previously graduated with a distinction in [[https://study.ed.ac.uk/programmes/postgraduate-taught/187-high-performance-computing][High-Performance Computing]] (M.Sc.)
+from the [[https://www.ed.ac.uk][University of Edinburgh]]. For further details you can view my [[file:/Zakariya_Oulhadj_CV.pdf][CV]].
 
 Full time Linux user running Debian with my main editor of choice for
 programming being [[https://www.gnu.org/software/emacs/][Emacs]]. My dotfiles are available on GitHub [[https://github.com/ZOulhadj/dotfiles][here]].
