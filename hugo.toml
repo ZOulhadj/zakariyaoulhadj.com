@@ -7,7 +7,7 @@ ignoreLogs = ["warning-goldmark-raw-html"]
 enableRobotsTXT = true
 
 [params]
-    description = "High Performance Computing (M.Sc.) Graduate from The University of Edinburgh"
+    description = "Graduate Enginer @ Sony Interactive Entertainment"
     github = "https://github.com/zoulhadj"
     linkedin = "https://linkedin.com/in/zoulhadj"
     instagram = "https://instagram.com/zoulhadj"
