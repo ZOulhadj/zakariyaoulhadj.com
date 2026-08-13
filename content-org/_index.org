@@ -17,8 +17,11 @@ well. My main interests include Computer Graphics, Rendering Engine
 Architecture, and Systems Programming, where I focus on building efficient
 software from first principles.
 
-Recently graduated with a distinction in High-Performance Computing (M.Sc.) from
-the [[https://www.ed.ac.uk][University of Edinburgh]] and currently based in London, UK. For further
+Currently, I work at Sony Interactive Entertainment within the Advanced
+Technology Group (ATG) which includes all things Playstation.
+
+Previously, I graduated with a distinction in High-Performance Computing (M.Sc.)
+from the [[https://www.ed.ac.uk][University of Edinburgh]] and currently based in London, UK. For further
 details you can view my [[file:/Zakariya_Oulhadj_CV.pdf][CV]].
 
 Full time Linux user running Debian with my main editor of choice for
@@ -33,8 +36,8 @@ programming being [[https://www.gnu.org/software/emacs/][Emacs]]. My dotfiles ar
   Optimisation, Network Attached Storages (Synology)
 
 * Current Project
-A real-time cross-platform rendering engine in C and Zig aiming to support
-multiple rendering backends (OpenGL, Vulkan, D3D12) through a custom render
+A real-time cross-platform rendering engine in Zig aiming to support multiple
+rendering backends (OpenGL, Vulkan, D3D12, Metal) through a custom render
 command system.
 
 [[/images/current_project.png]]
